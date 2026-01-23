@@ -1,19 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import TopBar from './components/TopBar';
 import LessonPanel from './components/LessonPanel';
 import CodeEditor from './components/CodeEditor';
 import OutputPanel from './components/OutputPanel';
 import { usePyodide } from './hooks/usePyodide';
 import { useLessonRunner } from './hooks/useLessonRunner';
-import { lesson001 } from './lessons/lesson-001';
+import { lessons } from './lessons';
 
 export default function Home() {
   const { pyodide, loading: pyodideLoading, error: pyodideError } = usePyodide();
-  const [currentLesson, setCurrentLesson] = useState(lesson001);
-  const [progress, setProgress] = useState(25);
+
+  // Lessons (index-based navigation)
+  const [lessonIndex, setLessonIndex] = useState(0);
+  const currentLesson = lessons[lessonIndex];
+
+  // UI state
   const [mobileTab, setMobileTab] = useState('lesson');
+
+  // Derived progress
+  const progress = ((lessonIndex + 1) / lessons.length) * 100;
+  const isLastLesson = lessonIndex === lessons.length - 1;
 
   const {
     code,
@@ -26,17 +34,8 @@ export default function Home() {
     resetCode
   } = useLessonRunner(currentLesson, pyodide);
 
-  // Reset code when lesson changes
-  useEffect(() => {
-    resetCode();
-  }, [currentLesson, resetCode]);
-
   const handleNext = () => {
-    // Placeholder for next lesson functionality
-    console.log('Next lesson');
-    setProgress(Math.min(progress + 25, 100));
-    // In the future, this will load the next lesson
-    // setCurrentLesson(nextLesson);
+    setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
   };
 
   const handleCodeChange = (newCode) => {
@@ -71,13 +70,15 @@ export default function Home() {
   return (
     <div className="h-screen flex flex-col bg-zinc-100 dark:bg-zinc-950 overflow-hidden">
       {/* Top Bar */}
-      <TopBar 
+      <TopBar
         lessonTitle={currentLesson.title}
         progress={progress}
         onNext={handleNext}
+        // If your TopBar supports it, use this:
+        // nextDisabled={isLastLesson}
       />
 
-      {/* Main Content - Desktop 3-panel layout */}
+      {/* Main Content */}
       <div className="flex-1 flex overflow-hidden">
         {/* Desktop Layout */}
         <div className="hidden lg:flex flex-1 w-full">
@@ -88,11 +89,11 @@ export default function Home() {
 
           {/* Center Panel - Code Editor */}
           <div className="w-1/3 border-r border-zinc-200 dark:border-zinc-800">
-            <CodeEditor 
+            <CodeEditor
               code={code}
               onChange={handleCodeChange}
               language="python"
-              onRun={handleCheck}
+              onRun={handleCheck}   // consider renaming button to "Check" if this runs tests
               isRunning={isRunning}
               onReset={resetCode}
             />
@@ -100,7 +101,7 @@ export default function Home() {
 
           {/* Right Panel - Output/Tests/Results */}
           <div className="w-1/3">
-            <OutputPanel 
+            <OutputPanel
               output={output}
               tests={testResults}
               result={result}
@@ -119,9 +120,11 @@ export default function Home() {
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
               }`}
+              type="button"
             >
               Lesson
             </button>
+
             <button
               onClick={() => setMobileTab('code')}
               className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
@@ -129,9 +132,11 @@ export default function Home() {
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
               }`}
+              type="button"
             >
               Code
             </button>
+
             <button
               onClick={() => setMobileTab('output')}
               className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
@@ -139,6 +144,7 @@ export default function Home() {
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
               }`}
+              type="button"
             >
               Output
             </button>
@@ -151,9 +157,10 @@ export default function Home() {
                 <LessonPanel lesson={currentLesson} />
               </div>
             )}
+
             {mobileTab === 'code' && (
               <div className="h-full">
-                <CodeEditor 
+                <CodeEditor
                   code={code}
                   onChange={handleCodeChange}
                   language="python"
@@ -163,9 +170,10 @@ export default function Home() {
                 />
               </div>
             )}
+
             {mobileTab === 'output' && (
               <div className="h-full">
-                <OutputPanel 
+                <OutputPanel
                   output={output}
                   tests={testResults}
                   result={result}
@@ -173,13 +181,21 @@ export default function Home() {
               </div>
             )}
           </div>
+
+          {/* Optional: show "Next lesson" button in mobile output tab */}
+          {/* {!isLastLesson && mobileTab === 'output' && (
+            <div className="p-3 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+              <button
+                onClick={handleNext}
+                className="w-full px-4 py-2 rounded bg-blue-600 text-white font-medium disabled:opacity-50"
+                type="button"
+              >
+                Next Lesson
+              </button>
+            </div>
+          )} */}
         </div>
       </div>
     </div>
   );
 }
-// Awesome, now we have a working Python runtime and we can start building the lessons.
-// Hello world is a good first lesson.
-// Print "Hello, World!" to the console.
-// Get some more lessons in here.
-// And some more coffee. 

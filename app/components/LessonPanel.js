@@ -1,5 +1,8 @@
 'use client';
 
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+
 export default function LessonPanel({ lesson }) {
   if (!lesson) {
     return (
@@ -10,12 +13,12 @@ export default function LessonPanel({ lesson }) {
   }
 
   return (
-    <div className="h-full overflow-y-auto p-6 bg-white dark:bg-zinc-900">
+    <div className="h-full min-h-0 p-6 bg-white dark:bg-zinc-900 scrollable">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">
           {lesson.title}
         </h2>
-        
+
         {lesson.objectives && (
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-2 text-zinc-800 dark:text-zinc-200">
@@ -29,9 +32,58 @@ export default function LessonPanel({ lesson }) {
           </div>
         )}
 
-        <div className="mb-6 text-zinc-700 dark:text-zinc-300 leading-relaxed whitespace-pre-line">
-          {lesson.content}
-        </div>
+        {/* ✅ Markdown-rendered content */}
+        {lesson.content && (
+          <div className="mb-6 text-zinc-700 dark:text-zinc-300 leading-relaxed">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({ children }) => (
+                  <h1 className="text-2xl font-bold mt-2 mb-3 text-zinc-900 dark:text-zinc-100">
+                    {children}
+                  </h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-xl font-semibold mt-6 mb-2 text-zinc-900 dark:text-zinc-100">
+                    {children}
+                  </h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className="text-lg font-semibold mt-5 mb-2 text-zinc-900 dark:text-zinc-100">
+                    {children}
+                  </h3>
+                ),
+                p: ({ children }) => (
+                  <p className="mb-3 leading-relaxed">{children}</p>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>
+                ),
+                code: ({ inline, className, children }) => {
+                  // inline code: `x`
+                  if (inline) {
+                    return (
+                      <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono text-sm">
+                        {children}
+                      </code>
+                    );
+                  }
+
+                  // code block: ```python
+                  return (
+                    <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto">
+                      <code className={`font-mono text-sm text-zinc-900 dark:text-zinc-100 ${className || ''}`}>
+                        {children}
+                      </code>
+                    </pre>
+                  );
+                }
+              }}
+            >
+              {lesson.content}
+            </ReactMarkdown>
+          </div>
+        )}
 
         {lesson.examples && lesson.examples.length > 0 && (
           <div className="mb-6">
@@ -62,4 +114,3 @@ export default function LessonPanel({ lesson }) {
     </div>
   );
 }
-

@@ -13,6 +13,7 @@ export default function CodeEditor({
   onRun,
   isRunning,
   onReset,
+
 }) {
   const [localCode, setLocalCode] = useState(code || '');
 
@@ -53,7 +54,7 @@ export default function CodeEditor({
   };
 
   return (
-    <div className="h-full flex flex-col bg-zinc-50 dark:bg-zinc-950">
+    <div className="h-full flex flex-col bg-zinc-50 dark:bg-[#282c34]">
       {/* Header */}
       <div className="px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
         <div className="flex items-center justify-between">
@@ -83,14 +84,14 @@ export default function CodeEditor({
               className="px-4 py-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               type="button"
             >
-              {isRunning ? 'Running...' : 'Run Code'}
+              {isRunning ? 'Running...' : 'Check'}
             </button>
           </div>
         </div>
       </div>
 
       {/* Editor */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 min-h-0 scrollable">
         <CodeMirror
           value={localCode}
           height="100%"
