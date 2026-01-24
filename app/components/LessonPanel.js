@@ -54,7 +54,7 @@ export default function LessonPanel({ lesson }) {
                   </h3>
                 ),
                 p: ({ children }) => (
-                  <p className="mb-3 leading-relaxed">{children}</p>
+                  <div className="mb-3 leading-relaxed">{children}</div>
                 ),
                 ul: ({ children }) => (
                   <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>
@@ -72,7 +72,7 @@ export default function LessonPanel({ lesson }) {
                   // code block: ```python
                   return (
                     <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto">
-                      <code className={`font-mono text-sm text-zinc-900 dark:text-zinc-100 ${className || ''}`}>
+                      <code className={`font-mono text-sm text-blue-500 dark:text-zinc-100 ${className || ''}`}>
                         {children}
                       </code>
                     </pre>

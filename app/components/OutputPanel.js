@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function OutputPanel({ output, tests, result, activeTab = 'output' }) {
+export default function OutputPanel({ output, tests, result, activeTab = 'output', completed, onNext, canGoNext }) {
   const [currentTab, setCurrentTab] = useState(activeTab);
 
   useEffect(() => {
@@ -164,6 +164,23 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                     <p className="text-yellow-800 dark:text-yellow-200">
                       {result.message}
                     </p>
+                  </div>
+                )}
+
+                {completed && (
+                  <div className="p-4 rounded-lg border bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800">
+                    <div className="font-semibold text-emerald-900 dark:text-emerald-100 mb-3">
+                      ✅ Lesson Completed
+                    </div>
+                    {canGoNext && onNext && (
+                      <button
+                        onClick={onNext}
+                        className="mt-3 px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
+                        type="button"
+                      >
+                        Next Lesson →
+                      </button>
+                    )}
                   </div>
                 )}
               </div>

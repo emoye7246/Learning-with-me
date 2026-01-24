@@ -7,6 +7,7 @@ import CodeEditor from './components/CodeEditor';
 import OutputPanel from './components/OutputPanel';
 import { usePyodide } from './hooks/usePyodide';
 import { useLessonRunner } from './hooks/useLessonRunner';
+import { useProgress } from './hooks/useProgress';
 import { lessons } from './lessons';
 
 export default function Home() {
@@ -19,9 +20,17 @@ export default function Home() {
   // UI state
   const [mobileTab, setMobileTab] = useState('lesson');
 
-  // Derived progress
-  const progress = ((lessonIndex + 1) / lessons.length) * 100;
-  const isLastLesson = lessonIndex === lessons.length - 1;
+  // Progress tracking
+  const {
+    percent,
+    attempt,
+    complete,
+    completed,
+    isLocked,
+  } = useProgress(lessons);
+
+  const currentCompleted = completed(currentLesson.id);
+  const locked = isLocked(lessonIndex);
 
   const {
     code,
@@ -34,13 +43,36 @@ export default function Home() {
     resetCode
   } = useLessonRunner(currentLesson, pyodide);
 
+  const handleCheckWithTracking = async () => {
+    attempt(currentLesson.id);
+
+    const res = await handleCheck(); // handleCheck now returns result
+
+    const didPass =
+      res?.status === "success" &&
+      typeof res.passedCount === "number" &&
+      typeof res.totalCount === "number" &&
+      res.passedCount === res.totalCount;
+
+    if (didPass) {
+      complete(currentLesson.id);
+    }
+
+    return res;
+  };
+
   const handleNext = () => {
+    // Locking behavior (optional)
+    if (!currentCompleted) return;
+
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
   };
 
   const handleCodeChange = (newCode) => {
     setCode(newCode);
   };
+
+  const isLastLesson = lessonIndex === lessons.length - 1;
 
   // Show loading state while Pyodide loads
   if (pyodideLoading) {
@@ -72,10 +104,9 @@ export default function Home() {
       {/* Top Bar */}
       <TopBar
         lessonTitle={currentLesson.title}
-        progress={progress}
+        progress={percent}
         onNext={handleNext}
-        // If your TopBar supports it, use this:
-        // nextDisabled={isLastLesson}
+        nextDisabled={!currentCompleted || isLastLesson}
       />
 
       {/* Main Content */}
@@ -93,7 +124,7 @@ export default function Home() {
               code={code}
               onChange={handleCodeChange}
               language="python"
-              onRun={handleCheck}   // consider renaming button to "Check" if this runs tests
+              onRun={handleCheckWithTracking}
               isRunning={isRunning}
               onReset={resetCode}
             />
@@ -105,6 +136,9 @@ export default function Home() {
               output={output}
               tests={testResults}
               result={result}
+              completed={currentCompleted}
+              onNext={handleNext}
+              canGoNext={currentCompleted && !isLastLesson}
             />
           </div>
         </div>
@@ -164,7 +198,7 @@ export default function Home() {
                   code={code}
                   onChange={handleCodeChange}
                   language="python"
-                  onRun={handleCheck}
+                  onRun={handleCheckWithTracking}
                   isRunning={isRunning}
                   onReset={resetCode}
                 />
@@ -177,6 +211,9 @@ export default function Home() {
                   output={output}
                   tests={testResults}
                   result={result}
+                  completed={currentCompleted}
+                  onNext={handleNext}
+                  canGoNext={currentCompleted && !isLastLesson}
                 />
               </div>
             )}

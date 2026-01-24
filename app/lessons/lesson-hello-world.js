@@ -23,7 +23,6 @@ print("Hello, world!")
 Write a function called \`hello()\` that **returns** the exact string:
 \`"Hello, world!"\`
 
-Returning is easier to auto-check with tests (LeetCode style).
 
 ### Bonus
 After you pass, try:
