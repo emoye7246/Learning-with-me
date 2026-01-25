@@ -1,6 +1,10 @@
 'use client';
 
-export default function TopBar({ lessonTitle, progress, onNext, nextDisabled = false }) {
+import { useTheme } from './ThemeProvider';
+
+export default function TopBar({ lessonTitle, progress, onNext, nextDisabled = false, isCompleted = false }) {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <div className="w-full border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-4 flex-1 min-w-0">
@@ -17,16 +21,44 @@ export default function TopBar({ lessonTitle, progress, onNext, nextDisabled = f
           <span className="text-sm text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
             {Math.round(progress)}%
           </span>
+          {isCompleted ? (
+            <span className="text-green-600 dark:text-green-400 text-lg" title="Lesson completed">
+              ✓
+            </span>
+          ) : (
+            <span className="text-xs text-zinc-400 dark:text-zinc-600 opacity-60 whitespace-nowrap">
+              Not completed
+            </span>
+          )}
         </div>
       </div>
-      <button
-        onClick={onNext}
-        disabled={nextDisabled}
-        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg font-medium transition-colors whitespace-nowrap ml-4 disabled:opacity-50 disabled:cursor-not-allowed"
-        type="button"
-      >
-        Next
-      </button>
+      <div className="flex items-center gap-3">
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          type="button"
+          aria-label="Toggle dark mode"
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+          ) : (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          )}
+        </button>
+        <button
+          onClick={onNext}
+          disabled={nextDisabled}
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }

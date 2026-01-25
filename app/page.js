@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import TopBar from './components/TopBar';
 import LessonPanel from './components/LessonPanel';
 import CodeEditor from './components/CodeEditor';
@@ -9,6 +9,7 @@ import { usePyodide } from './hooks/usePyodide';
 import { useLessonRunner } from './hooks/useLessonRunner';
 import { useProgress } from './hooks/useProgress';
 import { lessons } from './lessons';
+import SuccessDialog from './components/SuccessDialog';
 
 export default function Home() {
   const { pyodide, loading: pyodideLoading, error: pyodideError } = usePyodide();
@@ -16,9 +17,12 @@ export default function Home() {
   // Lessons (index-based navigation)
   const [lessonIndex, setLessonIndex] = useState(0);
   const currentLesson = lessons[lessonIndex];
+  const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   // UI state
   const [mobileTab, setMobileTab] = useState('lesson');
+  const [showCompletionDialog, setShowCompletionDialog] = useState(false);
+  const prevCompletedRef = useRef(false);
 
   // Progress tracking
   const {
@@ -32,6 +36,20 @@ export default function Home() {
   const currentCompleted = completed(currentLesson.id);
   const locked = isLocked(lessonIndex);
 
+  // Show dialog when lesson completion changes from false to true
+  useEffect(() => {
+    if (currentCompleted && !prevCompletedRef.current) {
+      setShowCompletionDialog(true);
+    }
+    prevCompletedRef.current = currentCompleted;
+  }, [currentCompleted]);
+
+  // Reset dialog state when lesson changes
+  useEffect(() => {
+    setShowCompletionDialog(false);
+    prevCompletedRef.current = completed(currentLesson.id);
+  }, [lessonIndex, currentLesson.id, completed]);
+
   const {
     code,
     setCode,
@@ -44,9 +62,9 @@ export default function Home() {
   } = useLessonRunner(currentLesson, pyodide);
 
   const handleCheckWithTracking = async () => {
-    attempt(currentLesson.id);
+    // attempt(currentLesson.id); // if you're tracking attempts
 
-    const res = await handleCheck(); // handleCheck now returns result
+    const res = await handleCheck(); // or runner.handleCheck()
 
     const didPass =
       res?.status === "success" &&
@@ -54,17 +72,23 @@ export default function Home() {
       typeof res.totalCount === "number" &&
       res.passedCount === res.totalCount;
 
-    if (didPass) {
-      complete(currentLesson.id);
-    }
+      if (didPass) {
+        // ✅ mark completion FIRST (this updates progress)
+        complete(currentLesson.id);
+    
+        // ✅ open dialog only first time completed
+        if (!currentCompleted) setShowSuccessDialog(true);
+      }
 
     return res;
   };
+
 
   const handleNext = () => {
     // Locking behavior (optional)
     // if (!currentCompleted) return;
 
+    setShowCompletionDialog(false);
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
   };
 
@@ -99,6 +123,8 @@ export default function Home() {
     );
   }
 
+
+
   return (
     <div className="h-screen flex flex-col bg-zinc-100 dark:bg-zinc-950 overflow-hidden">
       {/* Top Bar */}
@@ -106,7 +132,17 @@ export default function Home() {
         lessonTitle={currentLesson.title}
         progress={percent}
         onNext={handleNext}
-        // nextDisabled={!currentCompleted || isLastLesson}
+        isCompleted={currentCompleted}
+      // nextDisabled={!currentCompleted || isLastLesson}
+      />
+
+      {/* Completion Dialog */}
+      <SuccessDialog
+        open={showSuccessDialog}
+        onOpenChange={setShowSuccessDialog}
+        title="Lesson Completed 🎉"
+        description={currentLesson.successMessage || "Nice work! You passed all tests."}
+        onNext={handleNext}
       />
 
       {/* Main Content */}
@@ -149,11 +185,10 @@ export default function Home() {
           <div className="flex border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
             <button
               onClick={() => setMobileTab('lesson')}
-              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                mobileTab === 'lesson'
+              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${mobileTab === 'lesson'
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-              }`}
+                }`}
               type="button"
             >
               Lesson
@@ -161,11 +196,10 @@ export default function Home() {
 
             <button
               onClick={() => setMobileTab('code')}
-              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                mobileTab === 'code'
+              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${mobileTab === 'code'
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-              }`}
+                }`}
               type="button"
             >
               Code
@@ -173,11 +207,10 @@ export default function Home() {
 
             <button
               onClick={() => setMobileTab('output')}
-              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${
-                mobileTab === 'output'
+              className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${mobileTab === 'output'
                   ? 'border-b-2 border-blue-600 text-blue-600 dark:text-blue-400'
                   : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
-              }`}
+                }`}
               type="button"
             >
               Output
