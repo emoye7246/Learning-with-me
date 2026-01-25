@@ -63,7 +63,7 @@ export default function Home() {
 
   const handleNext = () => {
     // Locking behavior (optional)
-    if (!currentCompleted) return;
+    // if (!currentCompleted) return;
 
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
   };
@@ -106,7 +106,7 @@ export default function Home() {
         lessonTitle={currentLesson.title}
         progress={percent}
         onNext={handleNext}
-        nextDisabled={!currentCompleted || isLastLesson}
+        // nextDisabled={!currentCompleted || isLastLesson}
       />
 
       {/* Main Content */}
