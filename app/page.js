@@ -5,6 +5,7 @@ import TopBar from './components/TopBar';
 import LessonPanel from './components/LessonPanel';
 import CodeEditor from './components/CodeEditor';
 import OutputPanel from './components/OutputPanel';
+import ArticleView from './components/ArticleView';
 import { usePyodide } from './hooks/usePyodide';
 import { useLessonRunner } from './hooks/useLessonRunner';
 import { useProgress } from './hooks/useProgress';
@@ -20,6 +21,7 @@ export default function Home() {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   // UI state
+  const [mode, setMode] = useState('article'); // ✅ NEW: article | challenge
   const [mobileTab, setMobileTab] = useState('lesson');
   const [showCompletionDialog, setShowCompletionDialog] = useState(false);
   const prevCompletedRef = useRef(false);
@@ -61,6 +63,13 @@ export default function Home() {
     resetCode
   } = useLessonRunner(currentLesson, pyodide);
 
+  // ✅ When lesson changes: reset to Article mode + reset code/output
+  useEffect(() => {
+    setMode('article');
+    setMobileTab('lesson');
+    resetCode();
+  }, [lessonIndex, resetCode]);
+
   const handleCheckWithTracking = async () => {
     // attempt(currentLesson.id); // if you're tracking attempts
 
@@ -85,11 +94,23 @@ export default function Home() {
 
 
   const handleNext = () => {
-    // Locking behavior (optional)
     // if (!currentCompleted) return;
 
     setShowCompletionDialog(false);
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
+  };
+
+  const handlePrevious = () => {
+    setShowCompletionDialog(false);
+    setLessonIndex((i) => Math.max(i - 1, 0));
+  };
+
+  const handleStartChallenge = () => {
+    setMode('challenge');
+  };
+
+  const handleBackToArticle = () => {
+    setMode('article');
   };
 
   const handleCodeChange = (newCode) => {
@@ -97,6 +118,7 @@ export default function Home() {
   };
 
   const isLastLesson = lessonIndex === lessons.length - 1;
+  const isFirstLesson = lessonIndex === 0;
 
   // Show loading state while Pyodide loads
   if (pyodideLoading) {
@@ -131,9 +153,14 @@ export default function Home() {
       <TopBar
         lessonTitle={currentLesson.title}
         progress={percent}
+        mode={mode}
+        onPrev={handlePrevious}
         onNext={handleNext}
+        onStartChallenge={handleStartChallenge}
+        onBackToArticle={handleBackToArticle}
+        canGoPrev={!isFirstLesson}
+        canGoNext={!isLastLesson}
         isCompleted={currentCompleted}
-      // nextDisabled={!currentCompleted || isLastLesson}
       />
 
       {/* Completion Dialog */}
@@ -145,14 +172,34 @@ export default function Home() {
         onNext={handleNext}
       />
 
-      {/* Main Content */}
-      <div className="flex-1 flex overflow-hidden">
-        {/* Desktop Layout */}
-        <div className="hidden lg:flex flex-1 w-full">
-          {/* Left Panel - Lesson Content */}
-          <div className="w-1/3 border-r border-zinc-200 dark:border-zinc-800">
-            <LessonPanel lesson={currentLesson} />
-          </div>
+      {/* ✅ ARTICLE MODE */}
+      {mode === 'article' ? (
+        <ArticleView
+          lesson={currentLesson}
+          onStart={() => setMode('challenge')}
+        />
+      ) : (
+        /* ✅ CHALLENGE MODE (existing layout) */
+        <div className="flex-1 flex overflow-hidden">
+          {/* Desktop Layout */}
+          <div className="hidden lg:flex flex-1 w-full">
+            {/* Left Panel - Lesson Content */}
+            <div className="w-1/3 border-r border-zinc-200 dark:border-zinc-800">
+              <div className="h-full flex flex-col">
+                <div className="px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                  <button
+                    onClick={() => setMode('article')}
+                    className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    type="button"
+                  >
+                    ← Back to Article
+                  </button>
+                </div>
+                <div className="flex-1 overflow-hidden">
+                  <LessonPanel lesson={currentLesson} />
+                </div>
+              </div>
+            </div>
 
           {/* Center Panel - Code Editor */}
           <div className="w-1/3 border-r border-zinc-200 dark:border-zinc-800">
@@ -179,10 +226,24 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Layout - Tabs */}
-        <div className="lg:hidden flex flex-col w-full h-full">
-          {/* Tab Navigation */}
-          <div className="flex border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+          {/* Mobile Layout - Tabs */}
+          <div className="lg:hidden flex flex-col w-full h-full">
+            {/* Back to Article header */}
+            <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-2">
+              <button
+                onClick={() => setMode('article')}
+                className="text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                type="button"
+              >
+                ← Article
+              </button>
+              <div className="text-xs text-zinc-500 dark:text-zinc-400">
+                Challenge Mode
+              </div>
+            </div>
+
+            {/* Tab Navigation */}
+            <div className="flex border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
             <button
               onClick={() => setMobileTab('lesson')}
               className={`flex-1 px-4 py-3 text-sm font-medium transition-colors ${mobileTab === 'lesson'
@@ -252,20 +313,21 @@ export default function Home() {
             )}
           </div>
 
-          {/* Optional: show "Next lesson" button in mobile output tab */}
-          {/* {!isLastLesson && mobileTab === 'output' && (
-            <div className="p-3 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-              <button
-                onClick={handleNext}
-                className="w-full px-4 py-2 rounded bg-blue-600 text-white font-medium disabled:opacity-50"
-                type="button"
-              >
-                Next Lesson
-              </button>
-            </div>
-          )} */}
+            {/* Optional: show "Next lesson" button in mobile output tab */}
+            {/* {!isLastLesson && mobileTab === 'output' && (
+              <div className="p-3 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900">
+                <button
+                  onClick={handleNext}
+                  className="w-full px-4 py-2 rounded bg-blue-600 text-white font-medium disabled:opacity-50"
+                  type="button"
+                >
+                  Next Lesson
+                </button>
+              </div>
+            )} */}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

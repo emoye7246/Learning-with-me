@@ -2,6 +2,35 @@ export const lessonHelloWorld = {
   id: "basics-hello-world",
   title: "Hello, World!",
 
+  // ✅ Article markdown
+  article: `
+## Hello, World (and why it matters)
+
+Most programming languages start with **Hello, World** because it's the smallest win:
+you write code → the computer responds.
+
+### Printing text in Python
+To display text, Python uses \`print()\`:
+
+\`\`\`python
+print("Hello, world!")
+\`\`\`
+
+### Strings
+Text wrapped in quotes is called a **string**:
+
+- \`"Hello"\`
+- \`"Python"\`
+
+### Common mistakes
+- Quotes are required for text: \`print(Hello)\` ❌
+- Capitalization matters: \`True\` / \`False\` in Python
+
+---
+
+When you're ready, hit **Start Challenge** and we'll make your first function.
+`,
+
   // recommended additions
   type: "function",
   entry: "hello",
@@ -12,24 +41,12 @@ export const lessonHelloWorld = {
     "Complete your first Python win"
   ],
 
-  content: `
-Python is simple and readable. The most basic way to show output is:
-
-\`\`\`python
-print("Hello, world!")
-\`\`\`
-
-### Your Task
+  content: `## Your Task
 Write a function called \`hello()\` that **returns** the exact string:
+
 \`"Hello, world!"\`
 
-
-### Bonus
-After you pass, try:
-\`\`\`python
-print(hello())
-\`\`\`
-`,
+Returning is easier to auto-check with tests (LeetCode style).`,
 
   examples: [
     `print("Hello, world!")`,
