@@ -29,7 +29,7 @@ export default function ArticleView({ lesson, onStart }) {
           </div>
 
           <div className="mt-6 prose dark:prose-invert max-w-none">
-            <ReactMarkdown 
+            <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({ children }) => (
@@ -47,13 +47,26 @@ export default function ArticleView({ lesson, onStart }) {
                     {children}
                   </h3>
                 ),
+                pre: ({ children }) => (
+                  <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto">
+                    {children}
+                  </pre>
+                ),
                 p: ({ children }) => (
-                  <div className="mb-3 leading-relaxed text-zinc-700 dark:text-zinc-300">{children}</div>
+                  <p className="mb-3 leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    {children}
+                  </p>
                 ),
                 ul: ({ children }) => (
                   <ul className="list-disc list-inside mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">{children}</ul>
                 ),
-                code: ({ inline, className, children }) => {
+                ol: ({ children }) => (
+                  <ol className="list-decimal list-inside mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
+                    {children}
+                  </ol>
+                ),
+
+                code: ({ inline, children, className }) => {
                   if (inline) {
                     return (
                       <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono text-sm">
@@ -61,12 +74,12 @@ export default function ArticleView({ lesson, onStart }) {
                       </code>
                     );
                   }
+
+                  // block code is handled by <pre>, so just return code
                   return (
-                    <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto">
-                      <code className={`font-mono text-sm text-blue-500 dark:text-zinc-100 ${className || ''}`}>
-                        {children}
-                      </code>
-                    </pre>
+                    <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
+                      {children}
+                    </code>
                   );
                 },
                 hr: () => <hr className="my-6 border-zinc-300 dark:border-zinc-700" />,
