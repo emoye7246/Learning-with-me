@@ -34,11 +34,13 @@ export function useProgress(lessons) {
     return isLessonCompleted(state, lessonId);
   }
 
-  // optional: lock until previous completed
+  // Lock until previous lesson completed. Article-only lessons (hasChallenge === false) don't block.
   function isLocked(index) {
     if (index === 0) return false;
-    const prevId = lessons[index - 1]?.id;
-    return prevId ? !completed(prevId) : false;
+    const prev = lessons[index - 1];
+    if (!prev?.id) return false;
+    if (prev.hasChallenge === false) return false; // article-only: no completion required
+    return !completed(prev.id);
   }
 
   return {

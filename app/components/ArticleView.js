@@ -3,29 +3,40 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-export default function ArticleView({ lesson, onStart }) {
+/** Lesson has an interactive challenge when hasChallenge !== false (default true). */
+export function lessonHasChallenge(lesson) {
+  return lesson?.hasChallenge !== false;
+}
+
+export default function ArticleView({ lesson, onStart, hasChallenge }) {
+  const showChallenge = hasChallenge ?? lessonHasChallenge(lesson);
+
   return (
     <div className="flex-1 overflow-hidden">
       <div className="h-full overflow-auto p-6 bg-white dark:bg-zinc-900 scrollable">
         <div className="max-w-3xl mx-auto">
-          {/* Top section with title and Start Challenge button */}
+          {/* Top section with title and optional Start Challenge button */}
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>
               <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
                 {lesson.title}
               </h1>
               <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
-                Read the lesson, then start the challenge when you're ready.
+                {showChallenge
+                  ? "Read the lesson, then start the challenge when you're ready."
+                  : "Read the lesson, then continue to the next when you're ready."}
               </p>
             </div>
 
-            <button
-              onClick={onStart}
-              className="shrink-0 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
-              type="button"
-            >
-              Start Challenge →
-            </button>
+            {showChallenge && (
+              <button
+                onClick={onStart}
+                className="shrink-0 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
+                type="button"
+              >
+                Start Challenge →
+              </button>
+            )}
           </div>
 
           <div className="mt-6 prose dark:prose-invert max-w-none">
@@ -89,19 +100,21 @@ export default function ArticleView({ lesson, onStart }) {
             </ReactMarkdown>
           </div>
 
-          {/* Bottom CTA */}
-          <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
-            <div className="text-sm text-zinc-600 dark:text-zinc-300">
-              Ready to practice? Let's lock it in.
+          {/* Bottom CTA — only when lesson has a challenge */}
+          {showChallenge && (
+            <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+              <div className="text-sm text-zinc-600 dark:text-zinc-300">
+                Ready to practice? Let's lock it in.
+              </div>
+              <button
+                onClick={onStart}
+                className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
+                type="button"
+              >
+                Start Challenge →
+              </button>
             </div>
-            <button
-              onClick={onStart}
-              className="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
-              type="button"
-            >
-              Start Challenge →
-            </button>
-          </div>
+          )}
         </div>
       </div>
     </div>

@@ -9,8 +9,9 @@ import ArticleView from './components/ArticleView';
 import { usePyodide } from './hooks/usePyodide';
 import { useLessonRunner } from './hooks/useLessonRunner';
 import { useProgress } from './hooks/useProgress';
-import { lessons } from './lessons';
+import { lessons } from './courses/learn-python/lessons';
 import SuccessDialog from './components/SuccessDialog';
+import { lessonHasChallenge } from './components/ArticleView';
 
 export default function Home() {
   const { pyodide, loading: pyodideLoading, error: pyodideError } = usePyodide();
@@ -18,6 +19,7 @@ export default function Home() {
   // Lessons (index-based navigation)
   const [lessonIndex, setLessonIndex] = useState(0);
   const currentLesson = lessons[lessonIndex];
+  const hasChallenge = lessonHasChallenge(currentLesson);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
 
   // UI state
@@ -94,9 +96,11 @@ export default function Home() {
 
 
   const handleNext = () => {
-    // if (!currentCompleted) return;
-
     setShowCompletionDialog(false);
+    // Article-only lessons: mark as completed when user moves on so progress counts
+    if (!hasChallenge && currentLesson?.id) {
+      complete(currentLesson.id);
+    }
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
   };
 
@@ -156,11 +160,12 @@ export default function Home() {
         mode={mode}
         onPrev={handlePrevious}
         onNext={handleNext}
-        onStartChallenge={handleStartChallenge}
+        onStartChallenge={hasChallenge ? handleStartChallenge : undefined}
         onBackToArticle={handleBackToArticle}
         canGoPrev={!isFirstLesson}
         canGoNext={!isLastLesson}
         isCompleted={currentCompleted}
+        hasChallenge={hasChallenge}
       />
 
       {/* Completion Dialog */}
@@ -172,11 +177,12 @@ export default function Home() {
         onNext={handleNext}
       />
 
-      {/* ✅ ARTICLE MODE */}
-      {mode === 'article' ? (
+      {/* ARTICLE MODE (or article-only lesson: no challenge mode) */}
+      {mode === 'article' || !hasChallenge ? (
         <ArticleView
           lesson={currentLesson}
-          onStart={() => setMode('challenge')}
+          onStart={hasChallenge ? () => setMode('challenge') : undefined}
+          hasChallenge={hasChallenge}
         />
       ) : (
         /* ✅ CHALLENGE MODE (existing layout) */

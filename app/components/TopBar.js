@@ -13,6 +13,7 @@ export default function TopBar({
   canGoPrev = true,
   canGoNext = true,
   isCompleted = false,
+  hasChallenge = true,
 }) {
   const { theme, toggleTheme } = useTheme();
 
@@ -60,7 +61,7 @@ export default function TopBar({
           )}
         </button>
 
-        {/* Article mode: Start Challenge primary, Previous optional, Skip link */}
+        {/* Article mode: Start Challenge (if lesson has one), Previous, Next / Skip */}
         {mode === "article" ? (
           <>
             {onPrev && (
@@ -74,23 +75,28 @@ export default function TopBar({
               </button>
             )}
 
-            <button
-              onClick={onStartChallenge}
-              className="px-4 py-1.5 text-sm rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors whitespace-nowrap"
-              type="button"
-            >
-              Start Challenge →
-            </button>
+            {hasChallenge && onStartChallenge && (
+              <button
+                onClick={onStartChallenge}
+                className="px-4 py-1.5 text-sm rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors whitespace-nowrap"
+                type="button"
+              >
+                Start Challenge →
+              </button>
+            )}
 
-            {/* Optional: tiny skip link */}
             {onNext && (
               <button
                 onClick={onNext}
                 disabled={!canGoNext}
-                className="px-2 py-1 text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`px-3 py-1.5 text-sm rounded font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed ${
+                  hasChallenge
+                    ? "px-2 text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100"
+                    : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                }`}
                 type="button"
               >
-                Skip
+                {hasChallenge ? "Skip" : "Next Lesson"}
               </button>
             )}
           </>

@@ -1,3 +1,7 @@
+/**
+ * Working with Python module — lessons live in parent folder (../) for now.
+ * To move them here later: move each lesson-*.js into this folder and change imports to ./lesson-*.
+ */
 import { lessonHelloWorld } from "./lesson-hello-world";
 import { lessonVariablesTypes } from "./lesson-variables-and-types";
 import { lessonLists } from "./lesson-list";
@@ -12,11 +16,9 @@ import { lessonDictionaries } from "./lesson-dictionaries";
 import { lessonModulesAndPackages } from "./lesson-modules-and-packages";
 import { lessonInputAndOutput } from "./lesson-input-and-output";
 
-
-
-export const lessons = [
+export const workingWithPythonLessons = [
   lessonHelloWorld,
-  lessonVariablesTypes, 
+  lessonVariablesTypes,
   lessonLists,
   lessonBasicOperators,
   lessonStringFormatting,
