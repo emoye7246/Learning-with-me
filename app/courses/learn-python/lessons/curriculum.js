@@ -39,6 +39,11 @@ export const curriculum = [
     title: "Thinking Systems",
     lessonIds: [
       "thinking-systems-tracing-execution",
+      "thinking-systems-state-and-change",
+      "thinking-systems-scope-and-lifetime",
+      "thinking-systems-errors-and-debugging",  
+      "thinking-systems-refactoring-and-clarity",
+      "thinking-systems-problem-decomposition",
     ],
   },
 ];
