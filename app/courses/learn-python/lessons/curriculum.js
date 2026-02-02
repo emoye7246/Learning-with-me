@@ -34,4 +34,11 @@ export const curriculum = [
       "basics-input-output",
     ],
   },
+  {
+    id: "thinking-systems",
+    title: "Thinking Systems",
+    lessonIds: [
+      "thinking-systems-tracing-execution",
+    ],
+  },
 ];
