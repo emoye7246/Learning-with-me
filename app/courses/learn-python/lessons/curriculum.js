@@ -7,7 +7,13 @@ export const curriculum = [
   {
     id: "welcome",
     title: "Welcome to Python",
-    lessonIds: ["welcome-intro", "intro-where-python-lives"],
+    lessonIds: [
+      "welcome-intro", 
+      "intro-where-python-lives",
+      "intro-how-python-runs",
+      "intro-how-to-learn-programming",
+      "intro-what-comes-next"
+    ],
   },
   {
     id: "working-with-python",
