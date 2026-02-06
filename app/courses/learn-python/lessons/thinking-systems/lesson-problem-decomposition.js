@@ -89,55 +89,5 @@ export const lessonProblemDecomposition = {
   This is the final step in Stage 2.
   `,
   
-    // ✅ Challenge format
-    type: "function",
-    entry: "count_evens",
-  
-    objectives: [
-      "Break a problem into logical steps",
-      "Design a solution before coding",
-      "Solve an open-ended problem confidently"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`count_evens(nums)\`.
-  
-  It should:
-  - take a list of numbers
-  - count how many numbers are even
-  - return that count
-  
-  You decide how to solve it.
-  Focus on clarity, not cleverness.`,
-  
-    examples: [
-      `# Example:
-  count_evens([1, 2, 3, 4, 6])
-  # returns 3`,
-  
-      `# One possible approach:
-  # 1. Start a counter at 0
-  # 2. Loop through the list
-  # 3. If a number is even, increment the counter
-  # 4. Return the counter`
-    ],
-  
-    tasks:
-      "Write a function called `count_evens(nums)` that returns how many even numbers are in the list.",
-  
-    starterCode: `def count_evens(nums):
-      # Break the problem into steps before coding
-      pass
-  `,
-  
-    tests: [
-      { input: [[1, 2, 3, 4, 6]], expected: 3 },
-      { input: [[2, 2, 2]], expected: 3 },
-      { input: [[1, 3, 5]], expected: 0 },
-      { input: [[]], expected: 0 }
-    ],
-  
-    successMessage:
-      "Stage 2 complete 🧠🔥 You just solved a problem without a recipe — that’s real developer thinking."
   };
   

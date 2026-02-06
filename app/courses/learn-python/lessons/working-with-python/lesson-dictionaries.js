@@ -135,44 +135,5 @@ export const lessonDictionaries = {
   
   Scroll down when you’re ready and work with dictionaries.
   `,
-  
-    // recommended additions
-    type: "function",
-    entry: "get_age",
-  
-    objectives: [
-      "Understand key-value pairs",
-      "Access values using keys",
-      "Work with dictionaries safely"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`get_age(person)\` that returns the value associated with the key \`"age"\`.
-  
-  The \`person\` parameter will always be a dictionary.`,
-  
-    examples: [
-      `person = {"name": "Alex", "age": 21}
-  print(person["age"])`,
-  
-      `def get_age(person):
-      return person["age"]
-  
-  print(get_age({"name": "Jordan", "age": 30}))`
-    ],
-  
-    tasks: 'Write a function called `get_age(person)` that returns the age from the dictionary.',
-  
-    starterCode: `def get_age(person):
-      # Return the value for the key "age"
-      pass
-  `,
-  
-    tests: [
-      { input: [{"name": "Alex", "age": 21}], expected: 21 },
-      { input: [{"name": "Jordan", "age": 30}], expected: 30 }
-    ],
-  
-    successMessage: "Dictionary unlocked! You’re officially working with real-world data 🗂️🔥"
   };
   

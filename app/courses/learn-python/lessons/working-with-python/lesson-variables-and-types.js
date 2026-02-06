@@ -1,6 +1,7 @@
 export const lessonVariablesTypes = {
   id: "basics-variables-types",
   title: "Variables and Types",
+  hasChallenge: false,
 
   // ✅ Article markdown
   article: `
@@ -255,48 +256,4 @@ export const lessonVariablesTypes = {
   Scroll down when you’re ready and make Python remember.
   `,
 
-  // recommended additions
-  type: "variables",
-  entry: "variables-types",
-
-  objectives: [
-    "Understand what a variable is and how it stores a value",
-    "Learn the difference between assignment (=) and comparison",
-    "Recognize common Python data types (str, int, float, bool)",
-    "Return a string from a function for auto-checking"
-  ],
-
-  content: `## Your Task
-Write a function called \`get_message()\` that **creates a variable** named \`message\` and **returns** it.
-
-The variable must store the exact string:
-
-\`"Learning Python"\`
-
-Returning is easier to auto-check with tests (LeetCode style).`,
-
-  examples: [
-    `message = "Learning Python"
-print(message)`,
-    `def get_message():
-    message = "Learning Python"
-    return message
-
-print(get_message())`
-  ],
-
-  tasks: 'Write a function called `get_message()` that stores `"Learning Python"` in a variable named `message` and returns it.',
-
-  starterCode: `def get_message():
-    # Create a variable named message that stores "Learning Python"
-    # Then return the variable
-    pass
-`,
-
-  tests: [
-    { input: [], expected: "Learning Python" },
-    { input: [], expected: "Learning Python" }
-  ],
-
-  successMessage: "Nice! You just stored data in a variable (and passed tests) 🎉"
 };

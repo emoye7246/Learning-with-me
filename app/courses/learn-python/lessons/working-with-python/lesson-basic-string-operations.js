@@ -155,49 +155,5 @@ export const lessonBasicStringOperations = {
   
   Scroll down when you’re ready and put strings to work.
   `,
-  
-    // recommended additions
-    type: "function",
-    entry: "string_ops",
-  
-    objectives: [
-      "Concatenate strings using +",
-      "Repeat strings using *",
-      "Measure string length with len()"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`string_ops(text)\` that **returns** a string in the format:
-  
-  \`"<text> <text> <length>"\`
-  
-  Where:
-  - \`<text>\` is repeated **twice** with a space between
-  - \`<length>\` is the length of the original string`,
-  
-    examples: [
-      `text = "Hi"
-  print(text + " " + text + " " + str(len(text)))`,
-  
-      `def string_ops(text):
-      return text + " " + text + " " + str(len(text))
-  
-  print(string_ops("Python"))`
-    ],
-  
-    tasks: 'Write a function called `string_ops(text)` that repeats the string twice and appends its length.',
-  
-    starterCode: `def string_ops(text):
-      # Repeat the string twice with a space
-      # Append the length of the original string
-      pass
-  `,
-  
-    tests: [
-      { input: ["Hi"], expected: "Hi Hi 2" },
-      { input: ["Python"], expected: "Python Python 6" }
-    ],
-  
-    successMessage: "Nice work! You're officially manipulating strings like a pro 🧩🔥"
   };
   

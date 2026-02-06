@@ -136,54 +136,5 @@ export const lessonClassesAndObjects = {
   
   Scroll down when you’re ready and create your first class.
   `,
-  
-    // recommended additions
-    type: "class",
-    entry: "Person",
-  
-    objectives: [
-      "Understand what classes and objects are",
-      "Use __init__ to define attributes",
-      "Create methods inside a class"
-    ],
-  
-    content: `## Your Task
-  Create a class called \`Person\` with:
-  
-  - An \`__init__(self, name)\` method
-  - A method called \`greet()\` that returns:
-  
-  \`"Hello, <name>"\``,
-  
-    examples: [
-      `class Person:
-      def __init__(self, name):
-          self.name = name
-  
-      def greet(self):
-          return "Hello, " + self.name
-  
-  p = Person("Alex")
-  print(p.greet())`
-    ],
-  
-    tasks: 'Create a class `Person` with a `greet()` method that returns a greeting.',
-  
-    starterCode: `class Person:
-      def __init__(self, name):
-          # Store the name
-          pass
-  
-      def greet(self):
-          # Return: "Hello, <name>"
-          pass
-  `,
-  
-    tests: [
-      { input: ["Alex"], expected: "Hello, Alex" },
-      { input: ["Jordan"], expected: "Hello, Jordan" }
-    ],
-  
-    successMessage: "Class created! You just entered object-oriented programming 🧱🔥"
   };
   

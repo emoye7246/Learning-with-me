@@ -137,41 +137,5 @@ export const lessonFunctions = {
   Scroll down when you’re ready and write your own function.
   `,
   
-    // recommended additions
-    type: "function",
-    entry: "add_numbers",
-  
-    objectives: [
-      "Understand what functions are",
-      "Define functions using def",
-      "Use parameters and return values"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`add_numbers(a, b)\` that **returns** the sum of the two numbers.`,
-  
-    examples: [
-      `def add_numbers(a, b):
-      return a + b
-  
-  print(add_numbers(3, 5))`,
-  
-      `result = add_numbers(10, 2)
-  print(result)`
-    ],
-  
-    tasks: 'Write a function called `add_numbers(a, b)` that returns their sum.',
-  
-    starterCode: `def add_numbers(a, b):
-      # Return the sum of a and b
-      pass
-  `,
-  
-    tests: [
-      { input: [3, 5], expected: 8 },
-      { input: [10, 2], expected: 12 }
-    ],
-  
-    successMessage: "Function mastered! You’re officially writing reusable code 🧠🧩"
   };
   

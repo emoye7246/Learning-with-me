@@ -135,45 +135,6 @@ export const lessonModulesAndPackages = {
   
   Scroll down when you’re ready and practice importing.
   `,
-  
-    // recommended additions
-    type: "function",
-    entry: "use_math",
-  
-    objectives: [
-      "Understand what modules are",
-      "Import functions using import and from",
-      "Recognize packages as folders of modules"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`use_math()\` that returns the **square root of 16** using Python’s built-in \`math\` module.
-  
-  Use \`math.sqrt()\`.`,
-  
-    examples: [
-      `import math
-  print(math.sqrt(16))`,
-  
-      `def use_math():
-      import math
-      return math.sqrt(16)
-  
-  print(use_math())`
-    ],
-  
-    tasks: 'Write a function called `use_math()` that returns the square root of 16 using the math module.',
-  
-    starterCode: `def use_math():
-      # Import the math module and return math.sqrt(16)
-      pass
-  `,
-  
-    tests: [
-      { input: [], expected: 4.0 },
-      { input: [], expected: 4.0 }
-    ],
-  
-    successMessage: "Nice! You’re officially organizing and reusing code like a pro 📦🔥"
+ 
   };
   

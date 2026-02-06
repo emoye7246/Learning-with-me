@@ -106,53 +106,5 @@ export const lessonErrorsAndDebugging = {
   This is real debugging — not trial and error.
   `,
   
-    // ✅ Challenge format
-    type: "function",
-    entry: "fix_error",
-  
-    objectives: [
-      "Read and understand Python error messages",
-      "Identify the root cause of a bug",
-      "Fix errors intentionally instead of guessing"
-    ],
-  
-    content: `## Your Task
-  The function below is broken and raises an error.
-  
-  Your goal is to fix the function so it returns the value \`10\`.
-  
-  Do not remove the logic.
-  Fix the mistake that causes the error.`,
-  
-    examples: [
-      `# ❌ Broken code
-  def add_ten(x):
-      return x + "10"
-  
-  add_ten(0)`,
-  
-      `# ✅ Fixed idea
-  def add_ten(x):
-      return x + 10
-  
-  add_ten(0)`
-    ],
-  
-    tasks:
-      "Fix the error so the function returns the correct result.",
-  
-    starterCode: `def fix_error():
-      # This function should return 10
-      # but it currently raises a TypeError
-      x = 0
-      return x + "10"
-  `,
-  
-    tests: [
-      { input: [], expected: 10 }
-    ],
-  
-    successMessage:
-      "Debugging complete 🛠️ You didn’t guess — you understood the error."
   };
   

@@ -1,6 +1,8 @@
 export const lessonStringFormatting = {
     id: "basics-string-formatting",
     title: "String Formatting",
+    hasChallenge: false,
+
   
     // ✅ Article markdown (tone and structure aligned with lesson-hello-world)
     article: `
@@ -162,48 +164,5 @@ export const lessonStringFormatting = {
   
   Scroll down when you’re ready and format your first string.
   `,
-  
-    // recommended additions
-    type: "function",
-    entry: "format_message",
-  
-    objectives: [
-      "Understand C-style string formatting in Python",
-      "Learn how %s and %d work",
-      "Practice combining text with variables"
-    ],
-  
-    content: `## Your Task
-  Write a function called \`format_message(name, age)\` that **returns** the formatted string:
-  
-  \`"My name is %s and I am %d years old."\`
-  
-  Use **C-style string formatting** with the \`%\` operator.`,
-  
-    examples: [
-      `name = "Alex"
-  age = 21
-  print("My name is %s and I am %d years old." % (name, age))`,
-  
-      `def format_message(name, age):
-      return "My name is %s and I am %d years old." % (name, age)
-  
-  print(format_message("Jordan", 30))`
-    ],
-  
-    tasks: 'Write a function called `format_message(name, age)` that returns a formatted string using `%s` and `%d`.',
-  
-    starterCode: `def format_message(name, age):
-      # Use C-style string formatting to return:
-      # "My name is %s and I am %d years old."
-      pass
-  `,
-  
-    tests: [
-      { input: ["Alex", 21], expected: "My name is Alex and I am 21 years old." },
-      { input: ["Jordan", 30], expected: "My name is Jordan and I am 30 years old." }
-    ],
-  
-    successMessage: "Clean formatting! You're officially combining data with text 🧠✨"
   };
   

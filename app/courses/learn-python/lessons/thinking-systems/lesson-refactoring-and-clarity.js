@@ -99,53 +99,5 @@ export const lessonRefactoringAndClarity = {
   The behavior must stay the same.
   `,
   
-    // ✅ Challenge format
-    type: "function",
-    entry: "is_positive",
-  
-    objectives: [
-      "Recognize unnecessarily complex logic",
-      "Refactor code without changing behavior",
-      "Value clarity over cleverness"
-    ],
-  
-    content: `## Your Task
-  Refactor the function below so it returns the same result,
-  but with clearer and simpler logic.
-  
-  The function should return \`True\` if \`n\` is greater than 0,
-  and \`False\` otherwise.`,
-  
-    examples: [
-      `# ❌ Works, but overly complex
-  def is_positive(n):
-      if n > 0:
-          return True
-      else:
-          return False`,
-  
-      `# ✅ Clear and simple
-  def is_positive(n):
-      return n > 0`
-    ],
-  
-    tasks:
-      "Refactor the function to make it clearer without changing its behavior.",
-  
-    starterCode: `def is_positive(n):
-      if n > 0:
-          return True
-      else:
-          return False
-  `,
-  
-    tests: [
-      { input: [5], expected: true },
-      { input: [-3], expected: false },
-      { input: [0], expected: false }
-    ],
-  
-    successMessage:
-      "Refactor complete ✨ You improved the code without changing what it does."
   };
   
