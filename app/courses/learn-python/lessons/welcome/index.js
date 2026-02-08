@@ -1,13 +1,17 @@
 import { lessonWelcome } from "./lesson-welcome";
-import { lessonWherePythonCodeLives } from "./lesson-where-python-code-lives";
-import { lessonHowPythonRuns } from "./lesson-how-python-runs";
-import { lessonHowToLearnProgramming } from "./learn-how-to-learn-programming";
-import { lessonWhatComesAfter } from "./lesson-what-comes-after";
+import { lessonWhatProgrammingActuallyIs } from "./lesson-what-programming-actually-is";
+// import { lessonHowToLearnProgramming } from "./learn-how-to-learn-programming";
+// import { lessonWhatComesAfter } from "./lesson-what-comes-after";
+import { lessonWhatPythonCanDo } from "./lesson-what-python-can-do";
+import { lessonHowThisCourseWorks } from "./lesson-how-this-course-works";
+import { lessonWhatDoesItMeanToBeAPythonDeveloper } from "./lessons-what-does-it-mean-to-be-a-python-developer";
 
 export const welcomeLessons = [
     lessonWelcome, 
-    lessonWherePythonCodeLives, 
-    lessonHowPythonRuns,
-    lessonHowToLearnProgramming,
-    lessonWhatComesAfter
+    lessonWhatProgrammingActuallyIs,
+    lessonWhatPythonCanDo,
+    lessonHowThisCourseWorks,
+    lessonWhatDoesItMeanToBeAPythonDeveloper,
+    // lessonHowToLearnProgramming,
+    // lessonWhatComesAfter
 ];

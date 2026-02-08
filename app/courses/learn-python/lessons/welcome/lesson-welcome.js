@@ -98,11 +98,5 @@ export const lessonWelcome = {
   
   When you’re ready, continue to:
   **Lesson 1 — Hello, World**
-    `,
-
-  objectives: [
-    "Understand how the course is structured",
-    "Know the difference between article-only and challenge lessons",
-    "Be ready to start the first coding lesson",
-  ],
+    `
 };

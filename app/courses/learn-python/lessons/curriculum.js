@@ -9,10 +9,13 @@ export const curriculum = [
     title: "Welcome to Python",
     lessonIds: [
       "welcome-intro", 
-      "intro-where-python-lives",
+      "intro-what-programming-actually-is",
       "intro-how-python-runs",
-      "intro-how-to-learn-programming",
-      "intro-what-comes-next"
+      "intro-what-python-can-do",
+      "intro-how-this-course-works",
+      "intro-what-does-it-mean-to-be-a-python-developer"
+      // "intro-how-to-learn-programming",
+      // "intro-what-comes-next"
     ],
   },
   {
