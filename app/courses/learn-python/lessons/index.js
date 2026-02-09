@@ -1,11 +1,12 @@
 import { curriculum } from "./curriculum";
 import { welcomeLessons } from "./welcome";
+import { prerequisitesLessons } from "./prerequisites";
 import { workingWithPythonLessons } from "./working-with-python";
 import { thinkingSystemsLessons } from "./thinking-systems";
 /**
  * All lessons by module. Add a new array here when you add a new module folder.
  */
-const lessonsByModule = [welcomeLessons, workingWithPythonLessons, thinkingSystemsLessons];
+const lessonsByModule = [welcomeLessons, prerequisitesLessons, workingWithPythonLessons, thinkingSystemsLessons];
 
 /**
  * Build id -> lesson map from all modules.

@@ -40,11 +40,7 @@ export function ThemeProvider({ children }) {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Prevent flash of unstyled content
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always provide context so useTheme() never throws. Theme is applied to DOM only when mounted.
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}

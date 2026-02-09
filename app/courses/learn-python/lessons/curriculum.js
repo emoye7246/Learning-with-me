@@ -10,12 +10,19 @@ export const curriculum = [
     lessonIds: [
       "welcome-intro", 
       "intro-what-programming-actually-is",
-      "intro-how-python-runs",
+      // "intro-how-python-runs",
       "intro-what-python-can-do",
       "intro-how-this-course-works",
       "intro-what-does-it-mean-to-be-a-python-developer"
       // "intro-how-to-learn-programming",
       // "intro-what-comes-next"
+    ],
+  },
+  {
+    id: "prerequisites",
+    title: "Prerequisites",
+    lessonIds: [
+      "installing-python",
     ],
   },
   {
