@@ -23,6 +23,8 @@ export const curriculum = [
     title: "Prerequisites",
     lessonIds: [
       "installing-python",
+      "verify-python",
+      "install-VScode",
     ],
   },
   {

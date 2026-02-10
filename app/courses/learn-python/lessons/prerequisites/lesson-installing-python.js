@@ -4,58 +4,45 @@ export const lessonInstallingPython = {
     title: "Installing Python",
 
     article: `
+
 ## Installing Python (Windows · macOS · Linux)
 
-Before you can write Python programs, you need one thing:
+Before you can write Python programs, Python itself must be installed on your computer.
 
-**Python installed on your computer.**
+Python is not built into most systems in a way that’s suitable for development.
+Installing it is a normal, expected step — even for professional developers.
 
-This lesson will walk you through that process calmly and clearly.
-No assumptions. No shortcuts. No “you should already know this.”
-
----
-
-## First, a Simple Truth
-
-Installing Python is not a test of intelligence.
-It’s not something you “get right” the first time or you fail.
-
-Even experienced developers reinstall Python.
-Even professionals double-check versions.
-
-This is normal.
+This lesson is about getting Python onto your machine safely and calmly.
+Nothing more.
+Nothing less.
 
 ---
-
 ## What You’re Installing
 
 Python is a program called an **interpreter**.
 
-Your computer does not understand Python by default.
-The interpreter is what reads your ${'.py'} files and executes the instructions inside them.
+Your computer does not understand Python code on its own.
+The interpreter is what reads \`*.py\` files and executes the instructions inside them.
 
 Installing Python means:
-- your computer can recognize Python files
-- you can run Python programs from the terminal
+- your computer can run Python programs
+- the terminal can recognize the \`python\` command
 - you are working in a real development environment
 
 That’s it.
 
 ---
 
-## Where Python Comes From (Important)
+## Always Use the Official Source
 
-Python should always be installed from the **official source**.
+Python should always be installed from the official website:
 
-The official Python website is:
-> https://www.python.org
+[https://www.python.org](https://www.python.org)
 
 This ensures:
-- you get the correct version
-- you avoid broken or outdated installers
-- your setup matches what professionals use
-
-Avoid third-party download sites.
+- you get a safe, up-to-date version
+- your setup matches real-world environments
+- you avoid broken or unofficial installers
 
 ---
 
@@ -63,16 +50,15 @@ Avoid third-party download sites.
 
 For this course, you want **Python 3**.
 
-If you see multiple options:
-- choose the latest stable Python 3 version
+If multiple versions are shown:
+- choose the latest stable Python 3 release
 - ignore anything labeled Python 2
 
-Python 2 is obsolete.
-You do not need it.
+Python 2 is obsolete and not used in modern development.
 
 ---
 
-## Installation by Operating System
+## Installing Python by Operating System
 
 ### Windows
 
@@ -81,19 +67,16 @@ You do not need it.
 3. Download the Windows installer
 4. Run the installer
 
-⚠️ **Important step**  
-During installation, make sure to check the box that says:
-> **“Add Python to PATH”**
+**Important:**
+During installation, check the box that says **“Add Python to PATH.”**
 
-This allows you to run Python from the terminal.
-
-If you miss this step, it’s fixable later. Don’t panic.
+This allows Python to be run from the terminal.
+If you miss this step, it can be fixed later.
 
 ---
-
 ### macOS
 
-macOS may come with a version of Python already installed.
+macOS may already include a version of Python.
 That version is often outdated and not intended for development.
 
 For this course:
@@ -101,35 +84,72 @@ For this course:
 2. Download the macOS installer
 3. Run the installer normally
 
-This installs a modern Python version alongside the system one.
+This installs a modern version of Python alongside the system version.
+You do not need to remove anything.
 
-You don’t need to remove anything.
+---
+### Linux
+
+Most Linux systems already include Python or provide it through the system package manager.
+
+If Python 3 is not installed, or you want to ensure it is available, you can install it using the terminal.
+
+For Ubuntu or Debian-based systems, run:
+
+\`\`\`bash
+sudo apt install python3
+\`\`\`
+
+You do **not** need to understand this command yet.
+
+It simply tells the system to install Python 3 from official repositories.
+If the system reports that Python is already installed, that’s fine — nothing else is required.
+
+If you don't know how to use the terminal, continue reading this lesson to learn how to open it.
 
 ---
 
-### Linux
+## Opening the Terminal
 
-Most Linux distributions already include Python.
+To run certain commands, you’ll use an application called the **Terminal**.
 
-To install or update Python, use your package manager.
-For example:
+The terminal is a program that lets you type instructions directly to your computer.
+You do not need to understand how it works yet — you only need to know how to open it.
 
-- Ubuntu / Debian:
 
-### Quick Check
+**On Windows:**
+- Press the **Windows key**
+- Type **Command Prompt**
+- Press **Enter**
 
-If Python is already installed, this step ensures it is available and up to date.
+or
 
-On many Linux systems, Python is included by default.
-However, some systems may not have Python 3 installed, or it may not be accessible from the terminal yet.
+- Press the **Windows key**
+- Type **PowerShell**
+- Press **Enter**
 
-Using the install command ensures:
-- Python 3 is present on your system
-- the system knows where to find it
-- you can run Python the same way developers do everywhere else
+A window with text will appear.  
+This is your terminal.
 
-If the command completes successfully, Python is installed.
-If it reports that Python is already installed, that’s perfectly fine — nothing else is required.
+Either option works for this course.
+You are not choosing the “wrong” one.
+
+**On macOS:**
+- Press **Command (⌘) + Space** to open Spotlight
+- Type **Terminal**
+- Press **Enter**
+
+A window with text will appear. This is the terminal.
+
+**On Linux:**
+- Look for an application called **Terminal** in your applications menu
+- Or press **Ctrl + Alt + T** (this works on many Linux systems)
+
+Once the terminal is open, you can type commands and press **Enter** to run them.
+
+If the terminal feels unfamiliar or confusing right now, that’s completely normal.
+You’ll learn how to use it step by step throughout this course.
+By the end, it will feel like a natural part of your workflow.
 
 ---
 
@@ -143,8 +163,8 @@ Installing Python does **not**:
 - remove existing software
 - lock you into anything permanent
 
-On Linux, installing software through the package manager is a normal, everyday operation.
-It is how the operating system is designed to work.
+On Linux, installing software through the package manager is normal.
+On Windows and macOS, Python installs like any other application.
 
 If something goes wrong:
 - it can be fixed
@@ -153,57 +173,34 @@ If something goes wrong:
 
 Nothing in this step is irreversible.
 
-You are not putting your computer at risk.
-
----
-
-## What Not to Worry About Yet
-
-At this stage, you do **not** need to worry about:
-- virtual environments
-- package managers beyond basic installation
-- Python versions beyond “Python 3”
-- configuration files
-- editor customization
-- advanced terminal commands
-
-Those topics exist for a reason — but they only matter **after** you are comfortable running Python.
-
-Right now, your goal is simple and focused:
-
-> **Get Python onto your machine and make sure it exists.**
-
-Everything else comes later, when it actually helps instead of confusing.
-
----
+--- 
 
 ## Pause and Complete This Step
 
 Before moving on:
 - make sure Python is installed
 - take your time
-- don’t rush through the steps
-- don’t compare your setup to someone else’s
+- don’t rush
+- don’t compare your setup to others
 
 Different systems look different.
 That is normal.
-
-What matters is that Python is present on *your* machine.
 
 ---
 
 ## What Comes Next
 
-In the next lesson, you’ll confirm that Python is installed correctly.
-
-You’ll do this by asking your computer to tell you which version of Python it is running.
+In the next lesson, you’ll verify that Python is installed correctly by asking your computer which version it’s running.
 
 This is the moment where:
-> “I think it worked”  
-turns into  
-> **“It worked.”**
+
+“I think it worked”
+turns into
+**“It worked.”**
 
 When you’re ready, continue to:
+
 **1.2 Verifying Your Python Installation**
+    
 `
 }
