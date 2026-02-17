@@ -53,21 +53,33 @@ export default function ArticleView({
                     {children}
                   </pre>
                 ),
+
+                // ✅ Keep normal paragraphs nice…
                 p: ({ children }) => (
                   <p className="mb-3 leading-relaxed text-zinc-700 dark:text-zinc-300">
                     {children}
                   </p>
                 ),
+
                 ul: ({ children }) => (
-                  <ul className="list-disc list-inside mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">{children}</ul>
+                  <ul className="list-disc list-outside pl-6 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
+                    {children}
+                  </ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="list-decimal list-inside mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
+                  <ol className="list-decimal list-outside pl-6 mb-3 space-y-1 text-zinc-700 dark:text-zinc-300">
                     {children}
                   </ol>
                 ),
 
-                code: ({ inline, children, className }) => {
+                // ✅ …but in list items, kill <p> margins so text doesn’t drop under the bullet
+                li: ({ children }) => (
+                  <li className="[&>p]:m-0 [&>p]:inline leading-relaxed">
+                    {children}
+                  </li>
+                ),
+
+                code: ({ inline, children }) => {
                   if (inline) {
                     return (
                       <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono text-sm">
@@ -75,18 +87,19 @@ export default function ArticleView({
                       </code>
                     );
                   }
-
                   return (
                     <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
                       {children}
                     </code>
                   );
                 },
+
                 hr: () => <hr className="my-6 border-zinc-300 dark:border-zinc-700" />,
               }}
             >
               {lesson.article || "No article available for this lesson yet."}
             </ReactMarkdown>
+
           </div>
 
           {/* Complete lesson button at end of article */}
