@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { Suspense, useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import TopBar from '../../../components/TopBar';
@@ -15,7 +15,7 @@ function getInitialLessonIndex(searchParams, lessonsList) {
   return idx >= 0 ? idx : 0;
 }
 
-export default function LearnPythonLessonPage() {
+function LessonPageContent() {
   const searchParams = useSearchParams();
   const [lessonIndex, setLessonIndex] = useState(() =>
     getInitialLessonIndex(searchParams, lessons)
@@ -28,7 +28,7 @@ export default function LearnPythonLessonPage() {
 
   const currentLesson = lessons[lessonIndex];
   const { percent, complete, completed } = useProgress(lessons);
-  const currentCompleted = completed(currentLesson.id);
+  const currentCompleted = currentLesson ? completed(currentLesson.id) : false;
 
   const handleNext = () => {
     setLessonIndex((i) => Math.min(i + 1, lessons.length - 1));
@@ -44,6 +44,20 @@ export default function LearnPythonLessonPage() {
 
   const isLastLesson = lessonIndex === lessons.length - 1;
   const isFirstLesson = lessonIndex === 0;
+
+  if (!currentLesson) {
+    return (
+      <div className="h-screen flex flex-col bg-zinc-100 dark:bg-zinc-950 overflow-hidden items-center justify-center">
+        <p className="text-zinc-600 dark:text-zinc-400">No lesson found.</p>
+        <Link
+          href="/courses/learn-python"
+          className="mt-2 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+        >
+          ← Back to course
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex flex-col bg-zinc-100 dark:bg-zinc-950 overflow-hidden">
@@ -86,5 +100,21 @@ export default function LearnPythonLessonPage() {
         showCompleteButton={true}
       />
     </div>
+  );
+}
+
+function LessonPageFallback() {
+  return (
+    <div className="h-screen flex flex-col bg-zinc-100 dark:bg-zinc-950 overflow-hidden items-center justify-center">
+      <p className="text-zinc-600 dark:text-zinc-400">Loading lesson…</p>
+    </div>
+  );
+}
+
+export default function LearnPythonLessonPage() {
+  return (
+    <Suspense fallback={<LessonPageFallback />}>
+      <LessonPageContent />
+    </Suspense>
   );
 }

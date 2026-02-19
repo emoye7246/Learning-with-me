@@ -55,7 +55,8 @@ export const curriculum = [
     title: "Python Fundamentals",
     lessonIds: [
       "hello-world",
-      "variables-and-types"
+      "variables-and-types",
+      "numbers-and-math"
 
     ],
   },

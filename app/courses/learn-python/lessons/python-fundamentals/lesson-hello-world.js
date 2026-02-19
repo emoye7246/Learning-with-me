@@ -84,16 +84,11 @@ That single line of code is your entire first program.
 
   
   ---
-## Run the Program
+## Running the Program
 
 Open the integrated terminal inside VS Code.
 
 There are multiple ways to do this:
-
-- Use the shortcut: **Ctrl + \`** (Control + backtick)  
-  (On macOS: **Cmd + \`**)
-
-or
 
 - Click **View → Terminal** from the top menu
 
@@ -104,8 +99,6 @@ or
 However you open it doesn’t matter.
 
 Just get that terminal open.
-
----
 
 ## Make Sure You’re in the Right Folder
 
