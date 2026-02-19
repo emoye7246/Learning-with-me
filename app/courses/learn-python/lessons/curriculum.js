@@ -56,7 +56,9 @@ export const curriculum = [
     lessonIds: [
       "hello-world",
       "variables-and-types",
-      "numbers-and-math"
+      "numbers-and-math",
+      "strings-and-format",
+      "booleans-and-conditions",
 
     ],
   },
