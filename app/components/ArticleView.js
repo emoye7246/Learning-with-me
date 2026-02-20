@@ -1,11 +1,178 @@
 'use client';
 
+import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 /** Lesson has an interactive challenge when hasChallenge !== false (default true). Kept for backwards compatibility. */
 export function lessonHasChallenge(lesson) {
   return lesson?.hasChallenge !== false;
+}
+
+/** Renders lesson.support when present: string as markdown, or structured object (intro, level1Nudges, level2Hints, blueprint, etc.). */
+function SupportSection({ support }) {
+  const [revealSolution, setRevealSolution] = useState(false);
+
+  if (!support) return null;
+
+  // Plain string: render as markdown in a callout
+  if (typeof support === "string") {
+    return (
+      <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 p-4">
+          <h3 className="text-lg font-semibold text-amber-900 dark:text-amber-100 mb-2">
+            Need help?
+          </h3>
+          <div className="prose prose-sm dark:prose-invert max-w-none text-amber-900 dark:text-amber-100">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{support}</ReactMarkdown>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Structured support object (e.g. mini-projects)
+  const {
+    intro,
+    level1Nudges = [],
+    level2Hints = [],
+    blueprint = [],
+    debuggingGuide = [],
+    revealSolutionWarning,
+    exampleSolution,
+    upgrades,
+  } = support;
+
+  return (
+    <div className="mt-10 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+      <div className="rounded-xl border border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/40 overflow-hidden">
+        <div className="p-4 border-b border-amber-200 dark:border-amber-800">
+          <h3 className="text-lg font-semibold text-amber-900 dark:text-amber-100">
+            Need help? (Use in order)
+          </h3>
+          {intro && (
+            <div className="mt-2 text-sm text-amber-900 dark:text-amber-100 whitespace-pre-wrap">
+              {intro}
+            </div>
+          )}
+        </div>
+
+        <div className="divide-y divide-amber-200 dark:divide-amber-800">
+          {level1Nudges.length > 0 && (
+            <details className="group">
+              <summary className="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-amber-900 dark:text-amber-100 font-medium hover:bg-amber-100/50 dark:hover:bg-amber-900/30 [&::-webkit-details-marker]:hidden">
+                <span>Level 1 — Nudges (questions to ask yourself)</span>
+                <span className="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <ul className="px-4 pb-3 space-y-1 text-sm text-amber-900 dark:text-amber-100 list-disc list-inside">
+                {level1Nudges.map((nudge, i) => (
+                  <li key={i}>{nudge}</li>
+                ))}
+              </ul>
+            </details>
+          )}
+
+          {level2Hints.length > 0 && (
+            <details className="group">
+              <summary className="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-amber-900 dark:text-amber-100 font-medium hover:bg-amber-100/50 dark:hover:bg-amber-900/30 [&::-webkit-details-marker]:hidden">
+                <span>Level 2 — Hints (more direct)</span>
+                <span className="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <ul className="px-4 pb-3 space-y-1 text-sm text-amber-900 dark:text-amber-100 list-disc list-inside">
+                {level2Hints.map((hint, i) => (
+                  <li key={i}>{hint}</li>
+                ))}
+              </ul>
+            </details>
+          )}
+
+          {blueprint.length > 0 && (
+            <details className="group">
+              <summary className="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-amber-900 dark:text-amber-100 font-medium hover:bg-amber-100/50 dark:hover:bg-amber-900/30 [&::-webkit-details-marker]:hidden">
+                <span>Blueprint (step-by-step structure, no code)</span>
+                <span className="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <ol className="px-4 pb-3 space-y-1 text-sm text-amber-900 dark:text-amber-100 list-decimal list-inside">
+                {blueprint.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ol>
+            </details>
+          )}
+
+          {debuggingGuide.length > 0 && (
+            <details className="group">
+              <summary className="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-amber-900 dark:text-amber-100 font-medium hover:bg-amber-100/50 dark:hover:bg-amber-900/30 [&::-webkit-details-marker]:hidden">
+                <span>Debugging guide (common issues)</span>
+                <span className="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <ul className="px-4 pb-3 space-y-3 text-sm text-amber-900 dark:text-amber-100">
+                {debuggingGuide.map((item, i) => (
+                  <li key={i}>
+                    <strong>Problem:</strong> {item.problem}
+                    <br />
+                    <span className="text-amber-800 dark:text-amber-200">
+                      <strong>Hint:</strong> {item.hint}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+
+          {upgrades && typeof upgrades === "object" && Object.keys(upgrades).length > 0 && (
+            <details className="group">
+              <summary className="px-4 py-3 cursor-pointer list-none flex items-center justify-between text-amber-900 dark:text-amber-100 font-medium hover:bg-amber-100/50 dark:hover:bg-amber-900/30 [&::-webkit-details-marker]:hidden">
+                <span>Upgrade blueprints (optional)</span>
+                <span className="group-open:rotate-180 transition-transform">▼</span>
+              </summary>
+              <div className="px-4 pb-3 space-y-4 text-sm text-amber-900 dark:text-amber-100">
+                {Object.entries(upgrades).map(([key, steps]) => (
+                  <div key={key}>
+                    <p className="font-medium capitalize">
+                      {key.replace(/([A-Z])/g, " $1").trim()}
+                    </p>
+                    {Array.isArray(steps) ? (
+                      <ol className="list-decimal list-inside mt-1 space-y-0.5">
+                        {steps.map((s, i) => (
+                          <li key={i}>{s}</li>
+                        ))}
+                      </ol>
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            </details>
+          )}
+
+          {exampleSolution != null && (
+            <div className="px-4 py-3">
+              {!revealSolution ? (
+                <button
+                  type="button"
+                  onClick={() => setRevealSolution(true)}
+                  className="text-sm font-medium text-amber-800 dark:text-amber-200 hover:underline"
+                >
+                  Reveal example solution (use only if truly stuck)
+                </button>
+              ) : (
+                <div>
+                  {revealSolutionWarning && (
+                    <p className="text-sm text-amber-900 dark:text-amber-100 mb-2 whitespace-pre-wrap">
+                      {revealSolutionWarning}
+                    </p>
+                  )}
+                  <pre className="p-3 rounded-lg bg-zinc-800 dark:bg-zinc-900 text-zinc-100 text-xs overflow-auto">
+                    {exampleSolution}
+                  </pre>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function ArticleView({
@@ -101,6 +268,8 @@ export default function ArticleView({
             </ReactMarkdown>
 
           </div>
+
+          {lesson.support != null && <SupportSection support={lesson.support} />}
 
           {/* Complete lesson button at end of article */}
           {showCompleteButton && (

@@ -217,4 +217,152 @@ export const miniProjectTextFormatter = {
   **Simple Menu Program**
   
   `
+  ,
+  support: {
+    intro: `
+Use this support in order.
+
+Start with Level 1.
+If you're still stuck, go to Level 2.
+If you need structure, use the Blueprint.
+Only reveal the example solution if you're truly stuck.
+
+There are many correct implementations.
+This is one possible approach.
+    `.trim(),
+
+    level1Nudges: [
+      "Where should you ask the user to enter text?",
+      "What variable stores the current text?",
+      "How will you repeatedly show the menu?",
+      "What condition should stop the loop?",
+      "How do you compare the user's menu choice?",
+      "What string methods can transform text?",
+      "How do you count words in a sentence?",
+      "How can you prevent the program from crashing on invalid input?",
+    ],
+
+    level2Hints: [
+      "You need at least two main variables: text and choice.",
+      "Your loop should continue until the user selects the quit option.",
+      "Use if / elif / else to handle each menu option.",
+      "Use built-in string methods like .upper(), .lower(), and .title().",
+      "To count words, split the string into a list first.",
+      "If the user enters an invalid option, print an error message and continue the loop.",
+      "If you allow updating text, assign the new input back to the same text variable.",
+    ],
+
+    blueprint: [
+      "Print a welcome message.",
+      "Ask the user to enter initial text and store it.",
+      "Set choice variable to empty string.",
+      "Start a loop that runs until choice equals the quit value (e.g., '0').",
+      "Inside the loop:",
+      "  - Print the current text.",
+      "  - Print menu options.",
+      "  - Ask for user choice.",
+      "  - If choice is 1: print uppercase version.",
+      "  - If choice is 2: print lowercase version.",
+      "  - If choice is 3: print title case version.",
+      "  - If choice is 4: count words and print result.",
+      "  - If choice is 5: allow user to enter new text.",
+      "  - If choice is quit: print goodbye message.",
+      "  - Else: print invalid option message.",
+    ],
+
+    debuggingGuide: [
+      {
+        problem: "My menu only runs once and then stops.",
+        hint: "You likely forgot to wrap your menu logic inside a loop.",
+      },
+      {
+        problem: "My program crashes when I enter something unexpected.",
+        hint: "Make sure you handle invalid menu choices with an else block.",
+      },
+      {
+        problem: "My word count seems incorrect.",
+        hint: "Check how you are splitting the string. Are you splitting by spaces?",
+      },
+      {
+        problem: "My updated text doesn't change.",
+        hint: "Make sure you're reassigning the new input back to the original text variable.",
+      },
+      {
+        problem: "The menu prints multiple times unexpectedly.",
+        hint: "Check where your print statements are placed relative to the loop.",
+      },
+    ],
+
+    revealSolutionWarning: `
+This is ONE possible implementation.
+
+If your version meets the checklist and works correctly, it is valid.
+Read the solution carefully and compare logic — do not blindly copy.
+    `.trim(),
+
+    exampleSolution: `def show_menu():
+    print("\\nText Formatter Menu")
+    print("1) Uppercase")
+    print("2) Lowercase")
+    print("3) Title Case")
+    print("4) Word Count")
+    print("5) Enter New Text")
+    print("0) Quit")
+
+
+print("Welcome to the Text Formatter!")
+text = input("Enter some text: ")
+
+choice = ""
+
+while choice != "0":
+    print("\\nCurrent text:", text)
+    show_menu()
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        print(text.upper())
+    elif choice == "2":
+        print(text.lower())
+    elif choice == "3":
+        print(text.title())
+    elif choice == "4":
+        print("Word count:", len(text.split()))
+    elif choice == "5":
+        text = input("Enter new text: ")
+    elif choice == "0":
+        print("Goodbye!")
+    else:
+        print("Invalid option.")`,
+
+    upgrades: {
+      reverseTextBlueprint: [
+        "Add a new menu option for reversing text.",
+        "Use slicing to reverse the string.",
+        "Print the reversed result.",
+      ],
+
+      characterCountBlueprint: [
+        "Add a menu option to count characters.",
+        "Use len() on the string.",
+        "Decide whether spaces should count.",
+      ],
+
+      replaceWordBlueprint: [
+        "Ask user for a word to replace.",
+        "Ask for the replacement word.",
+        "Use string replace method to update text.",
+        "Print the updated result.",
+      ],
+
+      saveToFileBlueprint: [
+        "Add a menu option to save text.",
+        "Open a file in write mode.",
+        "Write the text to the file.",
+        "Close the file.",
+        "Print confirmation message.",
+      ],
+    },
+  },
   };

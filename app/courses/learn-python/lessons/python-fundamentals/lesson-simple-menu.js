@@ -241,5 +241,143 @@ export const miniProjectSimpleMenu = {
   
   That’s a real milestone.
   
-  `
+  `,
+  support: {
+    intro: `
+Use this support in order.
+
+Start with Level 1.
+If you're still stuck, go to Level 2.
+If you need structure, use the Blueprint.
+Only reveal the example solution if you're truly stuck.
+
+There are many correct solutions.
+This support is here to help you finish and understand.
+    `.trim(),
+
+    level1Nudges: [
+      "What variable stores the user's menu choice?",
+      "How will you make the menu repeat until the user quits?",
+      "What value should represent the quit option (example: '0')?",
+      "Where should the menu print—inside the loop or outside it?",
+      "How will you handle an invalid choice so the program doesn't crash?",
+      "What are 3 actions your menu can perform that are different from each other?",
+      "If your menu runs forever, what condition are you missing?",
+      "If your menu ends immediately, what value did your choice start as?",
+    ],
+
+    level2Hints: [
+      "You need a loop that continues while the choice is not the quit option.",
+      "Inside the loop: print the menu, ask for choice, then handle it with if/elif/else.",
+      "Your choice should be compared as a string if you collect it with input() (example: choice == '1').",
+      "After handling an action, the loop should naturally continue and show the menu again.",
+      "Include an else branch for invalid input that prints an error and continues.",
+      "If you want cleaner code, put menu printing into a function like show_menu().",
+    ],
+
+    blueprint: [
+      "Print a welcome message.",
+      "Set a choice variable to an empty string.",
+      "Start a loop that runs until choice equals the quit value (example: '0').",
+      "Inside the loop:",
+      "  - Print the menu options (at least 1, 2, 3, and 0 for quit).",
+      "  - Ask the user for a choice using input().",
+      "  - If choice is '1': perform Action 1.",
+      "  - Else if choice is '2': perform Action 2.",
+      "  - Else if choice is '3': perform Action 3.",
+      "  - Else if choice is '0': print goodbye message.",
+      "  - Else: print invalid option message.",
+      "After the loop ends: program exits cleanly.",
+    ],
+
+    debuggingGuide: [
+      {
+        problem: "My menu prints once and then the program ends.",
+        hint: "You probably didn't wrap the menu logic inside a loop.",
+      },
+      {
+        problem: "My loop never stops even when I choose quit.",
+        hint: "Check that you're comparing the same types. input() returns a string, so compare to '0', not 0.",
+      },
+      {
+        problem: "My menu prints twice each time.",
+        hint: "You may be printing the menu both inside and outside the loop. Keep it in one place.",
+      },
+      {
+        problem: "Invalid input crashes my program.",
+        hint: "Use an else block to catch invalid choices and print an error message instead of crashing.",
+      },
+      {
+        problem: "My actions run but the menu doesn't show again.",
+        hint: "Make sure your loop continues and your program isn't accidentally returning or breaking early.",
+      },
+    ],
+
+    revealSolutionWarning: `
+This is ONE possible implementation.
+
+If your program meets the checklist and behaves correctly, your version is valid.
+Read it, compare it, and understand it — don't blindly copy.
+    `.trim(),
+
+    exampleSolution: `def show_menu():
+    print("\\nMenu")
+    print("1) Greet me")
+    print("2) Add two numbers")
+    print("3) Count letters in a sentence")
+    print("0) Quit")
+
+
+print("Welcome to the Simple Menu Program!")
+
+choice = ""
+
+while choice != "0":
+    show_menu()
+    choice = input("Choose an option: ").strip()
+
+    if choice == "1":
+        name = input("What is your name? ").strip()
+        print(f"Hello, {name}!")
+    elif choice == "2":
+        a = int(input("Enter first number: "))
+        b = int(input("Enter second number: "))
+        print("Sum:", a + b)
+    elif choice == "3":
+        text = input("Enter a sentence: ")
+        print("Character count:", len(text))
+    elif choice == "0":
+        print("Goodbye!")
+    else:
+        print("Invalid option.")`,
+
+    upgrades: {
+      subMenuBlueprint: [
+        "Create a new option on the main menu like '4) More tools'.",
+        "When the user selects it, enter a second loop (sub-menu).",
+        "The sub-menu should have its own options and a way to return to the main menu.",
+        "When the user chooses 'back', exit the sub-menu loop and return to the main menu loop.",
+      ],
+
+      storeDataBlueprint: [
+        "Create an empty list before the loop starts.",
+        "Add a menu option that asks the user for an item and appends it to the list.",
+        "Add another option that prints the list of stored items.",
+        "Make sure the list persists while the program runs (do not recreate it inside the loop).",
+      ],
+
+      functionsBlueprint: [
+        "Create a function for show_menu().",
+        "Create a separate function for each action (action_one, action_two, etc.).",
+        "Inside the menu logic, call the correct function based on the user's choice.",
+        "This keeps your loop clean and readable.",
+      ],
+
+      inputValidationBlueprint: [
+        "If you're converting user input to int, add protection (try/except) so invalid input doesn't crash the program.",
+        "If input is invalid, show an error message and re-prompt.",
+        "Keep the program running smoothly even when users make mistakes.",
+      ],
+    },
+  },
   };
