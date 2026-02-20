@@ -31,25 +31,6 @@ export const curriculum = [
       // "AI",
     ],
   },
-  // {
-  //   id: "working-with-python",
-  //   title: "Working with Python",
-  //   lessonIds: [
-  //     "basics-hello-world",
-  //     "basics-variables-types",
-  //     "basics-lists",
-  //     "basics-operators",
-  //     "basics-string-formatting",
-  //     "basics-string-operations",
-  //     "basics-conditions",
-  //     "basics-loops",
-  //     "basics-functions",
-  //     "basics-classes-objects",
-  //     "basics-dictionaries",
-  //     "basics-modules-packages",
-  //     "basics-input-output",
-  //   ],
-  // },
   {
     id: "python-fundamentals",
     title: "Python Fundamentals",
@@ -59,19 +40,12 @@ export const curriculum = [
       "numbers-and-math",
       "strings-and-format",
       "booleans-and-conditions",
-
-    ],
-  },
-  {
-    id: "thinking-systems",
-    title: "Thinking Systems",
-    lessonIds: [
-      "thinking-systems-tracing-execution",
-      "thinking-systems-state-and-change",
-      "thinking-systems-scope-and-lifetime",
-      "thinking-systems-errors-and-debugging",  
-      "thinking-systems-refactoring-and-clarity",
-      "thinking-systems-problem-decomposition",
+      "lists",
+      "dictionaries-sets",
+      "loops",
+      "functions",
+      "input-output",
+      "modules-imports"
     ],
   },
 ];
