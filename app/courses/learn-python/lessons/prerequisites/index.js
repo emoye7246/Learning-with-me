@@ -4,7 +4,7 @@ import { lessonInstallVSCode } from "./lesson-install-VScode"
 import { lessonVSCodeTour } from "./lesson-VScode-Tour"
 import { lessonTerminalBasics } from "./lesson-terminal-basics"
 import { lessonCommonSetupIssues } from "./lesson.common-setup-issues"
-import { lessonAI } from "./lesson-AI"
+import { lessonUsingAIDiscipline } from "./lesson-AI"
 
 export const prerequisitesLessons = [
     lessonInstallingPython,
@@ -13,5 +13,5 @@ export const prerequisitesLessons = [
     lessonVSCodeTour,
     lessonTerminalBasics,
     lessonCommonSetupIssues, 
-    lessonAI
+    lessonUsingAIDiscipline
 ]

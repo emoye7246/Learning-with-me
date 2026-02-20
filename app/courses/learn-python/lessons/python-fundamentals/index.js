@@ -9,6 +9,10 @@ import { lessonLoops } from "./lesson-loops";
 import { lessonFunctions } from "./lesson-functions";
 import { lessonInputOutput } from "./lesson-input-output";
 import { lessonModulesImports } from "./lesson-intro-modules-and-imports";
+import { miniProjectNumberGuessingGame } from "./lesson-number-guessing";
+import { miniProjectTextFormatter } from "./lesson-text-formatter";
+import { miniProjectSimpleMenu } from "./lesson-simple-menu";
+import { lessonMiniProjectIntro } from "./lesson-mini-project-intro";
 
 export const pythonFundamentalsLessons = [
 
@@ -22,5 +26,9 @@ export const pythonFundamentalsLessons = [
     lessonLoops,
     lessonFunctions,
     lessonInputOutput,
-    lessonModulesImports
+    lessonModulesImports,
+    lessonMiniProjectIntro,
+    miniProjectNumberGuessingGame,
+    miniProjectTextFormatter,
+    miniProjectSimpleMenu
 ]

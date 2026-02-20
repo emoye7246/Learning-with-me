@@ -28,7 +28,7 @@ export const curriculum = [
       "VScode-Tour",
       "terminal-basics",
       "common-setup-issues",
-      // "AI",
+      "using-ai-with-discipline",
     ],
   },
   {
@@ -45,7 +45,12 @@ export const curriculum = [
       "loops",
       "functions",
       "input-output",
-      "modules-imports"
+      "modules-imports",
+      "mini-projects-introduction",
+      "mini-project-number-guessing-game",
+      "mini-project-text-formatter",
+      "mini-project-simple-menu"
+
     ],
   },
 ];

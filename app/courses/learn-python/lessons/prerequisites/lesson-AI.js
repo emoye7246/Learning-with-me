@@ -1,66 +1,109 @@
-export const lessonAI = {
-    id: "AI as a last resort",
-    title: "AI as a last resort",
+export const lessonUsingAIDiscipline = {
+    id: "using-ai-with-discipline",
+    title: "Using AI With Discipline",
+  
     article: `
-## Use AI With Discipline
-
-AI is powerful.
-
-But early overreliance on it can quietly damage your growth as a developer.
-
-If you ask AI to solve every problem the moment you feel stuck,
-you train yourself to depend on answers instead of building reasoning.
-
-Programming is not about knowing solutions.
-It is about learning how to think.
-
-When you skip the struggle:
-- you weaken your problem-solving ability
-- you avoid building debugging skills
-- you delay developing intuition
-- you become dependent instead of capable
-
-That cost shows up later —
-when problems become larger and AI answers are not enough.
-
----
-
-## What To Do Instead
-
-Before turning to AI:
-
-- Re-read the lesson carefully  
-- Try to solve the problem on paper  
-- Break the problem into smaller pieces  
-- Watch a focused tutorial  
-- Collaborate with someone  
-- Search official documentation  
-- Ask a human mentor or peer  
-
-Struggle first.
-Think first.
-Attempt first.
-
-Then, if you still need help,
-use AI carefully — and make sure you understand the explanation fully.
-
----
-
-## The Rule
-
-AI should be:
-
-- a last resort  
-- a clarifier  
-- a reviewer  
-
-Not your first reflex.
-
-If you copy solutions without understanding them,
-you are not learning.
-You are outsourcing growth.
-
-And growth cannot be outsourced.
-
-    `
-}
+  
+  ## Read This Before Moving Forward
+  
+  AI is powerful.
+  
+  You will use it in your career.
+  Most developers already do.
+  
+  But there is a difference between:
+  
+  Using AI as a tool  
+  and  
+  Using AI as a crutch  
+  
+  If you rely on it too early,
+  you weaken the very skill you are trying to build.
+  
+  Programming is not about memorizing answers.
+  
+  It is about developing reasoning.
+  
+  ---
+  
+  ## The Hidden Risk of Overusing AI
+  
+  If you ask AI for the solution the moment you feel stuck:
+  
+  - You avoid struggling through the problem  
+  - You skip developing debugging skills  
+  - You weaken your ability to think step-by-step  
+  - You build dependency instead of confidence  
+  
+  That cost does not show up immediately.
+  
+  It shows up later —
+  when problems become complex
+  and AI suggestions are incomplete or wrong.
+  
+  ---
+  
+  ## The Right Way to Use AI
+  
+  AI should help you grow —
+  not replace your thinking.
+  
+  Before turning to AI, try this process:
+  
+  1. Re-read the lesson carefully  
+  2. Break the problem into smaller steps  
+  3. Write pseudocode on paper  
+  4. Search documentation  
+  5. Test small pieces of the problem  
+  6. Read the error message carefully  
+  
+  Only after attempting the problem should you seek help.
+  
+  And when you do:
+  
+  - Ask for a hint, not the full solution  
+  - Ask for an explanation, not just code  
+  - Make sure you understand why the solution works  
+  
+  Understanding is the goal.
+  
+  ---
+  
+  ## The Rule
+  
+  AI should be:
+  
+  - A clarifier  
+  - A guide  
+  - A reviewer  
+  
+  Not your first reflex.
+  
+  If you copy solutions without understanding them,
+  you are not learning.
+  
+  You are outsourcing growth.
+  
+  And growth cannot be outsourced.
+  
+  ---
+  
+  ## Your Responsibility
+  
+  Struggling is part of learning.
+  
+  Confusion is part of learning.
+  
+  Debugging is part of learning.
+  
+  The discomfort you feel while solving a problem
+  is the signal that your skill is increasing.
+  
+  Do not run from it.
+  
+  Use AI wisely.
+  Use it intentionally.
+  Use it with discipline.
+  
+  `
+  };
