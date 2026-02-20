@@ -1,112 +1,126 @@
 export const lessonHelloWorld = {
-    id: "hello-world",
-    title: "Hello World",
-  
-    article: `
-  
-  ## Your First Python Program
-  
-  This is the moment where things become real.
-  
-  You are no longer installing tools.
-  You are no longer verifying versions.
-  
-  You are writing a program.
-  
-  It will be small.
-  It will be simple.
-  
-  And it will work.
-  
-  ---
-  
-  ## Create a Project (Using VS Code)
-  
-  Developers don’t create random files.
-  They create projects.
-  
-  Let’s do it properly.
-  
-  ### Step 1 — Open VS Code
-  
-  Open VS Code.
-  
-  Make sure the **Explorer panel** is visible on the left.
-  (If you don’t see it, click the top icon in the sidebar.)
-  
-  
-  ### Step 2 — Create a New Folder
-  
-  Inside your workspace:
-  
-  1. Click the **New Folder** icon.
-  2. Name the folder: \`hello-world\`
-  
-  Press Enter.
-  
-  Congratulations! You just created your first project folder.
-  
-  
-  ### Step 3 — Create a Python File
-  
-  Click on the **hello-world** folder to select it.
-  
-  Then:
-  
-  1. Click the **New File** icon.
-  2. Name the file: \`hello.py\`
-  
-  Press Enter.
-  
-  The \`.py\` extension tells your system:
-  “This file contains Python code.”
-  
-  Congratulations! You now have a real project structure.
-  
-  ---
-  
- ## Write Your First Line of Code !
+  id: "hello-world",
+  title: "Hello World",
 
-Inside \`hello.py\`, you are going to write your first **line of code** (no turning back now !).
+  article: `
 
-A *line of code* is exactly what it sounds like:
-a single instruction written on one line that the computer can execute.
+## Your First Python Program
 
-On the very first line of your file, type:
+This is the moment things become real.
+
+You are no longer installing tools.
+You are no longer checking versions.
+
+You are writing a program.
+
+It will be small.
+It will be simple.
+
+And it will work.
+
+---
+
+## Create a Project (Using VS Code)
+
+Developers don’t create random files.
+
+They create projects.
+
+Let’s do this properly.
+
+---
+
+### Step 1 — Open VS Code
+
+Open VS Code.
+
+Make sure the **Explorer panel** is visible on the left.
+
+If you don’t see it, click the top icon in the sidebar.
+
+---
+
+### Step 2 — Create a New Folder
+
+Inside your workspace:
+
+1. Click the **New Folder** icon  
+2. Name the folder: \`hello-world\`  
+3. Press Enter  
+
+You just created your first project folder.
+
+That matters.
+
+---
+
+### Step 3 — Create a Python File
+
+Click on the **hello-world** folder to select it.
+
+Then:
+
+1. Click the **New File** icon  
+2. Name the file: \`hello.py\`  
+3. Press Enter  
+
+The \`.py\` extension tells your system:
+
+“This file contains Python code.”
+
+You now have a real project structure.
+
+---
+
+## Write Your First Line of Code
+
+Inside \`hello.py\`, type this on the first line:
 
 \`\`\`python
 print("Hello, world!")
 \`\`\`
 
-Then save the file.
+Save the file.
 
-That single line of code is your entire first program.
+That single line is your first program.
 
-  
-  ---
+---
+
+## What Is This Line Doing?
+
+Let’s break it down.
+
+- \`print\` is a built-in Python function  
+- The parentheses \`()\` tell Python to run the function  
+- The text inside quotes is called a **string**  
+- Strings represent text  
+
+When Python reads this file,
+it sees an instruction:
+
+Display this text.
+
+That’s programming.
+
+---
+
 ## Running the Program
 
-Open the integrated terminal inside VS Code.
+Now let’s execute it.
 
-There are multiple ways to do this:
+Open the integrated terminal in VS Code.
 
-- Click **View → Terminal** from the top menu
+You can do this by:
 
-or
+- Clicking **View → Terminal**
+- Or using the shortcut:
+  - Mac: \`Ctrl + \`\`
+  - Windows: \`Ctrl + \`\`
 
-- Click the **Terminal** tab at the bottom if it’s already visible
+Once the terminal is open,
+make sure you are inside the **hello-world** folder.
 
-However you open it doesn’t matter.
-
-Just get that terminal open.
-
-## Make Sure You’re in the Right Folder
-
-Look at the terminal prompt.
-
-You should see that you are inside the **hello-world** folder.
-
-If you are not, use:
+If you are not, type:
 
 \`\`\`bash
 cd hello-world
@@ -114,19 +128,17 @@ cd hello-world
 
 Press Enter.
 
-Now you’re in the correct location.
-
 ---
 
 ## Run the File
 
-Type:
+Now type:
 
 \`\`\`bash
 python hello.py
 \`\`\`
 
-If that does not work, try:
+If that doesn’t work, try:
 
 \`\`\`bash
 python3 hello.py
@@ -134,98 +146,73 @@ python3 hello.py
 
 Press Enter.
 
-  
-  ---
-  
-  ## What You Should See
-  
-  The terminal should display:
-  
-  \`\`\`
-  Hello, world!
-  \`\`\`
-  
-  That text came from your program.
-  
-  You wrote instructions.
-  Python executed them.
-  Your computer responded.
-  
-  ---
-  
-  ## What Just Happened?
-  
-  Let’s break it down.
-  
-  - \`print\` is a built-in Python function.
-    It tells Python to display something.
-  
-  - The parentheses \`()\` mean:
-    “Run this function.”
-  
-  - The text inside quotes:
-    \`"Hello, world!"\`
-    is a string — a piece of text.
-  
-  When Python runs this file,
-  it reads the line
-  and executes the instruction.
-  
-  That is programming.
-  
-  ---
-  
-  ## Try Changing It
-  
-  Modify the text inside the quotes:
-  
-  \`\`\`python
-  print("I am learning Python.")
-  \`\`\`
-  
-  Save.
-  Run the file again.
-  
-  Notice what changed.
-  
-  The output changes because your instructions changed.
-  
-  You are in control.
-  
-  ---
-  
-  ## Why This Matters
-  
-  This program is simple.
-  
-  But it proves something important:
-  
-  - You can create a file.
-  - You can write instructions.
-  - You can execute them.
-  - The machine obeys.
-  
-  Every complex system —
-  every website,
-  every automation tool,
-  every AI system —
-  
-  starts with instructions like this.
-  
-  You are building correctly.
-  
-  ---
-  
-  ## What Comes Next
-  
-  Now that you’ve written and run your first program,
-  we begin understanding what data is
-  and how Python stores it.
-  
-  Next lesson:
-  
-  **Variables & Types**
-  
-  `
-  };
-  
+---
+
+## What You Should See
+
+Your terminal should display:
+
+\`\`\`
+Hello, world!
+\`\`\`
+
+That output came from your code.
+
+You wrote instructions.
+Python executed them.
+Your computer responded.
+
+---
+
+## Try Changing It
+
+Modify the text:
+
+\`\`\`python
+print("I am learning Python.")
+\`\`\`
+
+Save.
+Run it again.
+
+Notice the output changes.
+
+Because you changed the instructions.
+
+You are in control.
+
+---
+
+## Why This Matters
+
+This program is small.
+
+But it proves something important:
+
+- You can create a file  
+- You can write instructions  
+- You can execute them  
+- The machine responds  
+
+Every website.
+Every automation tool.
+Every game.
+Every AI system.
+
+Starts like this.
+
+One instruction at a time.
+
+---
+
+## What Comes Next
+
+Now that you can write and run Python code,
+we begin understanding how data is stored.
+
+Next lesson:
+
+**Variables & Types**
+
+`
+};
