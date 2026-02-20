@@ -251,8 +251,10 @@ If you're still stuck, go to Level 2.
 If you need structure, use the Blueprint.
 Only reveal the example solution if you're truly stuck.
 
-There are many correct solutions.
-This support is here to help you finish and understand.
+Remember: there are many correct solutions.
+We want you to think through the problem and come up with your own solution.
+But if you're stuck, you can use the support to help you move forward.
+This is just support to help you move forward.
     `.trim(),
 
     level1Nudges: [

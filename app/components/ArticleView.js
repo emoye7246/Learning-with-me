@@ -269,7 +269,9 @@ export default function ArticleView({
 
           </div>
 
-          {lesson.support != null && <SupportSection support={lesson.support} />}
+          {lesson.support != null && (
+            <SupportSection key={lesson.id} support={lesson.support} />
+          )}
 
           {/* Complete lesson button at end of article */}
           {showCompleteButton && (
