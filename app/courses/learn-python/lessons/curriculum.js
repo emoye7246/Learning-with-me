@@ -53,4 +53,32 @@ export const curriculum = [
 
     ],
   },
+  {
+    id: "thinking-in-systems",
+    title: "Thinking in Systems",
+    lessonIds: [
+      "tracing-execution",
+      "state-change-over-time",
+      "scope-lifetime",
+      "errors-debugging",
+      "refactoring-code-clarity",
+      "problem-decomposition",
+    ],
+  },
+  {
+    id: "console-applications",
+    title: "Console Applications",
+    lessonIds: [
+      "what-is-a-console-application",
+      "input-vs-command-line-arguments",
+      "program-structure-entry-points",
+      "designing-user-interaction-terminal",
+      "error-handling-cli-programs",
+      "organizing-larger-console-apps",
+      "project-todo-cli",
+      "project-quiz-game",
+      "project-file-analyzer",
+      "project-text-based-game",
+    ],
+  },
 ];
