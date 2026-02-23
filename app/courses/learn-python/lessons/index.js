@@ -7,13 +7,7 @@ import { consoleApplicationsLessons } from "./console-applications";
 /**
  * All lessons by module. Add a new array here when you add a new module folder.
  */
-const lessonsByModule = [
-  welcomeLessons,
-  prerequisitesLessons,
-  pythonFundamentalsLessons,
-  thinkingInSystemsLessons,
-  consoleApplicationsLessons,
-];
+const lessonsByModule = [welcomeLessons, prerequisitesLessons, pythonFundamentalsLessons, thinkingInSystemsLessons, consoleApplicationsLessons ];
 
 /**
  * Build id -> lesson map from all modules.
