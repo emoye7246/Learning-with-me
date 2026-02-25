@@ -81,4 +81,20 @@ export const curriculum = [
       "project-text-based-game",
     ],
   },
+  {
+    id: "files-data",
+    title: "Files, Data & the Operating System",
+    lessonIds: [
+      "reading-files",
+      "writing-files",
+      "working-with-csv-text-data",
+      "directories-paths",
+      "handling-missing-broken-files",
+      "automating-repetitive-tasks",
+      "project-csv-report-generator",
+      "project-backup-script",
+      "project-file-renaming-tool",
+      "project-log-file-analyzer",
+    ],
+  },
 ];

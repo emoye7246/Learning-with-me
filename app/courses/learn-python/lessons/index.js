@@ -4,10 +4,18 @@ import { prerequisitesLessons } from "./prerequisites";
 import { pythonFundamentalsLessons } from "./python-fundamentals";
 import { thinkingInSystemsLessons } from "./thinking-in-systems";
 import { consoleApplicationsLessons } from "./console-applications";
+import { filesDataLessons } from "./files-data";
 /**
  * All lessons by module. Add a new array here when you add a new module folder.
  */
-const lessonsByModule = [welcomeLessons, prerequisitesLessons, pythonFundamentalsLessons, thinkingInSystemsLessons, consoleApplicationsLessons ];
+const lessonsByModule = [
+  welcomeLessons,
+  prerequisitesLessons,
+  pythonFundamentalsLessons,
+  thinkingInSystemsLessons,
+  consoleApplicationsLessons,
+  filesDataLessons,
+];
 
 /**
  * Build id -> lesson map from all modules.
