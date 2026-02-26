@@ -290,7 +290,7 @@ IDs must match slug exactly.
 
 # 11. Codex Compliance Rules
 
-When generating content via Codex:
+When generating content via Codex, also follow the **Agent Course Authoring Guide** in this folder for concrete voice, phrasing, and structure patterns drawn from the gold-standard lessons.
 
 - Follow this style guide strictly
 - Do not invent new structure

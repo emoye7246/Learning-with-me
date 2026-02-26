@@ -5,81 +5,100 @@ export const projectLogFileAnalyzer = {
   article: `
 ## Overview
 
-Build a script that reads a log file and reports useful metrics.
+You will build a log analyzer that turns raw log text into useful metrics.
 
-This project mirrors a real debugging workflow.
+This is a real debugging workflow.
 
-You are turning unstructured text into actionable information.
-
----
-
-## Functional Requirements
-
-Your tool must:
-
-- [ ] Read log file path from user input
-- [ ] Count total log lines
-- [ ] Count error/warning/info lines (or similar categories)
-- [ ] Print a summary report
-- [ ] Save summary to output file
-- [ ] Handle missing or unreadable log files
+You are taking unstructured input and producing structured insight.
 
 ---
 
-## Suggested User Flow
+## What You’re Building
 
-1. Ask for log file path.
-2. Read lines safely.
-3. Classify each line by keyword/pattern.
-4. Aggregate counts.
-5. Print and save report.
+A tool that:
 
----
-
-## Classification Strategy
-
-Beginner-friendly baseline:
-
-- if line contains \`error\` -> error count
-- else if line contains \`warning\` -> warning count
-- else -> info/other count
-
-Use lowercase normalization before matching.
+- reads a log file path from user input
+- classifies lines by severity or category
+- counts totals and category metrics
+- prints a summary report
+- saves summary output to a file
 
 ---
 
-## Implementation Milestones
+## Requirements Checklist (Core)
 
-1. Read file and count total lines.
-2. Add keyword-based classification.
-3. Add clean summary output.
-4. Save summary to text file.
-5. Add missing/unreadable-file handling.
-6. Add optional advanced metrics.
+Your project should:
+
+- [ ] Prompt for log file path
+- [ ] Read lines safely with error handling
+- [ ] Count total lines
+- [ ] Count at least 3 categories (example: error, warning, info)
+- [ ] Normalize case before classification
+- [ ] Print a readable summary report
+- [ ] Save summary report to output file
+
+---
+
+## User Experience Checklist (Recommended)
+
+- [ ] Missing file error is clear
+- [ ] Category logic is easy to understand
+- [ ] Summary labels are consistent and readable
+- [ ] Terminal summary matches saved output
+
+---
+
+## Rules
+
+- Keep classification logic in one dedicated function.
+- Normalize text before keyword checks.
+- Decide category precedence and keep it consistent.
+- Do not crash on missing/unreadable files.
+
+---
+
+## Suggested Build Plan (No Answers)
+
+1. Prompt for input log path.
+2. Read file safely.
+3. Initialize total and category counters.
+4. Loop through lines and classify each line.
+5. Update counters based on classification.
+6. Build one summary string.
+7. Print summary.
+8. Save summary to output file.
 
 ---
 
 ## Testing Checklist
 
 - [ ] Empty file returns zero-safe counts
-- [ ] Mixed uppercase/lowercase keywords are detected
-- [ ] Missing file path handled cleanly
-- [ ] Summary values match manual verification
-- [ ] Output file is created and readable
+- [ ] Mixed uppercase/lowercase keywords are handled
+- [ ] Missing file path is handled clearly
+- [ ] Summary counts match manual verification
+- [ ] Saved report file is readable and correct
 
 ---
 
-## Optional Extensions
+## Extensions (Optional)
 
-- [ ] Show top recurring error messages
-- [ ] Filter by date range pattern
-- [ ] Export JSON summary
+### Upgrade 1 — Top Error Messages
+
+- [ ] Track recurring error lines
+- [ ] Count frequency of each normalized error message
+- [ ] Print top N recurring errors
+
+### Upgrade 2 — JSON Summary Export
+
+- [ ] Build summary dictionary
+- [ ] Export with \`json.dump(..., indent=2)\`
+- [ ] Keep text and JSON values consistent
 
 ---
 
 ## Submission Requirements
 
-Entry file:
+Use entry file:
 
 \`main.py\`
 
@@ -88,62 +107,89 @@ Run with:
 \`\`\`bash
 python main.py
 \`\`\`
+
+---
+
+## What You’re Proving
+
+If you complete this project, you are proving you can:
+
+- parse and classify text safely
+- build pipeline-style scripts
+- separate classification from reporting logic
+- generate actionable summaries from noisy data
+
+---
+
+## Need Help?
+
+Use support in this order:
+
+1. Level 1 nudges
+2. Level 2 hints
+3. Blueprint
+4. Example solution (only if truly blocked)
 `,
 
   support: {
     intro: `
 Build this as a pipeline: read, classify, aggregate, report.
-Keep classification logic in one function so it is easy to improve later.
+Keep each stage simple and explicit.
+Use support in order.
+The solution is one possible implementation.
     `.trim(),
 
     level1Nudges: [
-      "How will you classify a line when it contains multiple keywords?",
-      "Will matching be case-sensitive or normalized?",
-      "Where should summary formatting live?",
-      "How will you handle lines that fit no known category?",
-      "What should happen if output file writing fails?",
+      "How will you classify lines when multiple keywords appear in one line?",
+      "Will your matching be case-sensitive or normalized?",
+      "Where should summary formatting live so it can be reused?",
+      "How will you handle lines that match no known category?",
+      "What should happen if writing the output report fails?",
     ],
 
     level2Hints: [
-      "Convert each line to lowercase before checks.",
-      "Use an ordered if/elif/else block for category precedence.",
-      "Track counts in a dictionary: {'error': 0, 'warning': 0, 'info': 0}.",
-      "Use one report builder function for terminal and file output.",
-      "Wrap file reads and writes in separate try/except blocks.",
+      "Convert each line to lowercase before checking keywords.",
+      "Use if/elif/else to enforce category precedence.",
+      "Track counts in a dictionary for easier reporting.",
+      "Build report text in one function and reuse for print/save.",
+      "Wrap read and write operations in separate try/except blocks.",
     ],
 
     blueprint: [
-      "Prompt user for log path.",
-      "Try reading all lines from file.",
-      "Initialize counters including total lines.",
-      "Loop over lines and classify each one.",
-      "Increment matching category counters.",
-      "Build summary report string.",
-      "Print report to terminal.",
-      "Write report to output file.",
+      "Prompt user for log file path and output report path.",
+      "Open and read log file lines safely.",
+      "Initialize counters: total, error, warning, info/other.",
+      "Create classify(line) helper with clear precedence.",
+      "Loop through lines and increment counters.",
+      "Build summary report string from counters.",
+      "Print summary report.",
+      "Write summary report to output file.",
     ],
 
     debuggingGuide: [
       {
         problem: "Error count is always zero.",
-        hint: "Check that you normalize line case before matching.",
+        hint: "Check whether classification uses lowercase normalization before comparisons.",
       },
       {
-        problem: "Total lines do not match file.",
-        hint: "Compare len(lines) with your counting logic inside the loop.",
+        problem: "Total line count looks wrong.",
+        hint: "Compare len(lines) with your loop counter logic and ensure blank lines are handled intentionally.",
       },
       {
-        problem: "Output file is empty.",
-        hint: "Verify the report string is built before write and write mode is correct.",
+        problem: "Saved output file is empty.",
+        hint: "Verify report text is built before writing and file path is valid.",
       },
     ],
 
     revealSolutionWarning: `
-Use the example to compare control flow.
-If your metrics and failure handling are correct, your version is valid.
+This is one possible implementation.
+If your classification and summary behavior are correct, your solution is valid.
+Do not copy blindly.
+Trace each pipeline stage.
     `.trim(),
 
     exampleSolution: `from pathlib import Path
+
 
 def classify(line):
     text = line.lower()
@@ -153,30 +199,63 @@ def classify(line):
         return "warning"
     return "info"
 
-path = Path(input("Log file path: ").strip())
 
-try:
-    with path.open("r", encoding="utf-8") as file:
-        lines = file.readlines()
-except FileNotFoundError:
-    print("File not found.")
-else:
+def build_report(total, counts):
+    return (
+        "Log Summary Report\n"
+        f"Total lines: {total}\n"
+        f"Error: {counts['error']}\n"
+        f"Warning: {counts['warning']}\n"
+        f"Info/Other: {counts['info']}\n"
+    )
+
+
+def main():
+    input_path = Path(input("Log file path: ").strip())
+    output_path = Path(input("Output report file (default log_report.txt): ").strip() or "log_report.txt")
+
+    try:
+        with input_path.open("r", encoding="utf-8") as file:
+            lines = file.readlines()
+    except FileNotFoundError:
+        print("Log file not found.")
+        return
+    except OSError as error:
+        print(f"Could not read file: {error}")
+        return
+
     counts = {"error": 0, "warning": 0, "info": 0}
+
     for line in lines:
-        counts[classify(line)] += 1
-    print(f"Total: {len(lines)} | {counts}")
+        category = classify(line)
+        counts[category] += 1
+
+    report = build_report(len(lines), counts)
+    print("\n" + report)
+
+    try:
+        output_path.write_text(report, encoding="utf-8")
+    except OSError as error:
+        print(f"Could not write report: {error}")
+        return
+
+    print(f"Saved report: {output_path}")
+
+
+if __name__ == "__main__":
+    main()
 `,
 
     upgrades: {
       topErrorsBlueprint: [
-        "Collect normalized error lines in a list.",
-        "Count frequency of each message with a dictionary.",
-        "Sort and print top N recurring errors.",
+        "Collect lines classified as error after normalization.",
+        "Count frequencies with a dictionary.",
+        "Sort counts descending and print top N messages.",
       ],
       jsonBlueprint: [
-        "Build a summary dictionary with totals and categories.",
-        "Write JSON file with json.dump(..., indent=2).",
-        "Keep text report and JSON report values consistent.",
+        "Create summary dictionary with total and category counts.",
+        "Write JSON summary file with indentation.",
+        "Verify JSON values match text report values.",
       ],
     },
   },

@@ -5,25 +5,28 @@ export const lessonDirectoriesPaths = {
   article: `
 ## Directories & Paths
 
-## Concept Introduction
+Files do not exist in isolation.
 
-Files live inside directories.
+They live inside folders.
 
-Paths describe where files are located.
+Paths are how your program finds those files and folders.
 
-Path handling quality determines whether your script works on one machine or many.
+If path handling is weak, file scripts fail in unpredictable ways.
 
 ---
 
-## Why pathlib Matters
+## Mental Model
 
-Prefer \`pathlib\` over manual string concatenation.
+A path is an address.
 
-Reasons:
+- Relative path: based on current working directory
+- Absolute path: full location from system root
 
-- clearer code
-- fewer path separator bugs
-- cross-platform behavior (Windows/macOS/Linux)
+When a script says "file not found," path assumptions are usually wrong.
+
+---
+
+## Example 1: Build Paths with pathlib
 
 \`\`\`python
 from pathlib import Path
@@ -31,14 +34,25 @@ from pathlib import Path
 base = Path("data")
 target = base / "input.csv"
 
-print(target.exists())
+print(target)
 print(target.name)
 print(target.parent)
 \`\`\`
 
 ---
 
-## Relative vs Absolute Paths
+## What just happened?
+
+- \`Path(...)\` creates path objects.
+- \`/\` joins paths safely across OS differences.
+- \`name\` gives final file/folder name.
+- \`parent\` gives containing directory.
+
+This is cleaner and safer than string concatenation.
+
+---
+
+## Example 2: Relative vs Absolute
 
 \`\`\`python
 from pathlib import Path
@@ -51,11 +65,18 @@ print("relative:", relative)
 print("absolute:", absolute)
 \`\`\`
 
-If "file not found" surprises you, start by printing \`Path.cwd()\`.
+---
+
+## What just happened?
+
+- \`Path.cwd()\` shows current working directory.
+- \`resolve()\` shows full absolute path.
+
+If a path fails, inspect these first.
 
 ---
 
-## Working with Directories
+## Example 3: Create and Inspect Directories
 
 \`\`\`python
 from pathlib import Path
@@ -67,58 +88,50 @@ for item in logs_dir.iterdir():
     print(item.name)
 \`\`\`
 
-Useful methods:
+---
 
-- \`iterdir()\` to list directory contents
-- \`glob("*.txt")\` to match patterns
-- \`mkdir(...)\` to create directories
-- \`exists()\` to verify paths
-- \`is_file()\` and \`is_dir()\` to validate type
+## What just happened?
+
+- \`mkdir(exist_ok=True)\` creates the folder if missing.
+- \`iterdir()\` iterates items inside the folder.
+
+Now your scripts can manage directories, not just files.
 
 ---
 
 ## Common Mistakes
 
-- Hardcoding absolute paths from one machine.
-- Building paths with raw string concatenation.
-- Assuming current working directory is always project root.
-- Assuming every path in a folder is a file.
+- Hardcoding machine-specific absolute paths.
+- Building paths with raw strings and manual separators.
+- Assuming current directory is always project root.
+- Treating every path entry as a file without checking.
 
 ---
 
-## Practical Pattern
+## Try this
 
-\`\`\`python
-from pathlib import Path
-
-data_dir = Path("data")
-
-if not data_dir.exists():
-    print("Missing folder:", data_dir)
-else:
-    csv_files = list(data_dir.glob("*.csv"))
-    print("CSV count:", len(csv_files))
-\`\`\`
-
-This gives you explicit checks before processing.
-
----
-
-## Practice Prompts
-
-1. List all \`.txt\` files in a target folder.
-2. Create an \`output\` folder only if it does not exist.
+1. List all \`.txt\` files in a folder using \`glob("*.txt")\`.
+2. Create an \`output\` folder only if needed.
 3. Print file name and size for each file in a folder.
-4. Build a script that moves all \`.log\` files into a \`logs_archive\` directory.
+4. Count how many \`.csv\` files exist in \`data\`.
+
+Save.
+Run the file.
+Observe the output.
 
 ---
 
-## Quick Checklist
+## What you just learned
 
-- Use \`Path\` objects.
-- Join paths with \`/\`.
-- Check existence before read/write operations.
-- Validate file vs directory before operations.
-- Use \`exist_ok=True\` when safe to reuse folders.
+- How to use \`pathlib.Path\` for reliable path handling
+- How relative and absolute paths differ
+- How to inspect current working directory during debugging
+- How to create and iterate directories safely
+
+---
+
+## What comes next
+
+Next lesson: **Handling Missing or Broken Files**
 `,
 };

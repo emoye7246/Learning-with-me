@@ -5,40 +5,28 @@ export const lessonWorkingWithCsvTextData = {
   article: `
 ## Working with CSV & Text Data
 
-## Concept Introduction
+CSV files are everywhere.
 
-CSV files are one of the most common real-world data formats.
+Exports, reports, analytics, and internal tools often use CSV because it is simple and portable.
 
-CSV means "comma-separated values."
-
-Each row is a record.
-
-Each column is a field.
+If you can read and write CSV safely, you can process real-world data confidently.
 
 ---
 
-## Why You Should Use the csv Module
+## Mental Model
 
-Beginners often try:
+CSV is text with structure.
 
-\`\`\`python
-line.split(",")
-\`\`\`
+- Row = one record
+- Column = one field
 
-That works only for perfect data.
+Your job is to parse that structure safely.
 
-Real CSV files can include:
-
-- quoted commas
-- missing values
-- extra spaces
-- mixed numeric/text columns
-
-Use Python's built-in \`csv\` module so parsing stays correct.
+Do not rely on fragile string splitting for production workflows.
 
 ---
 
-## Read CSV with DictReader
+## Example 1: Read CSV with DictReader
 
 \`\`\`python
 import csv
@@ -51,15 +39,20 @@ with open("sales.csv", "r", encoding="utf-8", newline="") as file:
         print(name, amount)
 \`\`\`
 
-Why \`DictReader\` is beginner-friendly:
+---
 
-- field names are explicit
-- code reads like data, not index math
-- less fragile than using numeric column positions
+## What just happened?
+
+- \`csv.DictReader\` reads each row as a dictionary.
+- You access values by header name, not index.
+- \`float(...)\` converts numeric text into numeric data.
+- \`newline=""\` helps CSV behave consistently across systems.
+
+This keeps parsing explicit and readable.
 
 ---
 
-## Write CSV with DictWriter
+## Example 2: Write CSV with DictWriter
 
 \`\`\`python
 import csv
@@ -75,17 +68,19 @@ with open("report.csv", "w", encoding="utf-8", newline="") as file:
     writer.writerows(rows)
 \`\`\`
 
-Use \`newline=""\` for correct CSV line handling across platforms.
+---
+
+## What just happened?
+
+- \`DictWriter\` writes rows using a header definition.
+- \`writeheader()\` creates the first header row.
+- \`writerows(...)\` writes all row dictionaries in order.
+
+Now your output is structured and shareable.
 
 ---
 
-## Text File Processing Baseline
-
-For plain text files:
-
-1. strip whitespace
-2. split lines
-3. normalize case for matching
+## Example 3: Normalize Text for Matching
 
 \`\`\`python
 text = " Error\\nwarning \\nERROR "
@@ -93,33 +88,51 @@ normalized = [line.strip().lower() for line in text.splitlines()]
 print(normalized)  # ['error', 'warning', 'error']
 \`\`\`
 
-This reduces false mismatches during analysis.
+---
+
+## What just happened?
+
+- \`splitlines()\` separates lines.
+- \`strip()\` removes extra whitespace.
+- \`lower()\` normalizes case.
+
+Normalization reduces false mismatches during analysis.
 
 ---
 
 ## Common Mistakes
 
-- Assuming every CSV has the same headers.
-- Forgetting to convert number-like text to \`int\` or \`float\`.
-- Crashing on blank rows or missing fields.
-- Writing CSV without headers.
+- Using \`line.split(",")\` and breaking on quoted commas.
+- Assuming every CSV has expected headers.
+- Forgetting type conversion for numeric fields.
+- Crashing on blank rows or missing values.
 
 ---
 
-## Practice Prompts
+## Try this
 
-1. Read a CSV and print only rows where \`amount > 100\`.
-2. Calculate total and average from one numeric column.
-3. Write a new CSV with only selected columns.
-4. Read a log text file and count how many lines contain "error".
+1. Read a CSV and print rows where \`amount > 100\`.
+2. Compute total and average for one numeric column.
+3. Write a filtered CSV with only selected columns.
+4. Count how many log lines contain \`error\` (case-insensitive).
+
+Save.
+Run the file.
+Observe the output.
 
 ---
 
-## Quick Checklist
+## What you just learned
 
-- Prefer \`csv.DictReader\` and \`csv.DictWriter\`.
-- Keep headers explicit.
-- Convert field types intentionally.
-- Test with messy input, not only clean samples.
+- Why the \`csv\` module is safer than manual splitting
+- How to read rows with \`DictReader\`
+- How to write rows with \`DictWriter\`
+- How text normalization improves matching accuracy
+
+---
+
+## What comes next
+
+Next lesson: **Directories & Paths**
 `,
 };

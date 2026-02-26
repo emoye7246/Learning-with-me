@@ -5,89 +5,113 @@ export const projectCsvReportGenerator = {
   article: `
 ## Overview
 
-Build a script that reads CSV data and generates a clear summary report.
+You will build a script that reads CSV data and produces a clean summary report.
 
-This project is your first full data pipeline:
+This is not a copy-and-paste lesson.
 
-1. read data
-2. validate data
-3. compute metrics
-4. produce output for humans
+This is an assignment.
 
----
+You already have the building blocks:
 
-## Functional Requirements
+- reading files
+- writing files
+- CSV parsing
+- error handling
 
-Your tool must:
-
-- [ ] Read an input CSV file
-- [ ] Validate expected columns
-- [ ] Compute at least 3 summary metrics
-- [ ] Print a clean report in terminal
-- [ ] Save report to a text file
-- [ ] Handle missing file and bad data errors
+Now you will combine them into one complete workflow.
 
 ---
 
-## Suggested User Flow
+## What You’re Building
 
-1. Ask for CSV path.
-2. Read rows with \`csv.DictReader\`.
-3. Validate required column names.
-4. Compute totals/averages/counts.
-5. Render report text block.
-6. Write report to output file.
+A tool that:
 
----
-
-## Suggested File Structure
-
-\`\`\`text
-csv_report/
-  main.py
-  reader.py
-  metrics.py
-  report.py
-\`\`\`
-
-- \`reader.py\`: CSV reading + validation
-- \`metrics.py\`: calculations
-- \`report.py\`: formatting and save logic
-- \`main.py\`: user flow
-
-You can start with one file and refactor later.
+- reads an input CSV file
+- validates required columns
+- computes summary metrics
+- prints a readable report
+- saves the same report to a file
 
 ---
 
-## Implementation Milestones
+## Requirements Checklist (Core)
 
-1. Read CSV and print row count.
-2. Validate required columns.
-3. Compute one metric (e.g., total amount).
-4. Add two more metrics.
-5. Format clean report text.
-6. Save report to output file.
-7. Add robust error handling.
+Your project should:
 
-Build incrementally.
-Verify each milestone before moving forward.
+- [ ] Ask for an input CSV path
+- [ ] Read rows using \`csv.DictReader\`
+- [ ] Validate required headers before processing
+- [ ] Compute at least 3 metrics (example: count, total, average)
+- [ ] Print a clear terminal report
+- [ ] Save report output to a text file
+- [ ] Handle missing file and bad numeric values safely
+
+---
+
+## User Experience Checklist (Recommended)
+
+- [ ] Errors are specific and actionable
+- [ ] Report labels are easy to scan
+- [ ] Empty data case is handled cleanly
+- [ ] Terminal output matches saved file content
+
+---
+
+## Rules
+
+- Do not hardcode values from one sample CSV.
+- Validate headers before calculating metrics.
+- Do not crash when one row is malformed.
+- Keep report generation separate from CSV reading logic.
+
+---
+
+## Suggested Build Plan (No Answers)
+
+1. Prompt for CSV file path.
+2. Open file and build a \`DictReader\`.
+3. Validate required headers.
+4. Loop rows and convert numeric fields safely.
+5. Accumulate metrics in a dictionary.
+6. Build one report string from those metrics.
+7. Print report.
+8. Save same report string to output file.
+
+Build in small passes.
+Verify each pass before adding more.
 
 ---
 
 ## Testing Checklist
 
-- [ ] Missing file path is handled gracefully
-- [ ] Missing column prints clear error
+- [ ] Missing file shows clear message
+- [ ] Missing required header is handled
 - [ ] Empty CSV does not crash
-- [ ] Numeric conversion errors are handled
-- [ ] Report values match manual calculation
+- [ ] Bad numeric values are skipped or handled intentionally
+- [ ] Totals and averages match manual checks
 - [ ] Output file content matches terminal report
+
+---
+
+## Extensions (Optional)
+
+### Upgrade 1 — Grouped Totals
+
+- [ ] Add a \`category\` column requirement
+- [ ] Compute totals per category
+- [ ] Add grouped section to report
+
+### Upgrade 2 — JSON Export
+
+- [ ] Keep text report output
+- [ ] Add JSON output with same metric values
+- [ ] Validate both outputs stay consistent
 
 ---
 
 ## Submission Requirements
 
-Entry file:
+Use entry file:
 
 \`main.py\`
 
@@ -96,94 +120,166 @@ Run with:
 \`\`\`bash
 python main.py
 \`\`\`
+
+---
+
+## What You’re Proving
+
+If you complete this project, you are proving you can:
+
+- process structured data safely
+- separate parsing, metrics, and output logic
+- design for bad input without panic
+- build a real file-based automation workflow
+
+---
+
+## Need Help?
+
+Use support in this order:
+
+1. Level 1 nudges
+2. Level 2 hints
+3. Blueprint
+4. Example solution (only if truly blocked)
 `,
 
   support: {
     intro: `
-Work in this order: build baseline flow first, then add validation and polish.
-Use hints only when blocked.
+Use support in order.
+Start with Level 1 and think through each decision.
+Move to Level 2 only when you are blocked.
+Use the blueprint for structure.
+Reveal the example solution only if necessary.
+It is one possible implementation, not the only correct one.
     `.trim(),
 
     level1Nudges: [
-      "Which columns are required for your calculations?",
-      "Where should type conversion happen: at read time or metric time?",
-      "How will you handle blank rows?",
-      "What should your report look like when no valid rows exist?",
-      "Can you separate compute logic from print/save logic?",
+      "Which columns are required before any metrics can be trusted?",
+      "Where should numeric conversion happen so errors are easy to handle?",
+      "How will you handle rows with blank amount values?",
+      "What should your report look like when there are zero valid rows?",
+      "Can one function build report text for both terminal and file output?",
     ],
 
     level2Hints: [
-      "Use csv.DictReader so columns are accessed by name.",
-      "Validate required headers right after creating the reader.",
-      "Convert numeric fields with float(...) inside try/except ValueError.",
-      "Store metrics in a dictionary, then render from that dictionary.",
-      "Use one function for formatting report text and reuse it for terminal + file.",
+      "Use csv.DictReader so headers become dictionary keys.",
+      "Check reader.fieldnames before processing rows.",
+      "Convert numeric fields with float(...) inside try/except.",
+      "Track totals in a dictionary, then format from that dictionary.",
+      "Build the report string once and reuse it for print + save.",
     ],
 
     blueprint: [
-      "Prompt user for CSV file path.",
-      "Try opening file and creating DictReader.",
-      "Verify required columns exist.",
-      "Loop through rows and accumulate metrics.",
-      "Handle bad numeric rows by skip+count or fail-fast.",
-      "Build report string with labels and values.",
-      "Print report.",
-      "Write same report to output file.",
+      "Prompt for CSV path and output file path.",
+      "Open CSV with utf-8 and newline=''.",
+      "Create DictReader and validate required headers.",
+      "Initialize counters: valid_rows, skipped_rows, total_amount.",
+      "Loop through rows and convert amount safely.",
+      "Update metrics for valid rows; count skipped rows on errors.",
+      "Compute average safely (guard divide-by-zero).",
+      "Build report text with labels and values.",
+      "Print report text.",
+      "Write same report text to output file.",
     ],
 
     debuggingGuide: [
       {
-        problem: "Totals look wrong.",
-        hint: "Check whether amount values are converted to float before addition.",
+        problem: "Totals look too low.",
+        hint: "Check whether valid numeric rows are being skipped unexpectedly.",
       },
       {
-        problem: "KeyError for a column name.",
-        hint: "Print reader.fieldnames and compare with required headers exactly.",
+        problem: "KeyError when reading a column.",
+        hint: "Print reader.fieldnames and compare exact header names.",
       },
       {
-        problem: "Program crashes on blank row.",
-        hint: "Guard against empty strings before numeric conversion.",
+        problem: "Average calculation crashes.",
+        hint: "Guard against zero valid rows before dividing.",
       },
     ],
 
     revealSolutionWarning: `
-Use the example as a structure reference, not as a copy target.
-If your output is correct and behavior is robust, your design is valid.
+This is one possible implementation.
+If your version meets the checklist and handles failures clearly, it is valid.
+Do not copy blindly.
+Read each step and explain why it exists.
     `.trim(),
 
     exampleSolution: `import csv
+from pathlib import Path
 
-def load_rows(path):
-    with open(path, "r", encoding="utf-8", newline="") as file:
+REQUIRED = {"name", "amount"}
+
+
+def load_rows(csv_path):
+    with open(csv_path, "r", encoding="utf-8", newline="") as file:
         reader = csv.DictReader(file)
-        required = {"name", "amount"}
-        if not required.issubset(set(reader.fieldnames or [])):
-            raise ValueError("Missing required columns.")
-        rows = []
+        headers = set(reader.fieldnames or [])
+        if not REQUIRED.issubset(headers):
+            missing = REQUIRED - headers
+            raise ValueError(f"Missing columns: {sorted(missing)}")
+
+        valid_rows = []
+        skipped = 0
         for row in reader:
             try:
-                rows.append({"name": row["name"], "amount": float(row["amount"])})
-            except (TypeError, ValueError):
-                continue
-        return rows
+                valid_rows.append({
+                    "name": row["name"].strip(),
+                    "amount": float(row["amount"]),
+                })
+            except (KeyError, TypeError, ValueError):
+                skipped += 1
+        return valid_rows, skipped
 
-def build_report(rows):
+
+def build_report(rows, skipped_count):
     total = sum(r["amount"] for r in rows)
     count = len(rows)
-    avg = total / count if count else 0
-    return f"Rows: {count}\\nTotal: {total:.2f}\\nAverage: {avg:.2f}\\n"
+    average = total / count if count else 0.0
+
+    return (
+        "CSV Summary Report\n"
+        f"Valid rows: {count}\n"
+        f"Skipped rows: {skipped_count}\n"
+        f"Total amount: {total:.2f}\n"
+        f"Average amount: {average:.2f}\n"
+    )
+
+
+def main():
+    csv_path = input("CSV path: ").strip()
+    out_path = input("Output report file (default report.txt): ").strip() or "report.txt"
+
+    try:
+        rows, skipped = load_rows(csv_path)
+    except FileNotFoundError:
+        print("File not found.")
+        return
+    except ValueError as error:
+        print(error)
+        return
+
+    report = build_report(rows, skipped)
+    print("\n" + report)
+
+    Path(out_path).write_text(report, encoding="utf-8")
+    print(f"Saved report: {out_path}")
+
+
+if __name__ == "__main__":
+    main()
 `,
 
     upgrades: {
       groupingBlueprint: [
-        "Add a category column.",
-        "Group totals by category in a dictionary.",
-        "Render grouped section in the report.",
+        "Require a category column in input headers.",
+        "Create a dictionary mapping category -> running total.",
+        "Render grouped totals in a separate report section.",
       ],
       exportBlueprint: [
-        "Keep text report output.",
-        "Add JSON export using json.dump.",
-        "Write both files with matching metric values.",
+        "Create a metrics dictionary with all computed values.",
+        "Write JSON output with json.dump(..., indent=2).",
+        "Verify text and JSON outputs show matching totals.",
       ],
     },
   },

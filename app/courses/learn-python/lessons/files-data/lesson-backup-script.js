@@ -5,91 +5,102 @@ export const projectBackupScript = {
   article: `
 ## Overview
 
-Build a script that copies files from a source directory into a timestamped backup folder.
+You will build a backup utility that copies files into a timestamped folder.
 
 This is a real operations task.
 
-Your goal is reliability:
+The focus is reliability.
 
-- copy the right files
-- avoid accidental data loss
-- produce a clear summary
+A good backup script should be predictable, safe, and clear about what happened.
 
 ---
 
-## Functional Requirements
+## What You’re Building
 
-Your tool must:
+A tool that:
 
-- [ ] Accept source and backup directories
-- [ ] Create backup folder if needed
-- [ ] Copy files safely
-- [ ] Skip directories or handle them intentionally
-- [ ] Show a summary of copied/skipped/failed files
-- [ ] Handle missing source directory gracefully
+- validates a source directory
+- creates a timestamped backup destination
+- copies files safely
+- reports copied, skipped, and failed counts
 
 ---
 
-## Suggested User Flow
+## Requirements Checklist (Core)
 
-1. Validate source directory.
-2. Create timestamped backup folder.
-3. Iterate files in source.
-4. Copy each file with error handling.
-5. Print summary.
+Your project should:
 
----
-
-## Suggested File Structure
-
-\`\`\`text
-backup_tool/
-  main.py
-  backup.py
-  report.py
-\`\`\`
-
-- \`backup.py\`: copy logic
-- \`report.py\`: counters and summary rendering
-- \`main.py\`: input and orchestration
+- [ ] Ask for source and backup root directories
+- [ ] Validate source exists and is a directory
+- [ ] Create a timestamped backup folder
+- [ ] Copy files from source into backup folder
+- [ ] Skip non-file entries intentionally (or handle recursively)
+- [ ] Continue processing even if one file copy fails
+- [ ] Print clear summary counts
 
 ---
 
-## Implementation Hints
+## User Experience Checklist (Recommended)
 
-Use:
-
-- \`pathlib.Path\` for path handling
-- \`shutil.copy2\` to preserve metadata
+- [ ] Clear error if source path is invalid
+- [ ] Destination folder path is printed at end
+- [ ] Per-file errors include file name
+- [ ] Summary shows copied / skipped / failed totals
 
 ---
 
-## Implementation Milestones
+## Rules
 
-1. Validate source path.
-2. Create backup folder.
-3. Copy one known file.
-4. Loop through all files.
-5. Add per-file error handling.
-6. Add copied/skipped/failed counters.
-7. Print final summary.
+- Do not overwrite source files.
+- Generate timestamp once per run, not per file.
+- Do not stop full run because one file fails.
+- Keep copy logic separate from summary/report formatting.
+
+---
+
+## Suggested Build Plan (No Answers)
+
+1. Prompt for source and backup root paths.
+2. Validate source directory.
+3. Build timestamp string.
+4. Create backup destination folder.
+5. Initialize counters.
+6. Loop through source entries.
+7. Copy files with per-file error handling.
+8. Print final summary and destination path.
 
 ---
 
 ## Testing Checklist
 
-- [ ] Missing source folder handled with clear message
-- [ ] Existing files copied successfully
-- [ ] Directory entries are skipped or handled intentionally
+- [ ] Missing source folder handled clearly
+- [ ] Existing files are copied correctly
+- [ ] Non-file entries are skipped or handled intentionally
 - [ ] Permission errors do not crash full run
-- [ ] Summary counts are accurate
-- [ ] Timestamped backup folder name is correct
+- [ ] Summary counts match actual results
+- [ ] Timestamped backup folder name format is correct
+
+---
+
+## Extensions (Optional)
+
+### Upgrade 1 — Recursive Backup
+
+- [ ] Include files from nested subdirectories
+- [ ] Preserve relative folder structure in backup
+- [ ] Add per-folder summary counts
+
+### Upgrade 2 — Verify Copy Integrity
+
+- [ ] Compare source and destination file sizes
+- [ ] Mark mismatches as verification failures
+- [ ] Include verification metrics in final report
 
 ---
 
 ## Submission Requirements
 
-Entry file:
+Use entry file:
 
 \`main.py\`
 
@@ -98,100 +109,151 @@ Run with:
 \`\`\`bash
 python main.py
 \`\`\`
+
+---
+
+## What You’re Proving
+
+If you complete this project, you are proving you can:
+
+- automate real file operations safely
+- handle operational failures without panic
+- design scripts with clear outcomes and summaries
+- separate core logic from reporting
+
+---
+
+## Need Help?
+
+Use support in this order:
+
+1. Level 1 nudges
+2. Level 2 hints
+3. Blueprint
+4. Example solution (only if truly blocked)
 `,
 
   support: {
     intro: `
-Start with safe behavior before speed.
-First get one file copy working, then generalize.
+Build for safety first.
+Get one-file copy flow working before scaling to all files.
+Use hints in order and keep your own design choices when possible.
+The solution is one possible implementation.
     `.trim(),
 
     level1Nudges: [
-      "How will you build a timestamped folder name?",
-      "What counts as a file to copy vs a directory to skip?",
-      "Where should counters live so they are easy to print at the end?",
-      "How should one failed file affect the rest of the run?",
-      "What information should a user see in the final summary?",
+      "Where should you validate the source path before any copy attempt?",
+      "How will you create one timestamp value for the full run?",
+      "How should your script behave when it encounters a directory entry?",
+      "What data structure or variables will track copied/skipped/failed counts?",
+      "How can you make the final summary useful to another developer?",
     ],
 
     level2Hints: [
-      "Use datetime.now().strftime(...) for timestamp folder names.",
-      "Use Path.iterdir() and check item.is_file() before copy.",
-      "Use shutil.copy2(source, destination) for copying.",
-      "Wrap each copy operation in try/except so one error does not stop the whole run.",
-      "Track metrics in integers: copied, skipped, failed.",
+      "Use Path.exists() and Path.is_dir() to validate source input.",
+      "Use datetime.now().strftime(...) once before entering the loop.",
+      "Use shutil.copy2(...) to copy while preserving metadata.",
+      "Wrap each copy call in try/except so one failure does not stop everything.",
+      "Track integers for copied, skipped, and failed; print them at the end.",
     ],
 
     blueprint: [
-      "Prompt for source and backup parent directory.",
-      "Validate source exists and is directory.",
-      "Create backup destination folder with timestamp.",
-      "Initialize copied/skipped/failed counters.",
-      "Iterate source directory entries.",
-      "If item is not file, increment skipped and continue.",
-      "Try copy file; increment copied on success.",
-      "On exception, increment failed and print error.",
-      "Print summary with destination path and counters.",
+      "Prompt user for source and backup root directories.",
+      "Validate source exists and is a directory.",
+      "Build destination folder name with timestamp.",
+      "Create destination folder.",
+      "Initialize copied/skipped/failed counters to 0.",
+      "Loop through source entries.",
+      "If entry is not a file, increment skipped and continue.",
+      "Try copying file to destination and increment copied on success.",
+      "On copy error, increment failed and print file-specific message.",
+      "Print destination path and summary counts.",
     ],
 
     debuggingGuide: [
       {
-        problem: "Nothing was copied.",
-        hint: "Check whether your loop filters only files with is_file().",
+        problem: "No files are copied even though source has content.",
+        hint: "Check your filter logic for is_file(); you may be skipping everything.",
       },
       {
-        problem: "Backup folder name keeps changing unexpectedly.",
-        hint: "Generate timestamp once before the loop, not per file.",
+        problem: "Backup folder name changes during run.",
+        hint: "Generate timestamp once before the loop and reuse it.",
       },
       {
-        problem: "Program crashes on permission error.",
-        hint: "Wrap individual copy calls in try/except.",
+        problem: "Program stops when one file fails.",
+        hint: "Wrap per-file copy calls in try/except, not the whole loop only.",
       },
     ],
 
     revealSolutionWarning: `
-Reference the example for control flow only.
-Keep your own naming and structure if behavior matches requirements.
+This is one possible implementation.
+If your version handles errors clearly and produces correct summary counts, it is valid.
+Do not copy blindly.
+Trace the flow line by line.
     `.trim(),
 
     exampleSolution: `from pathlib import Path
 from datetime import datetime
 import shutil
 
-source = Path(input("Source dir: ").strip())
-backup_root = Path(input("Backup root dir: ").strip())
 
-if not source.exists() or not source.is_dir():
-    print("Invalid source directory.")
-else:
+def build_destination(backup_root):
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     destination = backup_root / f"backup_{stamp}"
     destination.mkdir(parents=True, exist_ok=True)
+    return destination
 
-    copied = skipped = failed = 0
+
+def backup_files(source, destination):
+    copied = 0
+    skipped = 0
+    failed = 0
+
     for item in source.iterdir():
         if not item.is_file():
             skipped += 1
             continue
+
         try:
             shutil.copy2(item, destination / item.name)
             copied += 1
-        except Exception:
+        except OSError as error:
             failed += 1
+            print(f"Failed: {item.name} ({error})")
 
-    print(f"Copied={copied}, Skipped={skipped}, Failed={failed}")
+    return copied, skipped, failed
+
+
+def main():
+    source = Path(input("Source directory: ").strip())
+    backup_root = Path(input("Backup root directory: ").strip())
+
+    if not source.exists() or not source.is_dir():
+        print("Invalid source directory.")
+        return
+
+    destination = build_destination(backup_root)
+    copied, skipped, failed = backup_files(source, destination)
+
+    print("\nBackup complete")
+    print(f"Destination: {destination}")
+    print(f"Copied: {copied} | Skipped: {skipped} | Failed: {failed}")
+
+
+if __name__ == "__main__":
+    main()
 `,
 
     upgrades: {
       recursiveBlueprint: [
-        "Walk subdirectories recursively.",
-        "Preserve relative folder structure in backup.",
-        "Keep per-folder summary counts.",
+        "Walk source tree with rglob('*').",
+        "Skip non-file entries and preserve relative paths in destination.",
+        "Create destination subfolders before copying nested files.",
       ],
       verifyBlueprint: [
-        "After copy, compare source and destination file sizes.",
-        "Report mismatches as verification failures.",
-        "Add verification results to summary output.",
+        "After each copy, compare source and destination file sizes.",
+        "Track verification_passed and verification_failed counts.",
+        "Add verification section in final summary output.",
       ],
     },
   },

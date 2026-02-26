@@ -5,38 +5,33 @@ export const lessonReadingFiles = {
   article: `
 ## Reading Files
 
-## Introduction
+Until now, most data in your programs came from variables or \`input()\`.
 
-Reading files is how your code starts working with real-world data.
+Real software usually reads data that already exists.
 
-Until now, most values came from hardcoded variables or \`input()\`.
+That data often lives in files.
 
-In real software, data usually already exists in files created by users, tools, or other programs.
-
-You need this skill for logs, reports, CSV exports, and config files.
-
-If your file-reading logic is fragile, everything built on top of it becomes fragile.
+When you can read files safely, Python starts interacting with the real world.
 
 ---
 
 ## Mental Model
 
-Think of reading files as a 3-step pipeline:
+Think of file reading as a 3-step flow:
 
-1. Locate the file.
-2. Choose a reading strategy.
-3. Transform the text into useful data.
+1. Find the file.
+2. Read the content.
+3. Turn text into useful data.
 
-When beginners struggle, it is usually step 1 (wrong path) or step 2 (wrong read method).
+Most beginner errors happen at step 1.
 
-Keep this rule in mind:
-
-Small file: read all.
-Large file: stream line by line.
+Wrong path.
+Wrong folder.
+Wrong assumptions.
 
 ---
 
-## Focused Code Example 1: Core Read Pattern
+## Example 1: Read a Small File
 
 \`\`\`python
 with open("notes.txt", "r", encoding="utf-8") as file:
@@ -45,13 +40,22 @@ with open("notes.txt", "r", encoding="utf-8") as file:
 print(content)
 \`\`\`
 
-This gives you the full file as one string.
-
-Use it for small text files when you need all content at once.
+Use this when the file is small and you need everything at once.
 
 ---
 
-## Focused Code Example 2: Read Line by Line
+## What just happened?
+
+- \`open(..., "r")\` opens the file for reading.
+- \`encoding="utf-8"\` tells Python how to decode text.
+- \`with\` closes the file automatically when the block ends.
+- \`file.read()\` returns the entire file as one string.
+
+That is the core read pattern.
+
+---
+
+## Example 2: Read Line by Line
 
 \`\`\`python
 with open("server.log", "r", encoding="utf-8") as file:
@@ -60,13 +64,23 @@ with open("server.log", "r", encoding="utf-8") as file:
             print(line.strip())
 \`\`\`
 
-This is memory-friendly for large files.
+Use this when files might be large.
 
-It is the safest default when file size is unknown.
+You process one line at a time instead of loading everything into memory.
 
 ---
 
-## Focused Code Example 3: Check Path Before Reading
+## What just happened?
+
+- \`for line in file\` streams line by line.
+- \`if "ERROR" in line\` filters only relevant lines.
+- \`strip()\` removes trailing newline characters.
+
+This is a safer default when file size is unknown.
+
+---
+
+## Example 3: Guard Against Missing Files
 
 \`\`\`python
 from pathlib import Path
@@ -80,61 +94,51 @@ else:
         print(file.readline().strip())
 \`\`\`
 
-This prevents immediate crashes and gives clearer feedback.
-
 ---
 
-## Focused Code Example 4: Confirm Current Working Folder
+## What just happened?
 
-\`\`\`python
-from pathlib import Path
+- \`Path("data") / "input.txt"\` builds a path safely.
+- \`exists()\` checks whether the file is actually there.
+- You only attempt to read when the path is valid.
 
-print("Current folder:", Path.cwd())
-\`\`\`
-
-If a relative path fails unexpectedly, check this first.
+That prevents immediate crashes and gives clearer feedback.
 
 ---
 
 ## Common Mistakes
 
-- Using \`read()\` on huge files and running out of memory.
-- Assuming relative paths are resolved from your project root.
-- Forgetting \`encoding="utf-8"\` for text data.
-- Skipping file-existence checks before reading.
+- Using \`read()\` on very large files.
+- Assuming relative paths always start at project root.
+- Skipping \`encoding="utf-8"\` and hitting decode issues later.
+- Reading before checking whether the file exists.
 
 ---
 
-## Practice Prompts
+## Try this
 
-1. Print only the first 5 lines of a file. Hint: use a counter inside a \`for line in file\` loop.
-2. Count total lines in a file without using \`readlines()\`.
-3. Print only lines containing a keyword like \`"WARNING"\`.
-4. Show a friendly message when \`data/report.txt\` is missing.
+1. Print only the first 5 lines of a file.
+2. Count total lines without using \`readlines()\`.
+3. Print only lines containing \`"WARNING"\`.
+4. Show a clear message when \`data/report.txt\` is missing.
 
----
-
-## Reflection Questions
-
-- Why is line-by-line reading safer for unknown file sizes?
-- What changes when you run the same script from a different folder?
-- When would \`file.read()\` still be the better choice?
+Save.
+Run the file.
+Observe the output.
 
 ---
 
-## What You Can Now Do
+## What you just learned
 
-You can now:
-
-- read text files safely with \`with open(...)\`
-- choose between full-read and streaming approaches
-- debug path issues with \`Path.cwd()\`
-- guard your script against missing files
+- How to read file content with \`with open(...)\`
+- When to use full-read vs line-by-line reading
+- How to use \`pathlib.Path\` for safer file paths
+- How to guard against missing files before reading
 
 ---
 
-## Next Lesson Teaser
+## What comes next
 
-Next, you will write files so your programs can save results, logs, and generated reports.
+Next lesson: **Writing Files**
 `,
 };

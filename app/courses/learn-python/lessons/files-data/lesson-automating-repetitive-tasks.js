@@ -5,30 +5,31 @@ export const lessonAutomatingRepetitiveTasks = {
   article: `
 ## Automating Repetitive Tasks
 
-## Concept Introduction
+If you repeat the same file task again and again, that is a signal.
 
-Automation turns repeated manual work into consistent code.
+It is probably time to automate.
 
-If you repeat a task more than a few times, that is a strong signal to automate it.
+Automation is not about being fancy.
 
----
-
-## Typical Automation Flows
-
-- rename batches of files
-- archive old logs
-- generate periodic reports
-- clean and transform data files
-
-Most automation scripts follow this structure:
-
-1. find targets
-2. process safely
-3. report results
+It is about consistency, speed, and fewer manual mistakes.
 
 ---
 
-## Example: Rename Text Files
+## Mental Model
+
+Most automation scripts follow one pipeline:
+
+1. Select targets
+2. Apply rules
+3. Report results
+
+Good automation is predictable.
+
+Great automation is also safe.
+
+---
+
+## Example 1: Rename Text Files
 
 \`\`\`python
 from pathlib import Path
@@ -43,16 +44,18 @@ for txt_file in source_dir.glob("*.txt"):
 
 ---
 
-## Automation Safety Rules
+## What just happened?
 
-- Dry run first: print planned changes without applying.
-- Keep backups for destructive actions.
-- Process one folder at a time while testing.
-- Log what changed.
+- \`glob("*.txt")\` selected matching files.
+- \`with_suffix(".bak")\` built new names.
+- \`rename(...)\` applied the file change.
+- You logged each change for visibility.
+
+This is a complete automation loop.
 
 ---
 
-## Dry Run Pattern
+## Example 2: Dry Run Safety Mode
 
 \`\`\`python
 from pathlib import Path
@@ -68,37 +71,71 @@ for file in Path("notes").glob("*.txt"):
         file.rename(new_path)
 \`\`\`
 
-This protects you while validating logic.
+---
+
+## What just happened?
+
+- Dry run mode prints planned changes without mutating files.
+- You can validate logic before touching real data.
+
+This is one of the most important safety habits in automation.
 
 ---
 
-## Quality Mindset for Automation
+## Example 3: End-of-Run Summary
 
-Good automation is:
+\`\`\`python
+processed = 12
+skipped = 3
+failed = 1
 
-- predictable
-- reversible when possible
-- observable (clear logs and summaries)
-
-Avoid scripts that "do things silently."
-
----
-
-## Practice Prompts
-
-1. Build a dry-run script that lists files larger than a size threshold.
-2. Create an archive folder and move files older than 30 days.
-3. Rename image files to include a numbered prefix.
-4. Produce a summary report: processed, skipped, failed.
+print(f"Processed: {processed} | Skipped: {skipped} | Failed: {failed}")
+\`\`\`
 
 ---
 
-## Quick Checklist
+## What just happened?
 
-- Define exact selection rules for target files.
-- Separate planning and execution logic.
-- Add error handling per file.
-- Start with dry run mode.
-- Print summary counts at the end.
+- You produced an execution summary.
+- Users can verify what changed and what failed.
+
+Automation should never be silent.
+
+---
+
+## Common Mistakes
+
+- Renaming/deleting immediately without preview.
+- Mixing selection rules and mutation logic in one block.
+- Not handling per-file errors.
+- Running destructive scripts without backups.
+
+---
+
+## Try this
+
+1. Add dry-run mode to a rename script.
+2. Move old \`.log\` files into an archive directory.
+3. Print per-file failures without stopping the whole run.
+4. Add summary counts for processed/skipped/failed.
+
+Save.
+Run the file.
+Observe the output.
+
+---
+
+## What you just learned
+
+- The core pipeline pattern for automation scripts
+- Why dry-run mode reduces risk
+- How to apply rule-based file changes with \`pathlib\`
+- Why summaries and logs are part of automation quality
+
+---
+
+## What comes next
+
+When you're ready, continue to: **Project: CSV Report Generator**
 `,
 };

@@ -97,4 +97,17 @@ export const curriculum = [
       "project-log-file-analyzer",
     ],
   },
+  {
+    id: "project-structure-scaling-python",
+    title: "Project Structure & Scaling Python",
+    lessonIds: [
+      "scripts-vs-software",
+      "modules-vs-packages",
+      "clean-imports",
+      "separating-concerns",
+      "reusability-maintainability",
+      "project-multi-file-console-app",
+      "project-reusable-utility-package",
+    ],
+  },
 ];

@@ -5,84 +5,102 @@ export const projectFileRenamingTool = {
   article: `
 ## Overview
 
-Build a utility that renames files in bulk based on a consistent rule.
+You will build a bulk file renaming tool.
 
-This project teaches safe automation on live files.
+This project is about safe automation on live files.
 
-The key is not clever naming.
-The key is predictable and reversible behavior.
+The goal is not clever naming.
 
----
-
-## Functional Requirements
-
-Your tool must:
-
-- [ ] Select files by extension or pattern
-- [ ] Apply a deterministic rename rule
-- [ ] Preview planned rename operations
-- [ ] Execute rename operations safely
-- [ ] Prevent filename collisions
-- [ ] Report successes and failures
+The goal is predictable, reversible behavior.
 
 ---
 
-## Suggested Rename Rules
+## What You’re Building
 
-- add a prefix
-- add a suffix
-- replace spaces with underscores
-- add numeric sequence
+A tool that:
 
-Choose one rule and implement it well.
-
----
-
-## Suggested User Flow
-
-1. Scan target directory.
-2. Build old->new rename plan.
-3. Detect conflicts in new names.
-4. Show preview and confirm.
-5. Execute renames with per-file error handling.
+- selects files by pattern
+- creates a full rename plan
+- previews old -> new names
+- blocks conflicts before execution
+- runs renames with clear reporting
 
 ---
 
-## Implementation Milestones
+## Requirements Checklist (Core)
 
-1. Select files by extension.
-2. Generate proposed new names.
-3. Print preview only (no rename yet).
-4. Add conflict detection.
-5. Execute rename operations.
-6. Add success/failure counters.
-7. Add optional dry-run mode flag.
+Your project should:
+
+- [ ] Ask for target directory and selection pattern/extension
+- [ ] Build deterministic new names from one rename rule
+- [ ] Preview full rename plan before changes
+- [ ] Detect collisions in target names and abort safely
+- [ ] Rename files with per-file error handling
+- [ ] Report renamed / skipped / failed counts
 
 ---
 
-## Safety Rules
+## User Experience Checklist (Recommended)
 
-- Never rename immediately after discovering files.
-- Always build and validate the full rename plan first.
-- Never continue when two files map to the same target name.
-- Print a summary after execution.
+- [ ] Preview output is easy to verify quickly
+- [ ] Confirmation prompt appears before execution
+- [ ] Conflict messages explain what failed
+- [ ] Final summary matches actual file changes
+
+---
+
+## Rules
+
+- Never rename while scanning files.
+- Build and validate full plan first.
+- Never proceed when target names collide.
+- Keep dry-run or preview path available.
+
+---
+
+## Suggested Build Plan (No Answers)
+
+1. Read target directory and extension/pattern.
+2. Collect matching files in a stable order.
+3. Build rename plan as old path -> new path.
+4. Validate no duplicate target names.
+5. Print preview.
+6. Ask for confirmation.
+7. Execute renames with try/except per file.
+8. Print summary counts.
 
 ---
 
 ## Testing Checklist
 
-- [ ] Correct files are selected by pattern
-- [ ] Preview output is readable and accurate
-- [ ] Conflicting target names are blocked
-- [ ] Renaming updates filenames exactly as expected
-- [ ] Program handles permission or lock errors gracefully
-- [ ] Summary counts match actual changes
+- [ ] Correct files are selected by rule
+- [ ] Preview list is accurate
+- [ ] Colliding target names are detected and blocked
+- [ ] Successful renames update filenames as expected
+- [ ] Locked/permission errors are handled gracefully
+- [ ] Final summary is accurate
+
+---
+
+## Extensions (Optional)
+
+### Upgrade 1 — Undo Support
+
+- [ ] Save rename mappings to JSON before execution
+- [ ] Build undo mode that reverses mappings
+- [ ] Validate source/target existence before undoing
+
+### Upgrade 2 — Regex Rename Rule
+
+- [ ] Accept regex pattern and replacement
+- [ ] Preview transformed names before execution
+- [ ] Reject invalid or empty output names
 
 ---
 
 ## Submission Requirements
 
-Entry file:
+Use entry file:
 
 \`main.py\`
 
@@ -91,89 +109,163 @@ Run with:
 \`\`\`bash
 python main.py
 \`\`\`
+
+---
+
+## What You’re Proving
+
+If you complete this project, you are proving you can:
+
+- build safe mutation workflows
+- prevent destructive mistakes before execution
+- design deterministic rename systems
+- communicate automation results clearly
+
+---
+
+## Need Help?
+
+Use support in this order:
+
+1. Level 1 nudges
+2. Level 2 hints
+3. Blueprint
+4. Example solution (only if truly blocked)
 `,
 
   support: {
     intro: `
-Treat this project as a safety exercise.
-Generate and validate the full plan before mutating files.
+Treat this project as a safety workflow.
+Build and validate your plan before touching filenames.
+Use support in order and keep your own naming rule when possible.
+The solution is one possible implementation.
     `.trim(),
 
     level1Nudges: [
-      "How will you ensure new names are deterministic?",
-      "Where should conflict detection happen in your flow?",
-      "How will you show preview output so users can verify quickly?",
-      "What happens if one rename fails in the middle of the batch?",
-      "How will you track successes and failures?",
+      "How will you guarantee the same input set always produces the same new names?",
+      "Where should collision detection happen in your control flow?",
+      "How can preview output make review fast and accurate?",
+      "How should your script behave if one rename fails mid-run?",
+      "What counts should appear in your final summary?",
     ],
 
     level2Hints: [
-      "Store rename operations as tuples: (old_path, new_path).",
-      "Use a set of new names to detect collisions before renaming.",
-      "Call input() for confirmation after preview and before execution.",
-      "Use try/except around each rename call.",
-      "Use counters for renamed, skipped, failed.",
+      "Store plan items as tuples: (old_path, new_path).",
+      "Use a set of new_path names to detect duplicates before execution.",
+      "Sort input files before generating sequence-based names.",
+      "Ask for explicit confirmation before rename execution.",
+      "Wrap each rename in try/except and continue after failures.",
     ],
 
     blueprint: [
-      "Prompt for target directory and extension filter.",
-      "Collect matching files.",
-      "Build rename plan according to one rule.",
-      "Validate plan for collisions.",
-      "Print preview list old->new.",
-      "Ask for confirmation.",
+      "Prompt for target folder and extension filter.",
+      "Collect and sort matching files.",
+      "Generate new names from one rename rule.",
+      "Build rename plan list of old/new paths.",
+      "Validate collisions in planned target names.",
+      "Print preview mapping old -> new.",
+      "Request confirmation from user.",
       "Execute renames with per-file error handling.",
-      "Print summary counters.",
+      "Track renamed, skipped, failed counters.",
+      "Print final summary.",
     ],
 
     debuggingGuide: [
       {
-        problem: "Some files were renamed twice unexpectedly.",
-        hint: "Ensure you build the plan first and execute once, not while scanning.",
+        problem: "Wrong files are being renamed.",
+        hint: "Print filtered file list before creating rename targets and verify your selection rule.",
       },
       {
-        problem: "Renaming fails with file exists error.",
-        hint: "You likely have target name collisions; detect before execution.",
+        problem: "Rename fails with file exists errors.",
+        hint: "You likely have collisions in target names; detect and abort before execution.",
       },
       {
-        problem: "Wrong files are renamed.",
-        hint: "Print the filtered file list before creating rename targets.",
+        problem: "Some files renamed twice or inconsistently.",
+        hint: "Ensure plan is generated once from original names, then executed once.",
       },
     ],
 
     revealSolutionWarning: `
-Use the example for flow shape.
-Keep your own rename rule and naming strategy if behavior is correct.
+This is one possible implementation.
+If your flow safely validates and executes renames with clear reporting, it is valid.
+Do not copy blindly.
+Explain each stage of your pipeline.
     `.trim(),
 
     exampleSolution: `from pathlib import Path
 
-folder = Path(input("Folder: ").strip())
-files = sorted(folder.glob("*.txt"))
 
-plan = []
-for i, old in enumerate(files, start=1):
-    new = old.with_name(f"{i:03d}_{old.name.replace(' ', '_')}")
-    plan.append((old, new))
+def build_plan(folder, extension):
+    files = sorted(folder.glob(f"*.{extension}"))
+    plan = []
 
-new_names = [p[1].name for p in plan]
-if len(new_names) != len(set(new_names)):
-    print("Conflict detected. Aborting.")
-else:
+    for index, old in enumerate(files, start=1):
+        safe_name = old.stem.replace(" ", "_")
+        new_name = f"{index:03d}_{safe_name}{old.suffix}"
+        plan.append((old, old.with_name(new_name)))
+
+    return plan
+
+
+def has_collisions(plan):
+    targets = [new.name for _, new in plan]
+    return len(targets) != len(set(targets))
+
+
+def main():
+    folder = Path(input("Target folder: ").strip())
+    extension = input("Extension (without dot): ").strip().lower()
+
+    if not folder.exists() or not folder.is_dir():
+        print("Invalid folder.")
+        return
+
+    plan = build_plan(folder, extension)
+    if not plan:
+        print("No matching files found.")
+        return
+
+    if has_collisions(plan):
+        print("Collision detected. Aborting.")
+        return
+
+    print("\nPreview:")
     for old, new in plan:
         print(f"{old.name} -> {new.name}")
+
+    confirm = input("Apply these changes? (y/n): ").strip().lower()
+    if confirm != "y":
+        print("Cancelled.")
+        return
+
+    renamed = 0
+    failed = 0
+
+    for old, new in plan:
+        try:
+            old.rename(new)
+            renamed += 1
+        except OSError as error:
+            failed += 1
+            print(f"Failed: {old.name} ({error})")
+
+    print(f"\nRenamed: {renamed} | Failed: {failed}")
+
+
+if __name__ == "__main__":
+    main()
 `,
 
     upgrades: {
       undoBlueprint: [
-        "Save rename plan to JSON before execution.",
-        "Create an undo command that reverses mappings.",
-        "Validate existence before applying undo.",
+        "Before executing renames, save plan mappings to a JSON file.",
+        "Add an undo mode that reads JSON and reverses target/source pairs.",
+        "Validate path existence before applying each undo operation.",
       ],
       regexBlueprint: [
-        "Accept a regex pattern and replacement.",
-        "Preview transformed names first.",
-        "Reject invalid or empty resulting names.",
+        "Accept regex pattern and replacement from user input.",
+        "Apply regex transformation to each stem while preserving extension.",
+        "Preview and validate names before executing renames.",
       ],
     },
   },

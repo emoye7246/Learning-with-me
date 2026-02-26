@@ -5,6 +5,7 @@ import { pythonFundamentalsLessons } from "./python-fundamentals";
 import { thinkingInSystemsLessons } from "./thinking-in-systems";
 import { consoleApplicationsLessons } from "./console-applications";
 import { filesDataLessons } from "./files-data";
+import { projectStructureScalingPythonLessons } from "./project-structure-scaling-python";
 /**
  * All lessons by module. Add a new array here when you add a new module folder.
  */
@@ -15,6 +16,7 @@ const lessonsByModule = [
   thinkingInSystemsLessons,
   consoleApplicationsLessons,
   filesDataLessons,
+  projectStructureScalingPythonLessons,
 ];
 
 /**

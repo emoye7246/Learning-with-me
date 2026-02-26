@@ -5,22 +5,29 @@ export const lessonHandlingMissingBrokenFiles = {
   article: `
 ## Handling Missing or Broken Files
 
-## Concept Introduction
+Real files are not always clean and available.
 
-Real inputs fail.
+Sometimes files are missing.
+Sometimes they are unreadable.
+Sometimes data inside them is malformed.
 
-Files can be:
-
-- missing
-- unreadable due to permissions
-- encoded unexpectedly
-- malformed (wrong columns, unexpected lines)
-
-Your script should fail gracefully, not crash unexpectedly.
+Reliable software plans for these cases.
 
 ---
 
-## A Defensive Read Pattern
+## Mental Model
+
+Treat file operations as failure-prone boundaries.
+
+Inside your code, behavior can be controlled.
+
+At the filesystem boundary, many things can go wrong.
+
+Your job is to fail clearly, not silently.
+
+---
+
+## Example 1: Defensive Read Helper
 
 \`\`\`python
 from pathlib import Path
@@ -38,35 +45,24 @@ def read_text(path_str):
     except PermissionError:
         print("Permission denied.")
     except UnicodeDecodeError:
-        print("Could not decode file as UTF-8.")
+        print("Could not decode as UTF-8.")
+
     return None
 \`\`\`
 
 ---
 
-## Why This Matters
+## What just happened?
 
-Error handling is core behavior for filesystem tools.
+- You validated existence before reading.
+- You caught specific exceptions with clear messages.
+- You returned \`None\` as an explicit failure signal.
 
-If failure behavior is poor:
-
-- users lose trust
-- automation breaks silently
-- bugs are harder to diagnose
+That gives downstream logic a clear contract.
 
 ---
 
-## Practical Rules
-
-1. Validate early (\`exists()\`, expected extension, required columns).
-2. Catch specific exceptions before broad ones.
-3. Return explicit fallback values (\`None\`, empty list, structured error).
-4. Print or log actionable messages.
-5. Stop downstream processing when input is invalid.
-
----
-
-## try/except/else Pattern
+## Example 2: try / except / else
 
 \`\`\`python
 try:
@@ -78,33 +74,71 @@ else:
     print("Read succeeded. Length:", len(text))
 \`\`\`
 
-Use \`else\` for logic that should run only when no exception occurred.
+---
+
+## What just happened?
+
+- \`except\` handles failure path.
+- \`else\` runs only if no exception happened.
+
+This keeps success behavior separate from error handling.
+
+---
+
+## Example 3: Stop on Invalid Input
+
+\`\`\`python
+rows = read_text("report.csv")
+if rows is None:
+    print("Stopping: input could not be read safely.")
+else:
+    print("Continue processing...")
+\`\`\`
+
+---
+
+## What just happened?
+
+- You checked the helper return value before continuing.
+- You avoided cascading errors from invalid input.
+
+Good error handling prevents secondary bugs.
 
 ---
 
 ## Common Mistakes
 
-- Catching \`Exception\` and hiding root causes.
-- Printing vague errors like "something went wrong".
-- Continuing with invalid data after a failed read.
+- Catching broad \`Exception\` and hiding root causes.
+- Printing vague errors like "Something went wrong."
+- Continuing processing after a failed read.
+- Not testing failure paths intentionally.
 
 ---
 
-## Practice Prompts
+## Try this
 
-1. Intentionally open a missing file and handle it cleanly.
-2. Build a helper that returns an empty list when a read fails.
-3. Add clear messages for missing file vs permission denied.
-4. Handle malformed CSV rows without crashing the whole run.
+1. Handle a missing file with a clear message.
+2. Handle permission errors separately from missing files.
+3. Return an empty list or \`None\` from a failed read helper.
+4. Add one malformed-data guard in a CSV loop.
+
+Save.
+Run the file.
+Observe the output.
 
 ---
 
-## Quick Checklist
+## What you just learned
 
-- Identify expected failure paths.
-- Add specific exception handling.
-- Keep messages clear and actionable.
-- Stop processing when required data is invalid.
-- Test failure cases intentionally.
+- Why filesystem code needs defensive design
+- How to catch specific exceptions cleanly
+- How \`try/except/else\` improves control flow clarity
+- How to stop safely when required input is invalid
+
+---
+
+## What comes next
+
+Next lesson: **Automating Repetitive Tasks**
 `,
 };
