@@ -49,6 +49,7 @@ export const curriculum = [
       "loops",
       "functions",
       "input-output",
+      "error-handling-basics",
       "modules-imports",
       "mini-projects-introduction",
       "mini-project-number-guessing-game",

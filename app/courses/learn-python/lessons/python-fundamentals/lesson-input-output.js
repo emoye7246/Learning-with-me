@@ -184,16 +184,14 @@ export const lessonInputOutput = {
   ---
   
   # What Comes Next
-  
+
   Right now,
-  all your code lives in one file.
-  
+  your programs crash when a user types something unexpected.
+
   Next,
-  you’ll learn how Python files can work together.
-  
-  You’ll learn about importing tools.
-  
-  **Intro to Modules & Imports**
+  you’ll learn how to handle that gracefully.
+
+  **Error Handling Basics**
   
   `
   }

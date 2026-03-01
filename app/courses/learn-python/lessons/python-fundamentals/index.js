@@ -9,6 +9,7 @@ import { lessonDictionariesSets } from "./lesson-dictionaries-sets";
 import { lessonLoops } from "./lesson-loops";
 import { lessonFunctions } from "./lesson-functions";
 import { lessonInputOutput } from "./lesson-input-output";
+import { lessonErrorHandlingBasics } from "./lesson-error-handling-basics";
 import { lessonModulesImports } from "./lesson-intro-modules-and-imports";
 import { miniProjectNumberGuessingGame } from "./lesson-number-guessing";
 import { miniProjectTextFormatter } from "./lesson-text-formatter";
@@ -27,6 +28,7 @@ export const pythonFundamentalsLessons = [
     lessonLoops,
     lessonFunctions,
     lessonInputOutput,
+    lessonErrorHandlingBasics,
     lessonModulesImports,
     lessonMiniProjectIntro,
     miniProjectNumberGuessingGame,
