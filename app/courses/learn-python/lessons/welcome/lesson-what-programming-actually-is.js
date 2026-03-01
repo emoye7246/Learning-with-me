@@ -3,6 +3,7 @@ export const lessonWhatProgrammingActuallyIs = {
   id: "intro-what-programming-actually-is",
 
   title: "What Programming Actually Is",
+  hasChallenge: false,
 
   article: `
   ## What Programming Actually Is

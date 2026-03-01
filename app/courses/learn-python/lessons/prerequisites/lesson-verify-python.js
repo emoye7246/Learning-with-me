@@ -1,6 +1,7 @@
 export const lessonVerifyPython = {
     id: "verify-python",
     title: "Verify Your Python Installation",
+    hasChallenge: false,
 
     article: `
 ## Verifying Your Python Installation
@@ -143,7 +144,7 @@ When you’re ready, continue to:
 
 ## Still Having Trouble? (Optional)
 
-***Note:*** if python is installed correctly, you can skip this section.
+**Note:** if Python is installed correctly, you can skip this section.
 
 If Python did not respond as expected, that’s okay.
 

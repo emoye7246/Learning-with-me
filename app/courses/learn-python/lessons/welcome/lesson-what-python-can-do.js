@@ -1,6 +1,7 @@
 export const lessonWhatPythonCanDo = {
     id: "intro-what-python-can-do",
-    title: "What Python Can Do",
+    title: "What Python Can (and Can't) Do",
+    hasChallenge: false,
 
     article: `
 ## What Python Can (and Can’t) Do

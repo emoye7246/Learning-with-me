@@ -2,6 +2,7 @@ export const lessonInstallingPython = {
 
     id: "installing-python",
     title: "Installing Python",
+    hasChallenge: false,
 
     article: `
 
@@ -105,51 +106,13 @@ You do **not** need to understand this command yet.
 It simply tells the system to install Python 3 from official repositories.
 If the system reports that Python is already installed, that’s fine — nothing else is required.
 
-If you don't know how to use the terminal, continue reading this lesson to learn how to open it.
+If you don’t know how to open the terminal yet, here’s the quick version:
 
----
+- **Windows** — press the Windows key, type **Command Prompt** or **PowerShell**, press Enter
+- **macOS** — press **⌘ + Space**, type **Terminal**, press Enter
+- **Linux** — press **Ctrl + Alt + T** or find Terminal in your applications menu
 
-## Opening the Terminal
-
-To run certain commands, you’ll use an application called the **Terminal**.
-
-The terminal is a program that lets you type instructions directly to your computer.
-You do not need to understand how it works yet — you only need to know how to open it.
-
-
-**On Windows:**
-- Press the **Windows key**
-- Type **Command Prompt**
-- Press **Enter**
-
-or
-
-- Press the **Windows key**
-- Type **PowerShell**
-- Press **Enter**
-
-A window with text will appear.  
-This is your terminal.
-
-Either option works for this course.
-You are not choosing the “wrong” one.
-
-**On macOS:**
-- Press **Command (⌘) + Space** to open Spotlight
-- Type **Terminal**
-- Press **Enter**
-
-A window with text will appear. This is the terminal.
-
-**On Linux:**
-- Look for an application called **Terminal** in your applications menu
-- Or press **Ctrl + Alt + T** (this works on many Linux systems)
-
-Once the terminal is open, you can type commands and press **Enter** to run them.
-
-If the terminal feels unfamiliar or confusing right now, that’s completely normal.
-You’ll learn how to use it step by step throughout this course.
-By the end, it will feel like a natural part of your workflow.
+You’ll learn everything about using the terminal in **1.5 Terminal Basics** — for now, just knowing how to open it is enough.
 
 ---
 

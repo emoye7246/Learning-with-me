@@ -1,6 +1,7 @@
 export const lessonCommonSetupIssues = {
     id: "common-setup-issues",
     title: "Common Setup Issues",
+    hasChallenge: false,
 
     article: `
 ## Common Setup Issues (and How to Stay Calm)

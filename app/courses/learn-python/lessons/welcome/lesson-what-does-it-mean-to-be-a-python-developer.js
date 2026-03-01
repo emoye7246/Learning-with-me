@@ -1,6 +1,7 @@
 export const lessonWhatDoesItMeanToBeAPythonDeveloper = {
     id: "intro-what-does-it-mean-to-be-a-python-developer",
     title: "What Does It Mean to Be a Python Developer",
+    hasChallenge: false,
 
     article: `
   ## What It Means to “Be a Python Developer”
@@ -125,10 +126,11 @@ Before writing programs, you need a real environment —
 the same kind developers use every day.
 
 In the next course, you’ll:
-- install Python
-- set up VS Code
-- run your first real Python files
-- learn how programs actually execute on your machine
+- install Python and verify it works
+- set up VS Code as your editor
+- learn terminal basics for Python developers
+- create isolated project environments with venv
+- manage packages with pip
 
 When you’re ready, continue to:
 **Course 1 — Prerequisites: Your Real Development Environment**

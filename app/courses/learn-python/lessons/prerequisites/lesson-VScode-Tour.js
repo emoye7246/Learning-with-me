@@ -1,6 +1,7 @@
 export const lessonVSCodeTour = {
     id: "VScode-Tour",
     title: "VS Code Tour",
+    hasChallenge: false,
 
     article: `
 ## VS Code Tour
@@ -150,13 +151,13 @@ Now that you understand the layout of VS Code,
 it’s time to create your first Python file.
 
 In the next lesson, you’ll:
-- create a folder
-- create a \`.\.py\` file
-- run your first Python program locally
+- what the terminal actually is and how it works
+- how to navigate your file system with commands
+- the commands you’ll use every day as a Python developer
 
 When you’re ready, continue to:
 
-**1.5 Creating and Running Your First .py File**
+**1.5 Terminal Basics for Python Developers**
 
 
 

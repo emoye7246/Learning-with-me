@@ -1,6 +1,7 @@
 export const lessonManagingPackagesPip = {
   id: "managing-packages-pip",
   title: "Managing Packages with pip",
+  hasChallenge: false,
 
   article: `
 ## Managing Packages with pip

@@ -1,6 +1,7 @@
 export const lessonHowThisCourseWorks = {
     id: "intro-how-this-course-works",
     title: "How This Course Works",
+    hasChallenge: false,
 
     article: `
 ## How This Course Works

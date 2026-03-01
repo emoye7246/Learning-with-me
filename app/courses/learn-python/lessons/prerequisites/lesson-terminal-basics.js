@@ -2,6 +2,7 @@ export const lessonTerminalBasics = {
 
     id: "terminal-basics",
     title: "Terminal Basics",
+    hasChallenge: false,
 
     article: `
   ## Terminal Basics for Python Developers
@@ -153,12 +154,15 @@ This skill will make everything else easier.
 
 ## What Comes Next
 
-Now that you understand how to move through your system using the terminal,
-you’re ready to begin writing real Python code.
+Now that you can navigate your system from the terminal,
+the next step is an important one before you start installing packages.
 
-In the next course, you’ll create and run your first Python program.
+In the next lesson, you’ll read about using AI tools effectively —
+the difference between using them to grow and using them as a crutch.
 
-This time, you’ll understand exactly what’s happening.
+When you’re ready, continue to:
+
+**1.6 Using AI With Discipline**
 
     `,
 }

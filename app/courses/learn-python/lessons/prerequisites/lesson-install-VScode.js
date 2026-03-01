@@ -1,6 +1,7 @@
 export const lessonInstallVSCode = {
     id: "install-VScode",
     title: "Installing VS Code",
+    hasChallenge: false,
 
     article: `
 ## Installing VS Code

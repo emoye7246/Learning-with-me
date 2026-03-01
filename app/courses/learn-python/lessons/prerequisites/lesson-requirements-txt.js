@@ -1,6 +1,7 @@
 export const lessonRequirementsTxt = {
   id: "requirements-txt",
   title: "requirements.txt & pyproject.toml",
+  hasChallenge: false,
 
   article: `
 ## requirements.txt & pyproject.toml
@@ -164,6 +165,6 @@ That's the full path from zero to running.
 
 ## What comes next
 
-Next lesson: **Python Fundamentals**
+Next lesson: **Common Setup Issues (and How to Fix Them)**
 `,
 };

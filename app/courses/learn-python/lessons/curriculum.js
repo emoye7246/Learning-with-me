@@ -27,11 +27,11 @@ export const curriculum = [
       "install-VScode",
       "VScode-Tour",
       "terminal-basics",
-      "common-setup-issues",
       "using-ai-with-discipline",
       "venv",
       "managing-packages-pip",
       "requirements-txt",
+      "common-setup-issues",
     ],
   },
   {
