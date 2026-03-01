@@ -6,6 +6,13 @@ import { thinkingInSystemsLessons } from "./thinking-in-systems";
 import { consoleApplicationsLessons } from "./console-applications";
 import { filesDataLessons } from "./files-data";
 import { projectStructureScalingPythonLessons } from "./project-structure-scaling-python";
+import { oopLessons } from "./oop";
+import { apisHttpLessons } from "./apis-http";
+import { testingLessons } from "./testing";
+import { gitWorkflowLessons } from "./git-workflow";
+import { realWorldLessons } from "./real-world";
+import { capstoneLessons } from "./capstone";
+
 /**
  * All lessons by module. Add a new array here when you add a new module folder.
  */
@@ -14,9 +21,15 @@ const lessonsByModule = [
   prerequisitesLessons,
   pythonFundamentalsLessons,
   thinkingInSystemsLessons,
+  oopLessons,
   consoleApplicationsLessons,
   filesDataLessons,
   projectStructureScalingPythonLessons,
+  apisHttpLessons,
+  testingLessons,
+  gitWorkflowLessons,
+  realWorldLessons,
+  capstoneLessons,
 ];
 
 /**

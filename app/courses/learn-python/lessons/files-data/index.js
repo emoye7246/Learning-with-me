@@ -4,6 +4,7 @@ import { lessonWorkingWithCsvTextData } from "./lesson-working-with-csv-text-dat
 import { lessonDirectoriesPaths } from "./lesson-directories-paths";
 import { lessonHandlingMissingBrokenFiles } from "./lesson-handling-missing-broken-files";
 import { lessonAutomatingRepetitiveTasks } from "./lesson-automating-repetitive-tasks";
+import { lessonWorkingWithJson } from "./lesson-working-with-json";
 import { projectCsvReportGenerator } from "./lesson-csv-report-generator";
 import { projectBackupScript } from "./lesson-backup-script";
 import { projectFileRenamingTool } from "./lesson-file-renaming-tool";
@@ -16,6 +17,7 @@ export const filesDataLessons = [
   lessonDirectoriesPaths,
   lessonHandlingMissingBrokenFiles,
   lessonAutomatingRepetitiveTasks,
+  lessonWorkingWithJson,
   projectCsvReportGenerator,
   projectBackupScript,
   projectFileRenamingTool,
