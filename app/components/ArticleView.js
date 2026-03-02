@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -181,9 +181,29 @@ export default function ArticleView({
   isCompleted = false,
   showCompleteButton = true,
 }) {
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    if (!lesson?.id || !scrollRef.current) return;
+    const el = scrollRef.current;
+
+    const scrollToTop = () => {
+      el.scrollTop = 0;
+      window.scrollTo(0, 0);
+    };
+
+    scrollToTop();
+    // Run again after paint so we're definitely at top once new content has laid out
+    const raf = requestAnimationFrame(() => {
+      scrollToTop();
+      requestAnimationFrame(scrollToTop);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, [lesson?.id]);
+
   return (
     <div className="flex-1 overflow-hidden">
-      <div className="h-full overflow-auto p-6 bg-white dark:bg-zinc-900 scrollable">
+      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-white dark:bg-zinc-900 scrollable">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-start justify-between gap-4 mb-6">
             <div>

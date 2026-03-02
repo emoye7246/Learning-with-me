@@ -84,10 +84,14 @@ If you see that, your Python installation is working.
 
 You might see a message such as:
 
-\`\`\`bash
-command not found
-python is not recognized
-no such file or directory
+On **Windows:**
+\`\`\`
+'python' is not recognized as an internal or external command
+\`\`\`
+
+On **macOS / Linux:**
+\`\`\`
+command not found: python
 \`\`\`
 
 This does **not** mean you failed.
@@ -97,9 +101,8 @@ It usually means:
 - or your system does not know where to find it
 
 This is common and fixable.
-The next lessons will show you how to handle these situations calmly and correctly.
 
-For now, simply note what you see.
+If this happens, scroll past the "What Comes Next" section below — there's an optional troubleshooting guide waiting for you.
 
 ---
 
@@ -153,6 +156,19 @@ The steps below are optional support if you want to investigate further now.
 
 ---
 
+### Windows
+
+If you’re on Windows and the command wasn’t recognized, try:
+
+- Running the command in **PowerShell** or **Command Prompt** (not inside VS Code’s terminal yet)
+- Re-running the Python installer, choosing **Modify**, and making sure **"Add Python to PATH"** is checked
+- Restarting your terminal after installation — PATH changes only take effect in a new window
+
+After reopening the terminal, run \`python --version\` again.
+If it still doesn’t work, search for **"Edit the system environment variables"** in the Start menu and confirm Python’s folder appears in the PATH list.
+
+---
+
 ### macOS
 
 If you’re on macOS and \`python --version\` did not work, try:
@@ -180,16 +196,21 @@ Most Linux systems use \`python3\` explicitly by default.
 
 ---
 
-#### About PATH (You Can Skip This)
+### About PATH (All Platforms)
 
-You may see references to something called the **PATH environment variable**.
+Across all operating systems, the most common cause of a "command not found" error is a **PATH** issue.
 
-You do **not** need to understand or modify PATH right now.
-This course will explain it later, when it becomes relevant.
+PATH is a list your system uses to find programs when you type commands in the terminal.
+If Python is installed but not on the PATH, your terminal can’t find it — even though it’s there.
+
+You do **not** need to fully understand PATH right now.
+This course will cover it properly later.
 
 For now, it’s enough to know:
-- Python may be installed
-- your system just needs to know where to find it
+- the error doesn’t mean Python is broken
+- it usually means your system just needs to know where to look
+
+Each troubleshooting section above addresses this for your specific OS.
 
 ---
 

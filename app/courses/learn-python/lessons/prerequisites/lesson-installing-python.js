@@ -52,10 +52,23 @@ This ensures:
 For this course, you want **Python 3**.
 
 If multiple versions are shown:
-- choose the latest stable Python 3 release
+- choose the latest stable Python 3 release (3.12 or 3.13 as of this writing)
 - ignore anything labeled Python 2
 
 Python 2 is obsolete and not used in modern development.
+
+---
+
+## How to Open a Terminal
+
+You will need a terminal to verify your installation after this step.
+If you haven't opened one before, here's how:
+
+- **Windows** — press the Windows key, type **Command Prompt** or **PowerShell**, press Enter
+- **macOS** — press **⌘ + Space**, type **Terminal**, press Enter
+- **Linux** — press **Ctrl + Alt + T** or find Terminal in your applications menu
+
+You'll learn everything about using the terminal in **1.5 Terminal Basics** — for now, just knowing how to open it is enough.
 
 ---
 
@@ -72,7 +85,7 @@ Python 2 is obsolete and not used in modern development.
 During installation, check the box that says **“Add Python to PATH.”**
 
 This allows Python to be run from the terminal.
-If you miss this step, it can be fixed later.
+If you miss this step, you can fix it by re-running the installer and choosing **Modify**, then checking the PATH box. Alternatively, search for **"Edit the system environment variables"** in the Start menu and add Python's install folder to the PATH list manually.
 
 ---
 ### macOS
@@ -88,6 +101,9 @@ For this course:
 This installs a modern version of Python alongside the system version.
 You do not need to remove anything.
 
+**Note:** On macOS, you may need to use \`python3\` instead of \`python\` in the terminal.
+If \`python\` doesn't work, try \`python3\` — they refer to the same installation.
+
 ---
 ### Linux
 
@@ -101,18 +117,26 @@ For Ubuntu or Debian-based systems, run:
 sudo apt install python3
 \`\`\`
 
-You do **not** need to understand this command yet.
+For Fedora or RHEL-based systems, run:
 
-It simply tells the system to install Python 3 from official repositories.
+\`\`\`bash
+sudo dnf install python3
+\`\`\`
+
+You do **not** need to understand these commands yet.
+
+They simply tell the system to install Python 3 from official repositories.
 If the system reports that Python is already installed, that’s fine — nothing else is required.
 
-If you don’t know how to open the terminal yet, here’s the quick version:
+---
 
-- **Windows** — press the Windows key, type **Command Prompt** or **PowerShell**, press Enter
-- **macOS** — press **⌘ + Space**, type **Terminal**, press Enter
-- **Linux** — press **Ctrl + Alt + T** or find Terminal in your applications menu
+## What Success Looks Like
 
-You’ll learn everything about using the terminal in **1.5 Terminal Basics** — for now, just knowing how to open it is enough.
+After installation, you likely won't see a new icon on your desktop.
+Python doesn't open like a regular application — it runs through the terminal.
+
+That's normal. If the installer finished without errors, it worked.
+The next lesson will confirm this properly.
 
 ---
 
@@ -148,6 +172,30 @@ Before moving on:
 
 Different systems look different.
 That is normal.
+
+---
+
+## A Preview of What’s Next
+
+Once Python is installed, open your terminal and run:
+
+\`\`\`bash
+python --version
+\`\`\`
+
+Or on macOS:
+
+\`\`\`bash
+python3 --version
+\`\`\`
+
+If you see something like:
+
+\`\`\`
+Python 3.13.0
+\`\`\`
+
+It worked. That’s exactly what the next lesson walks you through — step by step.
 
 ---
 
