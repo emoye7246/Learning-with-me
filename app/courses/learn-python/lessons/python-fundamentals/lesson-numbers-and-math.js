@@ -1,9 +1,10 @@
 export const lessonNumbersMath = {
     id: "numbers-and-math",
     title: "Numbers and Math",
+    hasChallenge: false,
 
     article: `
-   ## Numbers & Math
+## Numbers & Math
 
 Programming is not just about printing text.
 
@@ -99,35 +100,6 @@ It removes the decimal.
 
 ---
 
-## Integer vs Float Division
-
-Notice something important.
-
-Try this:
-
-\`\`\`python
-print(5 / 2)
-\`\`\`
-
-The result is:
-
-2.5
-
-Even though both numbers are integers,
-division produces a float (a decimal number).
-
-If you want whole-number division,
-use:
-
-\`\`\`python
-print(5 // 2)
-\`\`\`
-
-This is called **floor division**.
-It removes the decimal.
-
----
-
 ## Exponents
 
 To raise a number to a power:
@@ -146,21 +118,25 @@ The result is:
 
 ---
 
-## Exponents
+## Modulus (Remainder)
 
-To raise a number to a power:
+The \`%\` operator gives you the **remainder** after division.
 
 \`\`\`python
-print(2 ** 3)
+print(10 % 3)
 \`\`\`
 
-This means:
+10 divided by 3 is 3, with a remainder of **1**.
 
-2 to the power of 3.
+So the result is:
 
-The result is:
+1
 
-8
+This is more useful than it sounds.
+Modulus is commonly used to:
+- check if a number is even or odd (\`number % 2 == 0\`)
+- cycle through a sequence
+- work with time (hours, minutes)
 
 ---
 
@@ -183,22 +159,6 @@ print((2 + 3) * 4)
 Notice the difference.
 
 Parentheses change the result.
-
----
-
-## Why This Matters
-
-Numbers are not just calculations.
-
-They are used for:
-- tracking time
-- counting items
-- measuring data
-- controlling logic
-- powering algorithms
-
-Understanding how Python handles math
-is foundational.
 
 ---
 
@@ -243,7 +203,8 @@ You now understand:
 
 - Arithmetic operators
 - Integer vs float division
-- Modulus
+- Floor division with \`//\`
+- Modulus with \`%\`
 - Exponents
 - Order of operations
 
@@ -253,19 +214,14 @@ This is data manipulation.
 
 ---
 
-## What You Learned
+## What Comes Next
 
-You now understand:
+Now that you can work with numbers,
+the next step is text.
 
-- Arithmetic operators
-- Integer vs float division
-- Modulus
-- Exponents
-- Order of operations
+Next lesson:
 
-This is more than math.
-
-This is data manipulation.
+**Strings & Formatting**
 
     `
 }

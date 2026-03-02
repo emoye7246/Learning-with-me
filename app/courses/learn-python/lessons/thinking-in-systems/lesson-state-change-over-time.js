@@ -1,10 +1,9 @@
 export const lessonStateChangeOverTime = {
   id: "state-change-over-time",
   title: "State & Change Over Time",
+  hasChallenge: false,
 
   article: `
-## State & Change Over Time
-
 ## Introduction
 
 Execution order tells you what ran.
@@ -160,7 +159,7 @@ You can track and explain state transitions through assignments, iterations, and
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next, you will learn that state is not visible everywhere.
 

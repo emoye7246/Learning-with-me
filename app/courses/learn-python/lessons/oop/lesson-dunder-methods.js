@@ -1,10 +1,9 @@
 export const lessonDunderMethods = {
   id: "dunder-methods",
   title: "Dunder Methods (__str__, __repr__, __len__)",
+  hasChallenge: false,
 
   article: `
-## Dunder Methods
-
 Dunder stands for "double underscore." These are special methods Python calls automatically in specific situations.
 
 They let your objects work with built-in Python operations.
@@ -150,7 +149,7 @@ Everything else is optional and situational.
 
 ---
 
-## Try this
+## Try This
 
 1. Create a \`Book\` class with \`title\` and \`author\`.
 2. Define \`__str__\` to return \`"Title by Author"\`.
@@ -159,7 +158,7 @@ Everything else is optional and situational.
 
 ---
 
-## What you just learned
+## What You Learned
 
 - What dunder methods are and when Python calls them
 - How \`__str__\` and \`__repr__\` control object display
@@ -168,7 +167,7 @@ Everything else is optional and situational.
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Composition vs Inheritance**
 `,

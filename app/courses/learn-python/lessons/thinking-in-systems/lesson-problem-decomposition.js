@@ -1,10 +1,9 @@
 export const lessonProblemDecomposition = {
   id: "problem-decomposition",
   title: "Problem Decomposition",
+  hasChallenge: false,
 
   article: `
-## Problem Decomposition
-
 ## Introduction
 
 "This feels too big" is a design signal.
@@ -142,7 +141,7 @@ You can break ambiguous programming tasks into small, explicit, buildable steps.
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next course, you will use this system mindset to build larger console applications.
 

@@ -1,10 +1,9 @@
 export const lessonRefactoringCodeClarity = {
   id: "refactoring-code-clarity",
   title: "Refactoring & Code Clarity",
+  hasChallenge: false,
 
   article: `
-## Refactoring & Code Clarity
-
 ## Introduction
 
 Passing tests is important.
@@ -149,7 +148,7 @@ You can improve readability and maintainability while keeping program behavior s
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next, you will decompose bigger problems into small buildable parts.
 

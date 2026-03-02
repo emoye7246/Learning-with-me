@@ -1,6 +1,7 @@
 export const lessonStringsAndFormat = {
     id: "strings-and-format",
-    title: "Strings and Format",
+    title: "Strings & Formatting",
+    hasChallenge: false,
 
     article: `
 ## Strings & Formatting
@@ -57,7 +58,7 @@ print(greeting)
 
 ## Combining Strings (Concatenation)
 
-You can join strings using the `+` operator.
+You can join strings using the \`+\` operator.
 
 \`\`\`python
 first = "Hello"

@@ -1,10 +1,9 @@
 export const lessonScopeLifetime = {
   id: "scope-lifetime",
   title: "Scope & Lifetime",
+  hasChallenge: false,
 
   article: `
-## Scope & Lifetime
-
 ## Introduction
 
 A variable error is often a visibility error.
@@ -151,7 +150,7 @@ You can predict where variables are visible, when they disappear, and how to pas
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next, you will apply tracing, state, and scope to real failures.
 

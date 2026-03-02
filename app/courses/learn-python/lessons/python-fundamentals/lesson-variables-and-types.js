@@ -1,9 +1,10 @@
 export const lessonVariablesTypes = {
     id: "variables-and-types",
     title: "Variables and Types",
+    hasChallenge: false,
 
     article: `
-   ## Variables & Types
+## Variables & Types
 
 In the last lesson, you printed text.
 

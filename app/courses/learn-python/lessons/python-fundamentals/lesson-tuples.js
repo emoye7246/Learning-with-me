@@ -1,194 +1,195 @@
 export const lessonTuples = {
   id: "tuples",
   title: "Tuples",
+  hasChallenge: false,
 
   article: `
 ## Tuples
 
-A tuple is a list that can't be changed.
+You just learned about lists.
 
-Once created, the items are fixed. You can read them, loop over them, unpack them. But you can't add, remove, or swap items.
+Lists are great for storing collections of values.
 
-That constraint is the point.
+But there's another kind of collection in Python
+that works differently.
+
+It's called a **tuple**.
+
+---
+
+## What Is a Tuple?
+
+A tuple is like a list —
+but once you create it, it can't be changed.
+
+You can't add items.
+You can't remove items.
+You can't swap items around.
+
+That's what makes it different.
 
 ---
 
 ## Creating a Tuple
 
+Tuples use parentheses \`()\` instead of square brackets.
+
+Try this:
+
 \`\`\`python
 point = (10, 20)
-rgb = (255, 128, 0)
-single = (42,)   # trailing comma required for single-item tuples
-empty = ()
+print(point)
 \`\`\`
 
-Parentheses are optional in many contexts, but use them for clarity:
+Save.
+Run it.
 
-\`\`\`python
-point = 10, 20   # also a tuple
-\`\`\`
+You should see:
+
+(10, 20)
 
 ---
 
 ## Accessing Items
 
-Same as lists — zero-indexed.
+You access tuple items the same way as lists —
+using their index (position).
 
 \`\`\`python
 point = (10, 20)
-print(point[0])   # 10
-print(point[1])   # 20
-print(point[-1])  # 20
+
+print(point[0])
+print(point[1])
 \`\`\`
 
-Slicing also works.
+Output:
 
-\`\`\`python
-coords = (1, 2, 3, 4, 5)
-print(coords[1:3])  # (2, 3)
-\`\`\`
+10
+20
+
+Positions start at 0, just like lists.
 
 ---
 
-## Tuples are Immutable
+## What Happens If You Try to Change It?
+
+Try this:
 
 \`\`\`python
 point = (10, 20)
-point[0] = 99   # TypeError: 'tuple' object does not support item assignment
+point[0] = 99
 \`\`\`
 
-This is intentional. If you need to change the value, use a list instead.
+Python will give you an error:
+
+\`\`\`
+TypeError: 'tuple' object does not support item assignment
+\`\`\`
+
+This is intentional.
+
+Tuples are designed to be fixed.
 
 ---
 
-## Unpacking
+## Why Would You Want That?
 
-Tuples were made for unpacking.
+At first, this might seem like a limitation.
+
+But it's actually useful.
+
+Sometimes you have data that should **never** change.
+
+For example:
+- a screen resolution: (1920, 1080)
+- an RGB color: (255, 128, 0)
+- a date: (2024, 12, 25)
+
+Using a tuple tells anyone reading your code:
+"These values are fixed by design."
+
+If the data might change, use a list.
+If it's fixed by nature, use a tuple.
+
+---
+
+## Tuple Unpacking
+
+One of the most common things you'll do with tuples
+is **unpack** them — assign each item to its own variable.
 
 \`\`\`python
 point = (10, 20)
+
 x, y = point
-print(x)  # 10
-print(y)  # 20
+
+print(x)
+print(y)
 \`\`\`
 
-Python assigns values left-to-right. The count must match.
+Output:
 
-\`\`\`python
-a, b, c = (1, 2, 3)   # works
-a, b = (1, 2, 3)       # ValueError: too many values to unpack
-\`\`\`
+10
+20
+
+Python assigns the values left to right.
+
+This is cleaner than writing \`point[0]\` and \`point[1]\`.
 
 ---
 
-## Star Unpacking
+## Returning Multiple Values from a Function
 
-\`\`\`python
-first, *rest = (1, 2, 3, 4, 5)
-print(first)  # 1
-print(rest)   # [2, 3, 4, 5]
-\`\`\`
-
-\`rest\` becomes a list. Useful when you care about the first item and want the remainder.
-
----
-
-## Swapping Variables
-
-Tuple unpacking makes this clean:
-
-\`\`\`python
-a, b = 1, 2
-a, b = b, a
-print(a, b)  # 2 1
-\`\`\`
-
-No temp variable needed.
-
----
-
-## When to Use Tuples vs Lists
-
-Use a **list** when:
-- Items may change (add, remove, reorder)
-- You're building a collection dynamically
-
-Use a **tuple** when:
-- Items are fixed by nature: coordinates, RGB values, dates
-- You're returning multiple values from a function
-- You want to signal "this should not change"
+Tuples are commonly used when a function needs to return more than one value.
 
 \`\`\`python
 def get_dimensions():
     return (1920, 1080)
 
 width, height = get_dimensions()
+
+print(width)
+print(height)
 \`\`\`
 
----
+Output:
 
-## Tuples as Dictionary Keys
+1920
+1080
 
-Lists can't be dictionary keys. Tuples can.
-
-\`\`\`python
-grid = {}
-grid[(0, 0)] = "start"
-grid[(1, 0)] = "path"
-grid[(2, 0)] = "end"
-
-print(grid[(0, 0)])  # start
-\`\`\`
-
-This is common in grid-based programs, maps, and caches.
+This is a real pattern used in Python all the time.
 
 ---
 
-## Named Tuples (Brief Intro)
+## Try This
 
-When your tuple has meaning, name its fields:
-
-\`\`\`python
-from collections import namedtuple
-
-Point = namedtuple("Point", ["x", "y"])
-p = Point(10, 20)
-print(p.x)   # 10
-print(p.y)   # 20
-\`\`\`
-
-More readable than \`p[0]\` and \`p[1]\`.
+1. Create a tuple with your name, age, and city.
+2. Print each item using its index.
+3. Unpack the tuple into three separate variables.
+4. Print a sentence using those variables.
 
 ---
 
-## Common Mistakes
+## What You Learned
 
-- Forgetting the trailing comma for single-item tuples: \`(42)\` is just \`42\`, not a tuple.
-- Trying to modify a tuple and wondering why it fails.
-- Using a list when a tuple would communicate intent better.
+You now understand:
 
----
-
-## Try this
-
-1. Create a tuple \`(width, height)\` and unpack it into two variables.
-2. Write a function that returns three values as a tuple.
-3. Build a dictionary with tuple keys for a 3x3 grid.
-4. Swap two variables without a temp variable using tuple unpacking.
+- What a tuple is
+- How to create one
+- How to access items using indexes
+- Why tuples can't be changed
+- When to use a tuple instead of a list
+- How to unpack a tuple into variables
 
 ---
 
-## What you just learned
+## What Comes Next
 
-- How to create and access tuples
-- Why tuples are immutable and why that matters
-- How to unpack tuples including star unpacking
-- When to choose tuples over lists
+Now that you know about lists and tuples,
+the next step is organizing data by label
+instead of by position.
 
----
+**Dictionaries & Sets**
 
-## What comes next
-
-Next lesson: **Dictionaries & Sets**
 `,
 };

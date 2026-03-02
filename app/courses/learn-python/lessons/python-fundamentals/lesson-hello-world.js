@@ -1,6 +1,7 @@
 export const lessonHelloWorld = {
   id: "hello-world",
   title: "Hello World",
+  hasChallenge: false,
 
   article: `
 

@@ -1,10 +1,9 @@
 export const lessonTracingExecution = {
   id: "tracing-execution",
   title: "Tracing Execution",
+  hasChallenge: false,
 
   article: `
-## Tracing Execution
-
 ## Introduction
 
 You already know Python syntax.
@@ -168,7 +167,7 @@ You can trace line-by-line execution across assignments, branches, and function 
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next, you will trace not only order,
 but change.

@@ -1,10 +1,9 @@
 export const lessonClassesInstancesInit = {
   id: "classes-instances-init",
   title: "Classes, Instances & __init__",
+  hasChallenge: false,
 
   article: `
-## Classes, Instances & __init__
-
 A class is a template. An instance is a real object built from that template.
 
 You define a class once. You create as many instances as you need.
@@ -133,7 +132,7 @@ Attributes are just variables tied to an object. They can be read and written di
 
 ---
 
-## Try this
+## Try This
 
 1. Create a \`Car\` class with \`make\`, \`model\`, and \`year\` attributes.
 2. Create two car instances with different values.
@@ -142,7 +141,7 @@ Attributes are just variables tied to an object. They can be read and written di
 
 ---
 
-## What you just learned
+## What You Learned
 
 - How to define a class and create instances
 - How \`__init__\` initializes instance data
@@ -151,7 +150,7 @@ Attributes are just variables tied to an object. They can be read and written di
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Methods & self**
 `,

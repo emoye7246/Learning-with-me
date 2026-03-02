@@ -1,10 +1,9 @@
 export const lessonWhyOop = {
   id: "why-oop",
   title: "Why OOP? From Functions to Classes",
+  hasChallenge: false,
 
   article: `
-## Why OOP? From Functions to Classes
-
 You've been writing functions. Functions work well for small programs.
 
 As programs grow, you need a way to group data and behavior together. That's what object-oriented programming (OOP) does.
@@ -109,7 +108,7 @@ You've been using objects without knowing it.
 
 ---
 
-## What you just learned
+## What You Learned
 
 - Why functions alone can be limiting for stateful programs
 - What OOP does: bundles data and behavior
@@ -118,7 +117,7 @@ You've been using objects without knowing it.
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Classes, Instances & __init__**
 `,

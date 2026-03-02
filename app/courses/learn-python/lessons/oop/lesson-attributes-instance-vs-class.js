@@ -1,10 +1,9 @@
 export const lessonAttributesInstanceVsClass = {
   id: "attributes-instance-vs-class",
   title: "Attributes: Instance vs Class",
+  hasChallenge: false,
 
   article: `
-## Attributes: Instance vs Class
-
 Not all attributes live on the instance.
 
 Some attributes belong to the class itself and are shared across all instances.
@@ -148,7 +147,7 @@ class Team:
 
 ---
 
-## Try this
+## Try This
 
 1. Create a \`Counter\` class with a class attribute \`total = 0\`.
 2. Each time an instance is created, increment \`total\`.
@@ -157,7 +156,7 @@ class Team:
 
 ---
 
-## What you just learned
+## What You Learned
 
 - The difference between instance and class attributes
 - How Python resolves attribute lookup order
@@ -166,7 +165,7 @@ class Team:
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Inheritance & Reuse**
 `,

@@ -1,6 +1,7 @@
 export const lessonErrorHandlingBasics = {
   id: "error-handling-basics",
   title: "Error Handling Basics",
+  hasChallenge: false,
 
   article: `
 ## Introduction

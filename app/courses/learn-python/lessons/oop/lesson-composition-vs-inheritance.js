@@ -1,10 +1,9 @@
 export const lessonCompositionVsInheritance = {
   id: "composition-vs-inheritance",
   title: "Composition vs Inheritance",
+  hasChallenge: false,
 
   article: `
-## Composition vs Inheritance
-
 Inheritance is one way to reuse code. Composition is another.
 
 Both achieve code reuse. They express different relationships.
@@ -142,7 +141,7 @@ order.complete()
 
 ---
 
-## Try this
+## Try This
 
 1. Create a \`Speaker\` class with a \`speak(message)\` method.
 2. Create a \`Robot\` class that **has** a \`Speaker\`.
@@ -151,7 +150,7 @@ order.complete()
 
 ---
 
-## What you just learned
+## What You Learned
 
 - The difference between "is-a" (inheritance) and "has-a" (composition)
 - Why composition offers more flexibility
@@ -160,7 +159,7 @@ order.complete()
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **When NOT to Use OOP**
 `,

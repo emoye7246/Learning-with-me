@@ -1,10 +1,9 @@
 export const lessonWhenNotToUseOop = {
   id: "when-not-to-use-oop",
   title: "When NOT to Use OOP",
+  hasChallenge: false,
 
   article: `
-## When NOT to Use OOP
-
 OOP is a tool. Tools have the wrong job sometimes.
 
 A lot of beginner Python code over-engineers with classes when simple functions would do.
@@ -54,7 +53,7 @@ If your class is just a namespace for related functions, a module does that job 
 \`\`\`python
 # Instead of a utils class, just use a module: utils.py
 def format_currency(amount):
-    return f"\${amount:.2f}"\
+    return f"\${amount:.2f}"
 
 def format_date(dt):
     return dt.strftime("%Y-%m-%d")
@@ -106,7 +105,7 @@ Ask yourself: **"Am I modeling a thing, or am I organizing operations?"**
 
 ---
 
-## What you just learned
+## What You Learned
 
 - When a class is just a function with unnecessary wrapping
 - Why stateless classes signal design problems
@@ -115,7 +114,7 @@ Ask yourself: **"Am I modeling a thing, or am I organizing operations?"**
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next project: **Bank Account Simulator**
 `,

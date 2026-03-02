@@ -1,6 +1,7 @@
 export const lessonBooleansAndConditions = {
     id: "booleans-and-conditions",
     title: "Booleans and Conditions",
+    hasChallenge: false,
 
     article: `
 ## Booleans & Conditions
@@ -220,13 +221,11 @@ This is the beginning of real logic.
 
 ## What Comes Next
 
-Right now, your program makes one decision.
+Right now, your programs store one value per variable.
 
-Next, we introduce repetition.
+Next, you'll learn how to store multiple values together.
 
-We make code run multiple times.
-
-**Loops**
+**Lists**
 
 `
 

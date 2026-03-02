@@ -1,6 +1,7 @@
 export const lessonLists = {
     id: "lists",
     title: "Lists",
+    hasChallenge: false,
 
     article: `
 ## Introduction to Lists
@@ -126,7 +127,7 @@ The second item changes.
 
 ## Adding Items
 
-You can add items using \`.\append()\`.
+You can add items using \`.append()\`.
 
 \`\`\`python
 numbers = [1, 2, 3]
@@ -136,19 +137,6 @@ print(numbers)
 \`\`\`
 
 This adds the value to the end of the list.
-
----
-
-## List Length
-
-To check how many items are inside a list:
-
-\`\`\`python
-numbers = [1, 2, 3, 4]
-print(len(numbers))
-\`\`\`
-
-The \`len()\` function returns the number of items.
 
 ---
 
@@ -204,11 +192,10 @@ you can only access one item at a time.
 ## What Comes Next
 
 In the next lesson,
-we explore more structured collections.
+we look at a special kind of list
+that can never be changed.
 
-We introduce key-value pairs.
-
-**Dictionaries & Sets**
+**Tuples**
 
 `
 

@@ -1,10 +1,9 @@
 export const lessonErrorsDebugging = {
   id: "errors-debugging",
   title: "Errors & Debugging",
+  hasChallenge: false,
 
   article: `
-## Errors & Debugging
-
 ## Introduction
 
 Debugging is not random trial and error.
@@ -136,7 +135,7 @@ You can diagnose common Python errors with a clear, repeatable debugging workflo
 
 ---
 
-## Next Lesson
+## What Comes Next
 
 Next, you will improve code that already works.
 

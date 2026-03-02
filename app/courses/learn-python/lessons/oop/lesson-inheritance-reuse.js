@@ -1,10 +1,9 @@
 export const lessonInheritanceReuse = {
   id: "inheritance-reuse",
   title: "Inheritance & Reuse",
+  hasChallenge: false,
 
   article: `
-## Inheritance & Reuse
-
 Inheritance lets one class build on another.
 
 You define shared behavior in a parent class. Child classes inherit it and add or override what's specific to them.
@@ -128,7 +127,7 @@ Each level adds complexity. Prefer shallow hierarchies. Use composition when thi
 
 ---
 
-## Try this
+## Try This
 
 1. Create a \`Vehicle\` class with \`make\`, \`model\`, and a \`describe()\` method.
 2. Create \`Car\` and \`Truck\` classes that inherit from \`Vehicle\`.
@@ -137,7 +136,7 @@ Each level adds complexity. Prefer shallow hierarchies. Use composition when thi
 
 ---
 
-## What you just learned
+## What You Learned
 
 - How to define a parent class and inherit from it
 - How to use \`super()\` to call parent methods
@@ -146,7 +145,7 @@ Each level adds complexity. Prefer shallow hierarchies. Use composition when thi
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Dunder Methods**
 `,

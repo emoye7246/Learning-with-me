@@ -1,10 +1,9 @@
 export const lessonMethodsAndSelf = {
   id: "methods-and-self",
   title: "Methods & self",
+  hasChallenge: false,
 
   article: `
-## Methods & self
-
 Attributes store data. Methods define behavior.
 
 A method is a function that lives inside a class. It always has access to the instance through \`self\`.
@@ -133,7 +132,7 @@ You write \`self\` in the definition. You don't pass it when calling.
 
 ---
 
-## Try this
+## Try This
 
 1. Add a \`describe()\` method to a \`Car\` class that prints make, model, and year.
 2. Add a \`start()\` method that prints "Engine started."
@@ -142,7 +141,7 @@ You write \`self\` in the definition. You don't pass it when calling.
 
 ---
 
-## What you just learned
+## What You Learned
 
 - How to define methods on a class
 - How \`self\` gives methods access to instance data
@@ -151,7 +150,7 @@ You write \`self\` in the definition. You don't pass it when calling.
 
 ---
 
-## What comes next
+## What Comes Next
 
 Next lesson: **Attributes: Instance vs Class**
 `,
