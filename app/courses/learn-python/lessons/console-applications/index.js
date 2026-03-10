@@ -4,9 +4,9 @@ import { lessonProgramStructureEntryPoints } from "./lesson-program-structure-en
 import { lessonDesigningUserInteractionTerminal } from "./lesson-designing-user-interaction-terminal";
 import { lessonErrorHandlingCliPrograms } from "./lesson-error-handling-cli-programs";
 import { lessonOrganizingLargerConsoleApps } from "./lesson-organizing-larger-console-apps";
+import { lessonIntroToVerification } from "./lesson-intro-to-verification";
 import { projectTodoCli } from "./lesson-todo-cli";
 import { projectQuizGame } from "./lesson-quiz-game";
-import { projectFileAnalyzer } from "./lesson-file-analyzer";
 import { projectTextBasedGame } from "./lesson-text-based-game";
 
 export const consoleApplicationsLessons = [
@@ -16,8 +16,8 @@ export const consoleApplicationsLessons = [
   lessonDesigningUserInteractionTerminal,
   lessonErrorHandlingCliPrograms,
   lessonOrganizingLargerConsoleApps,
+  lessonIntroToVerification,
   projectTodoCli,
   projectQuizGame,
-  projectFileAnalyzer,
   projectTextBasedGame,
 ];

@@ -6,7 +6,7 @@
 export const curriculum = [
   {
     id: "welcome",
-    title: "Welcome to Python",
+    title: "Orientation (Mindset & Reality)",
     lessonIds: [
       "welcome-intro",
       "intro-what-programming-actually-is",
@@ -20,24 +20,21 @@ export const curriculum = [
   },
   {
     id: "prerequisites",
-    title: "Prerequisites",
+    title: "Prerequisites: Your Real Development Environment",
     lessonIds: [
       "installing-python",
       "verify-python",
       "install-VScode",
       "VScode-Tour",
       "terminal-basics",
-      "using-ai-with-discipline",
-      "venv",
-      "managing-packages-pip",
-      "requirements-txt",
       "common-setup-issues",
     ],
   },
   {
     id: "python-fundamentals",
-    title: "Python Fundamentals",
+    title: "Python Fundamentals (Core Language Fluency)",
     lessonIds: [
+      "using-ai-with-discipline",
       "hello-world",
       "variables-and-types",
       "numbers-and-math",
@@ -49,7 +46,6 @@ export const curriculum = [
       "loops",
       "functions",
       "input-output",
-      "error-handling-basics",
       "modules-imports",
       "mini-projects-introduction",
       "mini-project-number-guessing-game",
@@ -59,7 +55,7 @@ export const curriculum = [
   },
   {
     id: "thinking-in-systems",
-    title: "Thinking in Systems",
+    title: "Thinking in Systems (Advanced Fundamentals)",
     lessonIds: [
       "tracing-execution",
       "state-change-over-time",
@@ -70,24 +66,8 @@ export const curriculum = [
     ],
   },
   {
-    id: "oop",
-    title: "Object-Oriented Programming",
-    lessonIds: [
-      "why-oop",
-      "classes-instances-init",
-      "methods-and-self",
-      "attributes-instance-vs-class",
-      "inheritance-reuse",
-      "dunder-methods",
-      "composition-vs-inheritance",
-      "when-not-to-use-oop",
-      "project-bank-account-simulator",
-      "project-library-catalogue",
-    ],
-  },
-  {
     id: "console-applications",
-    title: "Console Applications",
+    title: "Console Applications (Real Software, No Frameworks)",
     lessonIds: [
       "what-is-a-console-application",
       "input-vs-command-line-arguments",
@@ -95,9 +75,9 @@ export const curriculum = [
       "designing-user-interaction-terminal",
       "error-handling-cli-programs",
       "organizing-larger-console-apps",
+      "intro-to-verification",
       "project-todo-cli",
       "project-quiz-game",
-      "project-file-analyzer",
       "project-text-based-game",
     ],
   },
@@ -119,18 +99,20 @@ export const curriculum = [
     ],
   },
   {
-    id: "project-structure-scaling-python",
-    title: "Project Structure & Scaling Python",
+    id: "oop",
+    title: "Object-Oriented Programming",
     lessonIds: [
-      "scripts-vs-software",
-      "modules-vs-packages",
-      "clean-imports",
-      "separating-concerns",
-      "reusability-maintainability",
-      "type-hints-annotations",
-      "linting-formatting",
-      "project-multi-file-console-app",
-      "project-reusable-utility-package",
+      "why-oop",
+      "classes-instances-init",
+      "methods-and-self",
+      "attributes-instance-vs-class",
+      "inheritance-reuse",
+      "dunder-methods",
+      "composition-vs-inheritance",
+      "when-not-to-use-oop",
+      "project-refactor-todo-cli-classes",
+      "project-library-catalogue",
+      "project-bank-account-simulator",
     ],
   },
   {
@@ -147,6 +129,30 @@ export const curriculum = [
       "project-weather-cli",
       "project-github-repo-fetcher",
       "project-currency-converter",
+    ],
+  },
+  {
+    id: "project-structure-scaling-python",
+    title: "Project Structure & Scaling Python",
+    lessonIds: [
+      "scripts-vs-software",
+      "modules-vs-packages",
+      "clean-imports",
+      "separating-concerns",
+      "reusability-maintainability",
+      "project-multi-file-console-app",
+      "project-reusable-utility-package",
+    ],
+  },
+  {
+    id: "environments-quality",
+    title: "Environments, Dependencies & Code Quality",
+    lessonIds: [
+      "venv",
+      "managing-packages-pip",
+      "requirements-txt",
+      "type-hints-annotations",
+      "linting-formatting",
     ],
   },
   {
@@ -176,9 +182,22 @@ export const curriculum = [
     ],
   },
   {
-    id: "real-world",
-    title: "Python in the Real World",
+    id: "standard-library-essentials",
+    title: "Standard Library Essentials",
     lessonIds: [
+      "pathlib-modern-file-paths",
+      "datetime-dates-times-deltas",
+      "collections-core-tools",
+      "itertools-working-with-sequences",
+      "regex-basics",
+      "reading-standard-library-docs",
+    ],
+  },
+  {
+    id: "real-world",
+    title: "Python in the Real World (Choose a Track)",
+    lessonIds: [
+      "which-track-is-right-for-me",
       "track-automation-scripting",
       "track-backend-apis",
       "track-data-analysis",
@@ -189,7 +208,7 @@ export const curriculum = [
   },
   {
     id: "capstone",
-    title: "Capstone Projects",
+    title: "Capstone Projects (Proof of Fluency)",
     lessonIds: [
       "capstone-full-featured-cli",
       "capstone-automation-suite",

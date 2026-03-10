@@ -1,4 +1,5 @@
 import { lessonHelloWorld } from "./lesson-hello-world";
+import { lessonUsingAIDiscipline } from "../prerequisites/lesson-AI";
 import { lessonVariablesTypes } from "./lesson-variables-and-types";
 import { lessonNumbersMath } from "./lesson-numbers-and-math";
 import { lessonStringsAndFormat } from "./lesson-strings-and-format";
@@ -9,7 +10,6 @@ import { lessonDictionariesSets } from "./lesson-dictionaries-sets";
 import { lessonLoops } from "./lesson-loops";
 import { lessonFunctions } from "./lesson-functions";
 import { lessonInputOutput } from "./lesson-input-output";
-import { lessonErrorHandlingBasics } from "./lesson-error-handling-basics";
 import { lessonModulesImports } from "./lesson-intro-modules-and-imports";
 import { miniProjectNumberGuessingGame } from "./lesson-number-guessing";
 import { miniProjectTextFormatter } from "./lesson-text-formatter";
@@ -17,6 +17,7 @@ import { miniProjectSimpleMenu } from "./lesson-simple-menu";
 import { lessonMiniProjectIntro } from "./lesson-mini-project-intro";
 
 export const pythonFundamentalsLessons = [
+    lessonUsingAIDiscipline,
     lessonHelloWorld,
     lessonVariablesTypes,
     lessonNumbersMath,
@@ -28,7 +29,6 @@ export const pythonFundamentalsLessons = [
     lessonLoops,
     lessonFunctions,
     lessonInputOutput,
-    lessonErrorHandlingBasics,
     lessonModulesImports,
     lessonMiniProjectIntro,
     miniProjectNumberGuessingGame,

@@ -5,11 +5,13 @@ import { pythonFundamentalsLessons } from "./python-fundamentals";
 import { thinkingInSystemsLessons } from "./thinking-in-systems";
 import { consoleApplicationsLessons } from "./console-applications";
 import { filesDataLessons } from "./files-data";
-import { projectStructureScalingPythonLessons } from "./project-structure-scaling-python";
 import { oopLessons } from "./oop";
 import { apisHttpLessons } from "./apis-http";
+import { projectStructureScalingPythonLessons } from "./project-structure-scaling-python";
+import { environmentsQualityLessons } from "./environments-quality";
 import { testingLessons } from "./testing";
 import { gitWorkflowLessons } from "./git-workflow";
+import { standardLibraryEssentialsLessons } from "./standard-library-essentials";
 import { realWorldLessons } from "./real-world";
 import { capstoneLessons } from "./capstone";
 
@@ -21,13 +23,15 @@ const lessonsByModule = [
   prerequisitesLessons,
   pythonFundamentalsLessons,
   thinkingInSystemsLessons,
-  oopLessons,
   consoleApplicationsLessons,
   filesDataLessons,
-  projectStructureScalingPythonLessons,
+  oopLessons,
   apisHttpLessons,
+  projectStructureScalingPythonLessons,
+  environmentsQualityLessons,
   testingLessons,
   gitWorkflowLessons,
+  standardLibraryEssentialsLessons,
   realWorldLessons,
   capstoneLessons,
 ];

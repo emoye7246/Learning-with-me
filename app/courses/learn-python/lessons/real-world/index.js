@@ -1,3 +1,4 @@
+import { lessonWhichTrackIsRightForMe } from "./lesson-which-track-is-right-for-me";
 import { trackAutomationScripting } from "./track-automation-scripting";
 import { trackBackendApis } from "./track-backend-apis";
 import { trackDataAnalysis } from "./track-data-analysis";
@@ -6,6 +7,7 @@ import { trackGameTools } from "./track-game-tools";
 import { trackDeveloperTooling } from "./track-developer-tooling";
 
 export const realWorldLessons = [
+  lessonWhichTrackIsRightForMe,
   trackAutomationScripting,
   trackBackendApis,
   trackDataAnalysis,

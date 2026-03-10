@@ -1,10 +1,10 @@
 export const lessonUsingAIDiscipline = {
     id: "using-ai-with-discipline",
-    title: "Using AI With Discipline",
+    title: "No AI - Learn First",
     hasChallenge: false,
 
     article: `
-## Read This Before Moving Forward
+## No AI - Learn First
 
 AI is powerful.
 
