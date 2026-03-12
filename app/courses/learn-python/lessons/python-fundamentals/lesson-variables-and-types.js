@@ -177,12 +177,12 @@ is built on storing and manipulating data.
 
 ## What Comes Next
 
-Now that you understand variables,
-we’re going to use numbers more intentionally.
+Now that you understand variables and types,
+you’ll learn how to convert between them.
 
 Next lesson:
 
-**Numbers & Math**
+**Type Casting**
 
     `
 }

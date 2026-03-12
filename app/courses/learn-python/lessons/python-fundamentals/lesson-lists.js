@@ -203,12 +203,11 @@ you can only access one item at a time.
 
 ## What Comes Next
 
-In the next lesson,
-we explore more structured collections.
+Lists can change.
 
-We introduce key-value pairs.
+Next, you'll learn about a collection that can't.
 
-**Dictionaries & Sets**
+**Tuples**
 
 `
 

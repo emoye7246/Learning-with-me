@@ -257,14 +257,12 @@ export const lessonFunctions = {
   ---
   
   # What Comes Next
-  
-  Right now,
-  your programs still use fixed values.
-  
-  Next,
-  you’ll learn how to receive input from the user.
-  
-  **Input & Output**
+
+  You know how to define functions with a name.
+
+  Next, you’ll learn about a function that doesn’t need one.
+
+  **Lambda Functions**
   
   `
   }

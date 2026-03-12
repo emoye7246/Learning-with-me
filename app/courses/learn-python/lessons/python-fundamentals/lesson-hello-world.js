@@ -208,11 +208,11 @@ One instruction at a time.
 ## What Comes Next
 
 Now that you can write and run Python code,
-we begin understanding how data is stored.
+let's learn how to leave notes in that code.
 
 Next lesson:
 
-**Variables & Types**
+**Comments**
 
 `
 };

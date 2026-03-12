@@ -267,5 +267,15 @@ This is more than math.
 
 This is data manipulation.
 
+---
+
+## What Comes Next
+
+Numbers are values.
+
+Next, you'll learn all the ways to compare, combine, and evaluate them.
+
+**Operators**
+
     `
 }

@@ -276,14 +276,13 @@ export const lessonLoops = {
   ---
   
   # What Comes Next
-  
-  Right now,
-  your programs still use hardcoded values.
-  
-  Next,
-  you’ll learn how to create reusable blocks of code.
-  
-  **Functions**
+
+  You can loop through lists.
+
+  Next, you’ll learn how to build new lists from loops —
+  in a single line.
+
+  **List Comprehensions**
   
   `
   }
