@@ -72,6 +72,19 @@ export const curriculum = [
     ],
   },
   {
+    id: "git-workflow",
+    title: "Professional Workflow (Git & Collaboration)",
+    lessonIds: [
+      "what-is-version-control",
+      "git-basics",
+      "github-fundamentals",
+      "commits-history",
+      "branches-experimentation",
+      "fixing-mistakes-safely",
+      "committing-project-to-github",
+    ],
+  },
+  {
     id: "console-applications",
     title: "Console Applications (Real Software, No Frameworks)",
     lessonIds: [
@@ -122,6 +135,17 @@ export const curriculum = [
     ],
   },
   {
+    id: "environments-quality",
+    title: "Environments, Dependencies & Code Quality",
+    lessonIds: [
+      "venv",
+      "managing-packages-pip",
+      "requirements-txt",
+      "type-hints-annotations",
+      "linting-formatting",
+    ],
+  },
+  {
     id: "apis-http",
     title: "APIs & HTTP Requests",
     lessonIds: [
@@ -151,17 +175,6 @@ export const curriculum = [
     ],
   },
   {
-    id: "environments-quality",
-    title: "Environments, Dependencies & Code Quality",
-    lessonIds: [
-      "venv",
-      "managing-packages-pip",
-      "requirements-txt",
-      "type-hints-annotations",
-      "linting-formatting",
-    ],
-  },
-  {
     id: "testing",
     title: "Testing Your Code",
     lessonIds: [
@@ -172,19 +185,6 @@ export const curriculum = [
       "organizing-tests",
       "intro-to-mocking",
       "project-test-suite-cli-app",
-    ],
-  },
-  {
-    id: "git-workflow",
-    title: "Professional Workflow (Git & Collaboration)",
-    lessonIds: [
-      "what-is-version-control",
-      "git-basics",
-      "github-fundamentals",
-      "commits-history",
-      "branches-experimentation",
-      "fixing-mistakes-safely",
-      "committing-project-to-github",
     ],
   },
   {
