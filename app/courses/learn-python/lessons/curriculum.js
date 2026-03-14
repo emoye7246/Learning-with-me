@@ -34,8 +34,8 @@ export const curriculum = [
       "using-ai-with-discipline",
       "hello-world",
       "variables-and-types",
-      "numbers-and-math",
-      "strings-and-format",
+      "numbers-and-math",  // Good
+      "strings-and-format", 
       "booleans-and-conditions",
       "lists",
       "tuples",

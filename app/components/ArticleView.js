@@ -266,22 +266,62 @@ export default function ArticleView({
                   </li>
                 ),
 
-                code: ({ inline, children }) => {
-                  if (inline) {
+                // In react-markdown v9+, `inline` prop was removed.
+                // Detect block code via: language-* class (fenced with lang)
+                // or newlines in content (fenced without lang). Everything else
+                // is inline code and gets the pill style.
+                code: ({ className, children }) => {
+                  const isBlock =
+                    !!className ||
+                    (typeof children === "string" && children.includes("\n"));
+                  if (isBlock) {
                     return (
-                      <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono text-sm">
+                      <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
                         {children}
                       </code>
                     );
                   }
                   return (
-                    <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
+                    <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-blue-500 font-mono text-sm">
                       {children}
                     </code>
                   );
                 },
 
                 hr: () => <hr className="my-6 border-zinc-300 dark:border-zinc-700" />,
+
+                table: ({ children }) => (
+                  <div className="my-4 overflow-x-auto">
+                    <table className="w-full border-collapse text-sm text-zinc-700 dark:text-zinc-300">
+                      {children}
+                    </table>
+                  </div>
+                ),
+                thead: ({ children }) => (
+                  <thead className="bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100">
+                    {children}
+                  </thead>
+                ),
+                tbody: ({ children }) => (
+                  <tbody className="divide-y divide-zinc-200 dark:divide-zinc-700">
+                    {children}
+                  </tbody>
+                ),
+                tr: ({ children }) => (
+                  <tr className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors">
+                    {children}
+                  </tr>
+                ),
+                th: ({ children }) => (
+                  <th className="px-4 py-2 text-left font-semibold border-b border-zinc-300 dark:border-zinc-600">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="px-4 py-2 border-b border-zinc-200 dark:border-zinc-700">
+                    {children}
+                  </td>
+                ),
               }}
             >
               {lesson.article || "No article available for this lesson yet."}

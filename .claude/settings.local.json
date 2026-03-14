@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lesson\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/welcome\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/prerequisites\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/java-fundamentals\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/thinking-in-systems\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/oop-foundations\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/oop-advanced\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/collections-generics\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/files-io-exceptions\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/project-structure-build-tools\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/testing-junit\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/concurrency\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/apis-http\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/git-workflow\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/standard-library-essentials\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/real-world\")",
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/capstone\")"
+    ]
+  }
+}
