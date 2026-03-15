@@ -217,7 +217,7 @@ export default function ArticleView({
           </div>
 
           <div className="mt-6 prose dark:prose-invert max-w-none">
-            <ReactMarkdown
+          <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({ children }) => (
@@ -266,23 +266,19 @@ export default function ArticleView({
                   </li>
                 ),
 
-                // In react-markdown v9+, `inline` prop was removed.
-                // Detect block code via: language-* class (fenced with lang)
-                // or newlines in content (fenced without lang). Everything else
-                // is inline code and gets the pill style.
                 code: ({ className, children }) => {
                   const isBlock =
                     !!className ||
                     (typeof children === "string" && children.includes("\n"));
                   if (isBlock) {
                     return (
-                      <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
+                      <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100 [font-variant-ligatures:none]">
                         {children}
                       </code>
                     );
                   }
                   return (
-                    <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-blue-500 font-mono text-sm">
+                    <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-mono text-sm [font-variant-ligatures:none]">
                       {children}
                     </code>
                   );
