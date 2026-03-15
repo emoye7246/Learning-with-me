@@ -236,7 +236,7 @@ export default function ArticleView({
                   </h3>
                 ),
                 pre: ({ children }) => (
-                  <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto">
+                  <pre className="mb-4 p-4 rounded-lg bg-zinc-100 dark:bg-zinc-800 overflow-auto [font-variant-ligatures:none]">
                     {children}
                   </pre>
                 ),
@@ -276,13 +276,13 @@ export default function ArticleView({
                     (typeof children === "string" && children.includes("\n"));
                   if (isBlock) {
                     return (
-                      <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100">
+                      <code className="font-mono text-sm text-zinc-900 dark:text-zinc-100 [font-variant-ligatures:none]">
                         {children}
                       </code>
                     );
                   }
                   return (
-                    <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-blue-500 font-mono text-sm">
+                    <code className="px-1 py-0.5 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-blue-500 font-mono text-sm [font-variant-ligatures:none]">
                       {children}
                     </code>
                   );
