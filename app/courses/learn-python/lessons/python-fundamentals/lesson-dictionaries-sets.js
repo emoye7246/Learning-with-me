@@ -7,54 +7,41 @@ export const lessonDictionariesSets = {
 
 ## Introduction
 
-So far, we've worked with lists.
+So far, you've stored data by position — lists and tuples.
 
-Lists store multiple values.
+But real-world data often makes more sense with labels.
 
-But lists organize data by position.
+A person isn't \`[0]\`, \`[1]\`, \`[2]\`.
 
-What if we want to organize data by label?
+A person is \`"name"\`, \`"age"\`, \`"city"\`.
 
-Instead of:
+This lesson covers two new structures:
 
-0
-1
-2
-
-What if we want:
-
-"name"
-"age"
-"email"
-
-That's where dictionaries come in.
-
-And after that,
-we'll explore sets.
+- **Dictionaries** — store data by label (key-value pairs)
+- **Sets** — store unique values with no duplicates
 
 ---
 
-## Part 1: Dictionaries
+# Part 1: Dictionaries
+
+---
 
 ## What Is a Dictionary?
 
-A dictionary stores data in **key-value pairs**.
+A dictionary stores data as **key-value pairs**.
 
-Think of it like this:
+Every piece of data has a label (the key) and a value.
 
-A word → its definition
-A name → a phone number
-A product → its price
-
-Each piece of data has a label.
+Think of it like a real dictionary:
+- word → definition
+- name → phone number
+- product → price
 
 ---
 
 ## Creating a Dictionary
 
-Dictionaries use curly braces \`{}\`.
-
-Try this:
+Dictionaries use curly braces \`{}\` with \`key: value\` pairs separated by commas.
 
 \`\`\`python
 person = {
@@ -66,30 +53,20 @@ person = {
 print(person)
 \`\`\`
 
-Save.
-Run it.
-
-You should see all the data printed.
-
 ---
 
 ## Accessing Values
 
-To get a value,
-use its key.
+To get a value, use its key inside square brackets.
 
 \`\`\`python
-print(person["name"])
-print(person["age"])
+print(person["name"])  # Elijah
+print(person["age"])   # 25
 \`\`\`
 
-Notice:
+You're not using numbers — you're using labels.
 
-You are not using numbers.
-
-You are using labels.
-
-That's the power of dictionaries.
+That's what makes dictionaries more readable than lists for structured data.
 
 ---
 
@@ -99,92 +76,189 @@ With a list:
 
 \`\`\`python
 person = ["Elijah", 25, "New York"]
+print(person[1])  # 25 — but what does index 1 mean?
 \`\`\`
 
-What does index 1 mean?
-
-You have to remember.
+You have to remember what each position represents.
 
 With a dictionary:
 
 \`\`\`python
-person["age"]
+person = {"name": "Elijah", "age": 25, "city": "New York"}
+print(person["age"])  # 25 — obvious
 \`\`\`
 
-It's clear.
+Much clearer. Much more maintainable.
 
-Much more readable.
-Much more practical.
+---
+
+## Safe Access with .get()
+
+If you access a key that doesn't exist, Python raises an error.
+
+\`\`\`python
+print(person["email"])  # KeyError: 'email'
+\`\`\`
+
+Use \`.get()\` instead — it returns \`None\` if the key is missing.
+
+\`\`\`python
+print(person.get("email"))           # None
+print(person.get("email", "N/A"))    # N/A
+\`\`\`
+
+The second argument is a default value.
+
+Use \`.get()\` whenever the key might not exist.
+
+---
+
+## Checking If a Key Exists
+
+Use the \`in\` keyword to check before accessing.
+
+\`\`\`python
+if "name" in person:
+    print("Name found:", person["name"])
+
+if "email" not in person:
+    print("No email on file")
+\`\`\`
 
 ---
 
 ## Changing Values
 
-Dictionaries are mutable.
-
-That means you can change them.
+Dictionaries are mutable — assign a new value to an existing key.
 
 \`\`\`python
 person["age"] = 26
-print(person)
+print(person["age"])  # 26
 \`\`\`
-
-The value updates.
 
 ---
 
 ## Adding New Keys
 
-You can add new information easily.
+Assign to a key that doesn't exist yet.
 
 \`\`\`python
 person["profession"] = "Developer"
 print(person)
 \`\`\`
 
-A new key-value pair appears.
+The new key-value pair is added.
 
 ---
 
-## Safe Access with .get()
+## Removing Keys
 
-What if you try to access something that doesn't exist?
+**\`del\`** removes a key permanently:
 
 \`\`\`python
-print(person["email"])
+del person["city"]
+print(person)
 \`\`\`
 
-This causes an error.
-
-Instead, use:
+**\`.pop()\`** removes a key and returns its value:
 
 \`\`\`python
-print(person.get("email"))
+age = person.pop("age")
+print(age)     # 25
+print(person)  # age is gone
 \`\`\`
 
-This safely returns None.
-
-You can even provide a default value:
+\`.pop()\` also accepts a default to avoid errors if the key doesn't exist:
 
 \`\`\`python
-print(person.get("email", "Not found"))
-\`\`\`
-
----
-
-## Dictionary Length
-
-To count how many key-value pairs exist:
-
-\`\`\`python
-print(len(person))
+result = person.pop("email", "not found")
+print(result)  # not found
 \`\`\`
 
 ---
 
-## Try This
+## Updating a Dictionary
 
-Create your own dictionary:
+\`.update()\` merges another dictionary in — overwriting existing keys.
+
+\`\`\`python
+person = {"name": "Elijah", "age": 25}
+
+person.update({"age": 26, "city": "London"})
+
+print(person)  # {"name": "Elijah", "age": 26, "city": "London"}
+\`\`\`
+
+Useful for applying a batch of changes at once.
+
+---
+
+## Looping Over a Dictionary
+
+Looping over a dictionary gives you the **keys** by default.
+
+\`\`\`python
+person = {"name": "Elijah", "age": 25, "city": "New York"}
+
+for key in person:
+    print(key)
+\`\`\`
+
+To loop over **values**:
+
+\`\`\`python
+for value in person.values():
+    print(value)
+\`\`\`
+
+To loop over **both** at the same time:
+
+\`\`\`python
+for key, value in person.items():
+    print(key, "→", value)
+\`\`\`
+
+\`.items()\` is the most common loop pattern for dictionaries.
+
+---
+
+## Nested Dictionaries
+
+Dictionary values can be other dictionaries.
+
+This is how real data often looks.
+
+\`\`\`python
+users = {
+    "alice": {"age": 30, "city": "Paris"},
+    "bob":   {"age": 24, "city": "Berlin"},
+}
+
+print(users["alice"]["city"])  # Paris
+print(users["bob"]["age"])     # 24
+\`\`\`
+
+Access nested values by chaining keys.
+
+---
+
+## Dictionary Methods at a Glance
+
+| Method | What it does |
+|---|---|
+| \`dict[key]\` | Access a value (errors if missing) |
+| \`.get(key, default)\` | Safe access with optional default |
+| \`.update(other)\` | Merge another dict in |
+| \`.pop(key, default)\` | Remove and return a value |
+| \`.keys()\` | All keys |
+| \`.values()\` | All values |
+| \`.items()\` | All key-value pairs |
+| \`len(dict)\` | Number of key-value pairs |
+| \`key in dict\` | Check if a key exists |
+
+---
+
+## Try This (Dictionaries)
 
 \`\`\`python
 book = {
@@ -194,154 +268,247 @@ book = {
 }
 
 print(book["title"])
+print(book.get("rating", "No rating yet"))
+
+book["rating"] = 4.8
+book["pages"] = 350
+
+for key, value in book.items():
+    print(f"{key}: {value}")
 \`\`\`
 
-Add a new key.
-Change a value.
-Run it again.
+Then try:
+- Remove a key with \`del\` and print the result
+- Add a nested dictionary as a value, like \`"publisher": {"name": "Avery", "year": 2018}\`
+- Access a value inside your nested dictionary
 
 ---
 
-## Part 2: Sets
-
-Now let's talk about sets.
+# Part 2: Sets
 
 ---
 
 ## What Is a Set?
 
-A set is a collection of unique values.
+A set is a collection of **unique** values.
 
-No duplicates allowed.
-
-Sets also use curly braces.
-
-Try this:
+No duplicates. No guaranteed order.
 
 \`\`\`python
 numbers = {1, 2, 3, 3, 4}
-print(numbers)
+print(numbers)  # {1, 2, 3, 4}
 \`\`\`
 
-Notice something.
-
-The duplicate 3 disappears.
-
-Sets automatically remove duplicates.
+The duplicate \`3\` is removed automatically.
 
 ---
 
-## When Would You Use a Set?
+## The Empty Set Gotcha
 
-Use a set when:
-
-- You only care about unique values
-- You want to remove duplicates
-- You want fast checking
-
-For example:
-
-Unique usernames
-Unique product IDs
-Unique tags
-
----
-
-## Adding to a Set
+This is important.
 
 \`\`\`python
-numbers.add(5)
-print(numbers)
+empty_dict = {}      # This is a dict, NOT a set
+empty_set  = set()   # This is a set
+\`\`\`
+
+\`{}\` creates an empty dictionary.
+
+To create an empty set, you must use \`set()\`.
+
+---
+
+## Creating a Set from a List
+
+The most common real-world use of sets is **removing duplicates**.
+
+\`\`\`python
+names = ["alice", "bob", "alice", "charlie", "bob"]
+unique = set(names)
+
+print(unique)  # {"alice", "bob", "charlie"}
+\`\`\`
+
+Convert a list to a set to get unique values, then back to a list if needed.
+
+\`\`\`python
+unique_list = list(set(names))
 \`\`\`
 
 ---
 
-## Removing from a Set
+## Sets Are Unordered
+
+Sets don't preserve the order items were added.
+
+\`\`\`python
+tags = {"python", "coding", "beginner"}
+print(tags)  # order is not guaranteed
+\`\`\`
+
+If order matters, use a list.
+If uniqueness matters, use a set.
+
+---
+
+## Adding and Removing Items
+
+**Add** one item:
+
+\`\`\`python
+numbers = {1, 2, 3}
+numbers.add(4)
+print(numbers)  # {1, 2, 3, 4}
+\`\`\`
+
+**Remove** an item — raises an error if it doesn't exist:
 
 \`\`\`python
 numbers.remove(2)
-print(numbers)
 \`\`\`
 
----
-
-## Checking If Something Exists
+**Discard** — removes silently if the item is missing:
 
 \`\`\`python
-if 3 in numbers:
-    print("It exists")
+numbers.discard(99)  # no error, even though 99 isn't there
 \`\`\`
 
-Sets are very fast at checking membership.
+Use \`.discard()\` when you're not sure if the item exists.
 
 ---
 
-## Comparing Sets
+## Checking Membership
 
-Sets can compare groups.
-
-Try this:
+Sets are very fast at checking if a value exists.
 
 \`\`\`python
-a = {1, 2, 3}
-b = {3, 4, 5}
+allowed = {"admin", "editor", "viewer"}
 
-print(a & b)
+role = "admin"
+
+if role in allowed:
+    print("Access granted")
+else:
+    print("Access denied")
 \`\`\`
 
-This shows what both sets have in common.
-
-You'll see:
-
-3
+This is faster than checking inside a list, especially with large data.
 
 ---
 
-## Try This
+## Set Operations
 
-Create two sets:
+Sets support mathematical operations — the kind you may have seen in school.
+
+\`\`\`python
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+\`\`\`
+
+**Union** — everything in either set:
+
+\`\`\`python
+print(a | b)  # {1, 2, 3, 4, 5, 6}
+\`\`\`
+
+**Intersection** — only what both sets share:
+
+\`\`\`python
+print(a & b)  # {3, 4}
+\`\`\`
+
+**Difference** — what's in \`a\` but not in \`b\`:
+
+\`\`\`python
+print(a - b)  # {1, 2}
+\`\`\`
+
+**Symmetric difference** — what's in one but not both:
+
+\`\`\`python
+print(a ^ b)  # {1, 2, 5, 6}
+\`\`\`
+
+| Operation | Symbol | Meaning |
+|---|---|---|
+| Union | \`a \| b\` | Everything in either |
+| Intersection | \`a & b\` | Only what both share |
+| Difference | \`a - b\` | In \`a\` but not \`b\` |
+| Symmetric diff | \`a ^ b\` | In one but not both |
+
+---
+
+## Set Methods at a Glance
+
+| Method | What it does |
+|---|---|
+| \`.add(x)\` | Add item \`x\` |
+| \`.remove(x)\` | Remove \`x\` (error if missing) |
+| \`.discard(x)\` | Remove \`x\` (silent if missing) |
+| \`.union(other)\` | All items from both sets |
+| \`.intersection(other)\` | Items in both sets |
+| \`.difference(other)\` | Items only in this set |
+| \`len(set)\` | Number of items |
+| \`x in set\` | Check membership |
+
+---
+
+## Try This (Sets)
 
 \`\`\`python
 team_a = {"Elijah", "Sarah", "James"}
-team_b = {"Sarah", "Michael"}
+team_b = {"Sarah", "Michael", "James"}
+
+print("On both teams:", team_a & team_b)
+print("Only on team A:", team_a - team_b)
+print("Everyone:", team_a | team_b)
+
+votes = ["yes", "no", "yes", "yes", "no", "maybe"]
+unique_votes = set(votes)
+print("Unique votes:", unique_votes)
 \`\`\`
 
-Find:
-
-- Who is on both teams
-- Who is only on team_a
+Then try:
+- Use \`.discard()\` to remove a name that isn't in the set — notice no error
+- Convert a list with lots of repeated values into a set to see deduplication in action
 
 ---
 
 ## What You Learned
 
-You now understand:
+**Dictionaries:**
+- Store data as key-value pairs using \`{key: value}\`
+- Access values by key, safely with \`.get()\`
+- Check keys with \`in\`
+- Add, change, and delete keys
+- Loop with \`.keys()\`, \`.values()\`, \`.items()\`
+- Merge with \`.update()\`
+- Nest dictionaries for structured data
 
-- What a dictionary is
-- How to create key-value pairs
-- How to access and modify dictionary data
-- What a set is
-- How sets remove duplicates
-- How to check membership
-- How to compare groups
+**Sets:**
+- Store only unique values
+- \`{}\` is an empty dict — use \`set()\` for an empty set
+- Convert a list to a set to remove duplicates
+- Sets are unordered — no index access
+- Use \`.discard()\` for safe removal
+- Combine sets with \`|\`, \`&\`, \`-\`, \`^\`
 
-Lists organize by position.
+| Structure | Ordered | Unique | Key access | Use when... |
+|---|---|---|---|---|
+| List | Yes | No | By index | Order matters, duplicates OK |
+| Tuple | Yes | No | By index | Fixed, unchangeable data |
+| Dictionary | Yes* | Keys unique | By label | Labelled, structured data |
+| Set | No | Yes | No index | Uniqueness matters |
 
-Dictionaries organize by label.
-
-Sets organize by uniqueness.
-
-Each has its purpose.
+*Dictionaries preserve insertion order in Python 3.7+.
 
 ---
 
 ## What Comes Next
 
-Right now,
-you can store data.
+You can now store any kind of data — by position, by label, or by uniqueness.
 
-Next,
-you'll learn how to repeat actions.
+Next, you'll learn how to repeat actions without repeating code.
 
 **Loops (for / while)**
 
