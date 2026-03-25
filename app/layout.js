@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Learning Center - Python Coding",
-  description: "Interactive learning tool for Python programming",
+  title: "LWM — Learn With Me",
+  description: "Interactive coding courses for the AI era. Learn to think in code and communicate with precision.",
 };
 
 export default function RootLayout({ children }) {
