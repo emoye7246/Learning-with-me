@@ -12,9 +12,9 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
   const tabs = ['output', 'tests', 'results'];
 
   return (
-    <div className="h-full flex flex-col bg-[#FAF3E0] dark:bg-[#1A1A1A]">
+    <div className="h-full flex flex-col bg-white dark:bg-[#1A1A1A]">
       {/* Tab bar */}
-      <div className="px-4 py-2 border-b border-[#DDD0B5] dark:border-white/10 bg-[#F2E4C4] dark:bg-[#242424]">
+      <div className="px-4 py-2 border-b border-[#E5E7EB] dark:border-white/10 bg-[#F3F4F6] dark:bg-[#242424]">
         <div className="flex gap-1">
           {tabs.map((tab) => (
             <button
@@ -23,7 +23,7 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
               className={`px-3 py-1 text-xs font-medium rounded-md capitalize transition-colors ${
                 currentTab === tab
                   ? 'bg-[#568A99] text-white'
-                  : 'text-[#6B6456] dark:text-[#A89F8C] hover:bg-[#DDD0B5] dark:hover:bg-white/10'
+                  : 'text-[#6B7280] dark:text-[#A89F8C] hover:bg-[#DDD0B5] dark:hover:bg-white/10'
               }`}
             >
               {tab}
@@ -53,7 +53,7 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                 )}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
+              <div className="h-full flex items-center justify-center text-[#6B7280] dark:text-[#A89F8C] text-sm">
                 <p>Run your code to see output here</p>
               </div>
             )}
@@ -85,7 +85,7 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                       </span>
                     </div>
                     {test.message && (
-                      <p className="text-xs text-[#6B6456] dark:text-[#A89F8C] mt-1 pl-5">
+                      <p className="text-xs text-[#6B7280] dark:text-[#A89F8C] mt-1 pl-5">
                         {test.message}
                       </p>
                     )}
@@ -93,7 +93,7 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                 ))}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
+              <div className="h-full flex items-center justify-center text-[#6B7280] dark:text-[#A89F8C] text-sm">
                 <p>No tests available</p>
               </div>
             )}
@@ -160,7 +160,7 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                 )}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
+              <div className="h-full flex items-center justify-center text-[#6B7280] dark:text-[#A89F8C] text-sm">
                 <p>Results will appear here after running</p>
               </div>
             )}

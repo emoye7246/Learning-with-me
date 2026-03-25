@@ -29,7 +29,7 @@ export default function TopBar({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FEFCF5] dark:bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
+    <div className="w-full border-b border-[#E5E7EB] dark:border-white/10 bg-white dark:bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-4 flex-1 min-w-0">
         {/* Brand mark → home */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" title="Back to home">
@@ -48,7 +48,7 @@ export default function TopBar({
               style={{ width: `${Math.max(0, Math.min(progress, 100))}%` }}
             />
           </div>
-          <span className="text-xs text-[#6B6456] dark:text-[#A89F8C] whitespace-nowrap tabular-nums">
+          <span className="text-xs text-black/60 dark:text-white whitespace-nowrap tabular-nums">
             {Math.round(progress)}%
           </span>
           {isCompleted && (
@@ -63,7 +63,7 @@ export default function TopBar({
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-lg text-[#6B6456] dark:text-[#A89F8C] hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors"
+          className="p-2 rounded-lg text-black/60 dark:text-white hover:bg-[#F4F4F5] dark:hover:bg-white/10 transition-colors"
           type="button"
           aria-label="Toggle dark mode"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -86,7 +86,7 @@ export default function TopBar({
               <button
                 onClick={onPrev}
                 disabled={!canGoPrev}
-                className="px-3 py-1.5 text-sm rounded-lg border border-[#DDD0B5] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 text-sm rounded-lg border border-[#E5E7EB] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#F4F4F5] dark:hover:bg-white/10 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 type="button"
               >
                 ← Prev
@@ -109,7 +109,7 @@ export default function TopBar({
                 disabled={!canGoNext}
                 className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed ${
                   hasChallenge
-                    ? "text-xs text-[#6B6456] dark:text-[#A89F8C] hover:text-[#1F1F1F] dark:hover:text-white"
+                    ? "text-xs text-[#6B7280] dark:text-[#A89F8C] hover:text-[#111827] dark:hover:text-white"
                     : "bg-[#568A99] hover:bg-[#3D6878] text-white"
                 }`}
                 type="button"
@@ -124,7 +124,7 @@ export default function TopBar({
             {onBackToArticle && (
               <button
                 onClick={onBackToArticle}
-                className="px-3 py-1.5 text-sm rounded-lg border border-[#DDD0B5] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors"
+                className="px-3 py-1.5 text-sm rounded-lg border border-[#E5E7EB] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#F4F4F5] dark:hover:bg-white/10 transition-colors"
                 type="button"
               >
                 ← Back to Article

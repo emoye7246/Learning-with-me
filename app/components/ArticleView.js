@@ -16,7 +16,7 @@ function SupportSection({ support }) {
   // Plain string: render as markdown in a callout
   if (typeof support === "string") {
     return (
-      <div className="mt-10 pt-6 border-t border-[#DDD0B5] dark:border-white/10">
+      <div className="mt-10 pt-6 border-t border-[#E5E7EB] dark:border-white/10">
         <div className="rounded-xl border border-[#E9A716]/40 dark:border-[#E9A716]/20 bg-[#E9A716]/8 dark:bg-[#E9A716]/10 p-4">
           <h3 className="text-base font-semibold text-[#7A5200] dark:text-white mb-2">
             Need help?
@@ -41,7 +41,7 @@ function SupportSection({ support }) {
   } = support;
 
   return (
-    <div className="mt-10 pt-6 border-t border-[#DDD0B5] dark:border-white/10">
+    <div className="mt-10 pt-6 border-t border-[#E5E7EB] dark:border-white/10">
       <div className="rounded-xl border border-[#E9A716]/40 dark:border-[#E9A716]/20 bg-[#E9A716]/8 dark:bg-[#E9A716]/10 overflow-hidden">
         <div className="p-4 border-b border-[#E9A716]/30 dark:border-[#E9A716]/20">
           <h3 className="text-base font-semibold text-[#7A5200] dark:text-white">
@@ -182,7 +182,7 @@ export default function ArticleView({
 
   return (
     <div className="flex-1 overflow-hidden">
-      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-[#FEFCF5] dark:bg-[#1A1A1A] scrollable">
+      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-white dark:bg-[#1A1A1A] scrollable">
         <div className="max-w-3xl mx-auto">
 
           {/* Lesson header */}
@@ -190,7 +190,7 @@ export default function ArticleView({
             <h1 className="text-2xl font-bold text-[#1F1F1F] dark:text-white sm:text-3xl">
               {lesson.title}
             </h1>
-            <p className="mt-2 text-sm text-[#6B6456] dark:text-gray-200/90">
+            <p className="mt-2 text-sm text-[#6B7280] dark:text-gray-200/90">
               Read through the lesson, then mark it complete when you&apos;re ready.
             </p>
             {/* thin brand stripe under title */}
@@ -222,22 +222,22 @@ export default function ArticleView({
                   </h3>
                 ),
                 pre: ({ children }) => (
-                  <pre className="mb-4 p-4 rounded-xl bg-[#EEE8D8] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
+                  <pre className="mb-4 p-4 rounded-xl bg-[#1d293d] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
                     {children}
                   </pre>
                 ),
                 p: ({ children }) => (
-                  <p className="mb-3 leading-relaxed text-[#3A3530] dark:text-white/85">
+                  <p className="mb-3 leading-relaxed text-[#374151] dark:text-white/85">
                     {children}
                   </p>
                 ),
                 ul: ({ children }) => (
-                  <ul className="list-disc list-outside pl-6 mb-3 space-y-1 text-[#3A3530] dark:text-white/85">
+                  <ul className="list-disc list-outside pl-6 mb-3 space-y-1 text-[#374151] dark:text-white/85">
                     {children}
                   </ul>
                 ),
                 ol: ({ children }) => (
-                  <ol className="list-decimal list-outside pl-6 mb-3 space-y-1 text-[#3A3530] dark:text-white/85">
+                  <ol className="list-decimal list-outside pl-6 mb-3 space-y-1 text-[#374151] dark:text-white/85">
                     {children}
                   </ol>
                 ),
@@ -252,47 +252,47 @@ export default function ArticleView({
                     (typeof children === "string" && children.includes("\n"));
                   if (isBlock) {
                     return (
-                      <code className="font-mono text-sm text-[#2A3A30] dark:text-white/90 [font-variant-ligatures:none]">
+                      <code className="font-mono text-sm text-white/90 dark:text-white/90 [font-variant-ligatures:none]">
                         {children}
                       </code>
                     );
                   }
                   return (
-                    <code className="px-1.5 py-0.5 rounded-md bg-[#EDE3CC] dark:bg-white/10 text-[#3D6878] dark:text-[#8BBCC9] font-mono text-sm [font-variant-ligatures:none]">
+                    <code className="px-1.5 py-0.5 rounded-md bg-[#F4F4F5] dark:bg-white/10 text-[#1d293d] dark:text-[#8BBCC9] font-mono text-sm [font-variant-ligatures:none]">
                       {children}
                     </code>
                   );
                 },
-                hr: () => <hr className="my-6 border-[#DDD0B5] dark:border-white/10" />,
+                hr: () => <hr className="my-6 border-[#E5E7EB] dark:border-white/10" />,
                 table: ({ children }) => (
-                  <div className="my-4 overflow-x-auto rounded-xl border border-[#DDD0B5] dark:border-white/10">
-                    <table className="w-full border-collapse text-sm text-[#3A3530] dark:text-white/85">
+                  <div className="my-4 overflow-x-auto rounded-xl border border-[#E5E7EB] dark:border-white/10">
+                    <table className="w-full border-collapse text-sm text-[#374151] dark:text-white/85">
                       {children}
                     </table>
                   </div>
                 ),
                 thead: ({ children }) => (
-                  <thead className="bg-[#F2E4C4] dark:bg-[#242424] text-[#1F1F1F] dark:text-white">
+                  <thead className="bg-[#F3F4F6] dark:bg-[#242424] text-[#1F1F1F] dark:text-white">
                     {children}
                   </thead>
                 ),
                 tbody: ({ children }) => (
-                  <tbody className="divide-y divide-[#DDD0B5] dark:divide-white/10">
+                  <tbody className="divide-y divide-[#E5E7EB] dark:divide-white/10">
                     {children}
                   </tbody>
                 ),
                 tr: ({ children }) => (
-                  <tr className="hover:bg-[#EDE3CC]/50 dark:hover:bg-white/5 transition-colors">
+                  <tr className="hover:bg-[#F4F4F5]/50 dark:hover:bg-white/5 transition-colors">
                     {children}
                   </tr>
                 ),
                 th: ({ children }) => (
-                  <th className="px-4 py-2.5 text-left font-semibold border-b border-[#DDD0B5] dark:border-white/10">
+                  <th className="px-4 py-2.5 text-left font-semibold border-b border-[#E5E7EB] dark:border-white/10">
                     {children}
                   </th>
                 ),
                 td: ({ children }) => (
-                  <td className="px-4 py-2.5 border-b border-[#DDD0B5]/60 dark:border-white/5">
+                  <td className="px-4 py-2.5 border-b border-[#E5E7EB]/60 dark:border-white/5">
                     {children}
                   </td>
                 ),
@@ -308,7 +308,7 @@ export default function ArticleView({
 
           {/* Complete lesson button */}
           {showCompleteButton && (
-            <div className="mt-10 pt-6 border-t border-[#DDD0B5] dark:border-white/10">
+            <div className="mt-10 pt-6 border-t border-[#E5E7EB] dark:border-white/10">
               {isCompleted ? (
                 <div className="flex items-center gap-2 text-[#568A99] dark:text-[#8BBCC9] font-medium">
                   <span className="text-lg" aria-hidden>✓</span>
@@ -316,7 +316,7 @@ export default function ArticleView({
                 </div>
               ) : (
                 <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <p className="text-sm text-[#6B6456] dark:text-[#A89F8C]">
+                  <p className="text-sm text-[#6B7280] dark:text-[#A89F8C]">
                     Finished reading? Mark this lesson complete to track your progress.
                   </p>
                   <button

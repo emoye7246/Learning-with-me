@@ -6,14 +6,14 @@ import remarkGfm from 'remark-gfm';
 export default function LessonPanel({ lesson }) {
   if (!lesson) {
     return (
-      <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C]">
+      <div className="h-full flex items-center justify-center text-[#6B7280] dark:text-[#A89F8C]">
         <p>Select a lesson to begin</p>
       </div>
     );
   }
 
   return (
-    <div className="h-full min-h-0 p-6 bg-[#FEFCF5] dark:bg-[#1A1A1A] scrollable">
+    <div className="h-full min-h-0 p-6 bg-white dark:bg-[#1A1A1A] scrollable">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-[#1F1F1F] dark:text-white">
           {lesson.title}
@@ -26,7 +26,7 @@ export default function LessonPanel({ lesson }) {
             </h3>
             <ul className="space-y-1">
               {lesson.objectives.map((objective, idx) => (
-                <li key={idx} className="flex items-start gap-2 text-sm text-[#3A3530] dark:text-white/85">
+                <li key={idx} className="flex items-start gap-2 text-sm text-[#374151] dark:text-white/85">
                   <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#568A99]" />
                   {objective}
                 </li>
@@ -56,22 +56,22 @@ export default function LessonPanel({ lesson }) {
                   </h3>
                 ),
                 p: ({ children }) => (
-                  <div className="mb-3 leading-relaxed text-[#3A3530] dark:text-white/85">{children}</div>
+                  <div className="mb-3 leading-relaxed text-[#374151] dark:text-white/85">{children}</div>
                 ),
                 ul: ({ children }) => (
-                  <ul className="list-disc list-inside mb-3 space-y-1 text-[#3A3530] dark:text-white/85">{children}</ul>
+                  <ul className="list-disc list-inside mb-3 space-y-1 text-[#374151] dark:text-white/85">{children}</ul>
                 ),
                 code: ({ inline, className, children }) => {
                   if (inline) {
                     return (
-                      <code className="px-1.5 py-0.5 rounded-md bg-[#EDE3CC] dark:bg-white/10 text-[#3D6878] dark:text-[#8BBCC9] font-mono text-sm">
+                      <code className="px-1.5 py-0.5 rounded-md bg-[#F4F4F5] dark:bg-white/10 text-[#3D6878] dark:text-[#8BBCC9] font-mono text-sm">
                         {children}
                       </code>
                     );
                   }
                   return (
-                    <pre className="mb-4 p-4 rounded-xl bg-[#EEE8D8] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
-                      <code className={`font-mono text-sm text-[#2A3A30] dark:text-white/90 ${className || ''}`}>
+                    <pre className="mb-4 p-4 rounded-xl bg-[#F3F4F6] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
+                      <code className={`font-mono text-sm text-[#1F2937] dark:text-white/90 ${className || ''}`}>
                         {children}
                       </code>
                     </pre>
