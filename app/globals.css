@@ -118,15 +118,15 @@
 /* ─── Dark mode ─────────────────────────────────────────────────────────── */
 .dark {
   --background:             #1B2D3C;
-  --foreground:             #F2E4C4;
+  --foreground:             #FFFFFF;
   --card:                   #213444;
-  --card-foreground:        #F2E4C4;
+  --card-foreground:        #FFFFFF;
   --popover:                #213444;
-  --popover-foreground:     #F2E4C4;
+  --popover-foreground:     #FFFFFF;
   --primary:                #8BBCC9;
   --primary-foreground:     #1B2D3C;
   --secondary:              #2A3F50;
-  --secondary-foreground:   #F2E4C4;
+  --secondary-foreground:   #FFFFFF;
   --muted:                  #2A3F50;
   --muted-foreground:       #A89F8C;
   --accent:                 #E9A716;

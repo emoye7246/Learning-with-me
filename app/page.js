@@ -31,7 +31,7 @@ function CourseCard({ href, tag, tagBg, tagColor, title, description, cta = 'Sta
         >
           {tag}
         </span>
-        <h3 className="mt-1.5 text-lg font-semibold text-[#1F1F1F] transition-colors group-hover:text-[#568A99] dark:text-[#F2E4C4] dark:group-hover:text-[#8BBCC9]">
+        <h3 className="mt-1.5 text-lg font-semibold text-[#1F1F1F] transition-colors group-hover:text-[#568A99] dark:text-white dark:group-hover:text-[#8BBCC9]">
           {title}
         </h3>
       </div>
@@ -75,7 +75,7 @@ function Feature({ color, title, body }) {
     <div className="flex gap-4">
       <div className="mt-1 h-5 w-1.5 shrink-0 rounded-full" style={{ background: color }} />
       <div>
-        <p className="font-semibold text-[#1F1F1F] dark:text-[#F2E4C4]">{title}</p>
+        <p className="font-semibold text-[#1F1F1F] dark:text-white">{title}</p>
         <p className="mt-1 text-sm leading-relaxed text-[#6B6456] dark:text-[#A89F8C]">{body}</p>
       </div>
     </div>
@@ -85,15 +85,15 @@ function Feature({ color, title, body }) {
 /* ─── Page ─────────────────────────────────────────────────────────────── */
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#FAF3E0] text-[#1F1F1F] dark:bg-[#1B2D3C] dark:text-[#F2E4C4]">
+    <div className="min-h-screen bg-[#FAF3E0] text-[#1F1F1F] dark:bg-[#1B2D3C] dark:text-white">
 
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-10 border-b border-[#DDD0B5]/80 bg-[#FAF3E0]/90 backdrop-blur-md dark:border-white/10 dark:bg-[#1B2D3C]/90">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2.5 group">
             <StripeBar className="h-6" />
-            <span className="font-semibold tracking-tight text-[#1F1F1F] transition-opacity group-hover:opacity-70 dark:text-[#F2E4C4]">
-              LWM
+            <span className="font-semibold tracking-tight text-[#1F1F1F] transition-opacity group-hover:opacity-70 dark:text-white">
+              Learn With Me
             </span>
           </Link>
 

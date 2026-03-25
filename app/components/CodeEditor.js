@@ -13,7 +13,6 @@ export default function CodeEditor({
   onRun,
   isRunning,
   onReset,
-
 }) {
   const [localCode, setLocalCode] = useState(code || '');
 
@@ -35,18 +34,13 @@ export default function CodeEditor({
     [onRun, isRunning]
   );
 
-  // Pick language extensions (easy to expand later)
   const extensions = useMemo(() => {
     switch (language) {
       case 'python':
       default:
         return [python(), runKeymap];
     }
-  }, [language]);
-
-
-
-
+  }, [language, runKeymap]);
 
   const handleChange = (value) => {
     setLocalCode(value);
@@ -54,24 +48,26 @@ export default function CodeEditor({
   };
 
   return (
-    <div className="h-full flex flex-col bg-zinc-50 dark:bg-[#282c34]">
+    <div className="h-full flex flex-col bg-[#1B2D3C]">
       {/* Header */}
-      <div className="px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+      <div className="px-4 py-2 border-b border-white/10 bg-[#213444]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-zinc-600 dark:text-zinc-400 uppercase tracking-wide">
+            <span className="text-xs font-semibold text-[#8BBCC9] uppercase tracking-wider">
               {language}
             </span>
-            <span className="text-xs text-zinc-500 dark:text-zinc-500">
-              Code Editor
-            </span>
+            <span className="text-xs text-[#A89F8C]">editor</span>
           </div>
 
           <div className="flex items-center gap-2">
+            <span className="hidden text-xs text-[#A89F8C] sm:block">
+              ⌘↵ to run
+            </span>
+
             {onReset && (
               <button
                 onClick={onReset}
-                className="px-3 py-1 text-xs font-medium text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded transition-colors"
+                className="px-3 py-1 text-xs font-medium text-[#A89F8C] hover:bg-white/10 rounded-md transition-colors"
                 type="button"
               >
                 Reset
@@ -81,10 +77,10 @@ export default function CodeEditor({
             <button
               onClick={onRun}
               disabled={isRunning}
-              className="px-4 py-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="px-4 py-1.5 text-xs font-semibold bg-[#568A99] hover:bg-[#3D6878] text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               type="button"
             >
-              {isRunning ? 'Running...' : 'Check'}
+              {isRunning ? 'Running…' : 'Check ▶'}
             </button>
           </div>
         </div>
@@ -96,7 +92,7 @@ export default function CodeEditor({
           value={localCode}
           height="100%"
           extensions={extensions}
-          theme={oneDark} // looks good in both; if you want true light/dark switching, see note below
+          theme={oneDark}
           onChange={handleChange}
           basicSetup={{
             lineNumbers: true,

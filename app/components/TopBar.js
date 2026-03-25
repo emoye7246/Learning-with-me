@@ -1,6 +1,17 @@
 'use client';
 
+import Link from 'next/link';
 import { useTheme } from './ThemeProvider';
+
+function StripeBar({ className = '' }) {
+  return (
+    <div className={`flex gap-[3px] ${className}`}>
+      <div className="w-1.5 rounded-sm bg-[#568A99]" />
+      <div className="w-1.5 rounded-sm bg-[#E9A716]" />
+      <div className="w-1.5 rounded-sm bg-[#C7481D]" />
+    </div>
+  );
+}
 
 export default function TopBar({
   lessonTitle,
@@ -18,23 +29,30 @@ export default function TopBar({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="w-full border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-4 py-3 flex items-center justify-between">
+    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1B2D3C] px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-4 flex-1 min-w-0">
-        <h1 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 truncate">
+        {/* Brand mark → home */}
+        <Link href="/" className="flex items-center gap-2 shrink-0 group" title="Back to home">
+          <StripeBar className="h-5" />
+        </Link>
+
+        <span className="text-sm font-medium text-[#1F1F1F] dark:text-white truncate">
           {lessonTitle}
-        </h1>
+        </span>
+
+        {/* Progress bar */}
         <div className="hidden sm:flex items-center gap-2 flex-1 max-w-xs">
-          <div className="flex-1 h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-blue-600 dark:bg-blue-500 transition-all duration-300"
+          <div className="flex-1 h-1.5 bg-[#DDD0B5] dark:bg-white/10 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#568A99] transition-all duration-300 rounded-full"
               style={{ width: `${Math.max(0, Math.min(progress, 100))}%` }}
             />
           </div>
-          <span className="text-sm text-zinc-600 dark:text-zinc-400 whitespace-nowrap">
+          <span className="text-xs text-[#6B6456] dark:text-[#A89F8C] whitespace-nowrap tabular-nums">
             {Math.round(progress)}%
           </span>
           {isCompleted && (
-            <span className="text-green-600 dark:text-green-400 text-lg" title="Lesson completed">
+            <span className="text-[#568A99] dark:text-[#8BBCC9] text-sm font-semibold" title="Lesson completed">
               ✓
             </span>
           )}
@@ -45,40 +63,40 @@ export default function TopBar({
         {/* Theme toggle */}
         <button
           onClick={toggleTheme}
-          className="p-2 rounded-lg text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          className="p-2 rounded-lg text-[#6B6456] dark:text-[#A89F8C] hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors"
           type="button"
           aria-label="Toggle dark mode"
           title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
         >
           {theme === 'dark' ? (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
           ) : (
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
             </svg>
           )}
         </button>
 
-        {/* Article mode: Start Challenge (if lesson has one), Previous, Next / Skip */}
+        {/* Article mode buttons */}
         {mode === "article" ? (
           <>
             {onPrev && (
               <button
                 onClick={onPrev}
                 disabled={!canGoPrev}
-                className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-3 py-1.5 text-sm rounded-lg border border-[#DDD0B5] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                 type="button"
               >
-                Previous Lesson
+                ← Prev
               </button>
             )}
 
             {hasChallenge && onStartChallenge && (
               <button
                 onClick={onStartChallenge}
-                className="px-4 py-1.5 text-sm rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors whitespace-nowrap"
+                className="px-4 py-1.5 text-sm rounded-lg bg-[#568A99] hover:bg-[#3D6878] text-white font-medium transition-colors whitespace-nowrap"
                 type="button"
               >
                 Start Challenge →
@@ -89,24 +107,24 @@ export default function TopBar({
               <button
                 onClick={onNext}
                 disabled={!canGoNext}
-                className={`px-3 py-1.5 text-sm rounded font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed ${
+                className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed ${
                   hasChallenge
-                    ? "px-2 text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100"
-                    : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white"
+                    ? "text-xs text-[#6B6456] dark:text-[#A89F8C] hover:text-[#1F1F1F] dark:hover:text-[#F2E4C4]"
+                    : "bg-[#568A99] hover:bg-[#3D6878] text-white"
                 }`}
                 type="button"
               >
-                {hasChallenge ? "Skip" : "Next Lesson"}
+                {hasChallenge ? "Skip" : "Next Lesson →"}
               </button>
             )}
           </>
         ) : (
-          /* Challenge mode: Back to Article / Next navigation */
+          /* Challenge mode */
           <>
             {onBackToArticle && (
               <button
                 onClick={onBackToArticle}
-                className="px-3 py-1.5 text-sm rounded border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-200 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors"
+                className="px-3 py-1.5 text-sm rounded-lg border border-[#DDD0B5] dark:border-white/15 text-[#1F1F1F] dark:text-white hover:bg-[#EDE3CC] dark:hover:bg-white/10 transition-colors"
                 type="button"
               >
                 ← Back to Article
@@ -117,10 +135,10 @@ export default function TopBar({
               <button
                 onClick={onNext}
                 disabled={!canGoNext}
-                className="px-3 py-1.5 text-sm rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-1.5 text-sm rounded-lg bg-[#568A99] hover:bg-[#3D6878] text-white font-medium transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed"
                 type="button"
               >
-                Next Lesson
+                Next Lesson →
               </button>
             )}
           </>
@@ -129,4 +147,3 @@ export default function TopBar({
     </div>
   );
 }
-

@@ -9,94 +9,83 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
     setCurrentTab(activeTab);
   }, [activeTab]);
 
+  const tabs = ['output', 'tests', 'results'];
+
   return (
-    <div className="h-full flex flex-col bg-zinc-50 dark:bg-zinc-950">
-      <div className="px-4 py-2 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900">
+    <div className="h-full flex flex-col bg-[#FAF3E0] dark:bg-[#1B2D3C]">
+      {/* Tab bar */}
+      <div className="px-4 py-2 border-b border-[#DDD0B5] dark:border-white/10 bg-[#F2E4C4] dark:bg-[#213444]">
         <div className="flex gap-1">
-          <button
-            onClick={() => setCurrentTab('output')}
-            className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
-              currentTab === 'output'
-                ? 'bg-blue-600 text-white dark:bg-blue-500'
-                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800'
-            }`}
-          >
-            Output
-          </button>
-          <button
-            onClick={() => setCurrentTab('tests')}
-            className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
-              currentTab === 'tests'
-                ? 'bg-blue-600 text-white dark:bg-blue-500'
-                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800'
-            }`}
-          >
-            Tests
-          </button>
-          <button
-            onClick={() => setCurrentTab('results')}
-            className={`px-3 py-1 text-xs font-medium rounded transition-colors ${
-              currentTab === 'results'
-                ? 'bg-blue-600 text-white dark:bg-blue-500'
-                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800'
-            }`}
-          >
-            Results
-          </button>
+          {tabs.map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setCurrentTab(tab)}
+              className={`px-3 py-1 text-xs font-medium rounded-md capitalize transition-colors ${
+                currentTab === tab
+                  ? 'bg-[#568A99] text-white'
+                  : 'text-[#6B6456] dark:text-[#A89F8C] hover:bg-[#DDD0B5] dark:hover:bg-white/10'
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
       </div>
-      
+
       <div className="flex-1 overflow-y-auto p-4">
+
+        {/* Output tab */}
         {currentTab === 'output' && (
           <div className="h-full">
             {output || (result && result.status === 'error') ? (
               <div className="space-y-2">
                 {output && (
-                  <pre className="font-mono text-sm text-zinc-900 dark:text-zinc-100 whitespace-pre-wrap">
+                  <pre className="font-mono text-sm text-[#1F1F1F] dark:text-white whitespace-pre-wrap">
                     {output}
                   </pre>
                 )}
                 {result && result.status === 'error' && (
-                  <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                    <p className="font-mono text-sm text-red-800 dark:text-red-200">
+                  <div className="p-3 bg-[#C7481D]/10 dark:bg-[#C7481D]/15 border border-[#C7481D]/30 dark:border-[#C7481D]/25 rounded-xl">
+                    <p className="font-mono text-sm text-[#A33614] dark:text-[#E06040]">
                       {result.message}
                     </p>
                   </div>
                 )}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 text-sm">
+              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
                 <p>Run your code to see output here</p>
               </div>
             )}
           </div>
         )}
 
+        {/* Tests tab */}
         {currentTab === 'tests' && (
           <div className="h-full">
             {tests && tests.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {tests.map((test, idx) => (
                   <div
                     key={idx}
-                    className={`p-3 rounded-lg border ${
+                    className={`p-3 rounded-xl border ${
                       test.passed
                         ? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800'
-                        : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800'
+                        : 'bg-[#C7481D]/8 dark:bg-[#C7481D]/15 border-[#C7481D]/30 dark:border-[#C7481D]/25'
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-1">
                       {test.passed ? (
-                        <span className="text-green-600 dark:text-green-400">✓</span>
+                        <span className="text-green-600 dark:text-green-400 font-semibold text-sm">✓</span>
                       ) : (
-                        <span className="text-red-600 dark:text-red-400">✗</span>
+                        <span className="text-[#C7481D] dark:text-[#E06040] font-semibold text-sm">✗</span>
                       )}
-                      <span className="font-medium text-sm text-zinc-900 dark:text-zinc-100">
+                      <span className="font-medium text-sm text-[#1F1F1F] dark:text-white">
                         {test.name}
                       </span>
                     </div>
                     {test.message && (
-                      <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
+                      <p className="text-xs text-[#6B6456] dark:text-[#A89F8C] mt-1 pl-5">
                         {test.message}
                       </p>
                     )}
@@ -104,78 +93,64 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                 ))}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 text-sm">
+              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
                 <p>No tests available</p>
               </div>
             )}
           </div>
         )}
 
+        {/* Results tab */}
         {currentTab === 'results' && (
           <div className="h-full">
             {result ? (
               <div className="space-y-3">
                 {result.status === 'success' && (
-                  <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">✅</span>
-                      <span className="font-semibold text-green-900 dark:text-green-100">
-                        Success!
-                      </span>
+                  <div className="p-4 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-green-900 dark:text-green-100">All tests passed</span>
                     </div>
-                    <p className="text-green-800 dark:text-green-200">
-                      {result.message}
-                    </p>
+                    <p className="text-sm text-green-800 dark:text-green-200">{result.message}</p>
                     {result.passedCount !== undefined && (
-                      <p className="text-sm text-green-700 dark:text-green-300 mt-2">
-                        Passed {result.passedCount} of {result.totalCount} tests
+                      <p className="text-xs text-green-700 dark:text-green-300 mt-1">
+                        {result.passedCount} of {result.totalCount} tests
                       </p>
                     )}
                   </div>
                 )}
-                
+
                 {result.status === 'fail' && (
-                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">❌</span>
-                      <span className="font-semibold text-red-900 dark:text-red-100">
-                        Test Failed
-                      </span>
+                  <div className="p-4 bg-[#C7481D]/8 dark:bg-[#C7481D]/15 border border-[#C7481D]/30 dark:border-[#C7481D]/25 rounded-xl">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-[#A33614] dark:text-[#E06040]">Tests failed</span>
                     </div>
-                    <p className="text-red-800 dark:text-red-200">
-                      {result.message}
-                    </p>
+                    <p className="text-sm text-[#A33614] dark:text-[#E06040]">{result.message}</p>
                     {result.passedCount !== undefined && (
-                      <p className="text-sm text-red-700 dark:text-red-300 mt-2">
-                        Passed {result.passedCount} of {result.totalCount} tests
+                      <p className="text-xs text-[#A33614]/80 dark:text-[#E06040]/80 mt-1">
+                        {result.passedCount} of {result.totalCount} tests passed
                       </p>
                     )}
                   </div>
                 )}
-                
+
                 {result.status === 'error' && (
-                  <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-2xl">⚠️</span>
-                      <span className="font-semibold text-yellow-900 dark:text-yellow-100">
-                        Error
-                      </span>
+                  <div className="p-4 bg-[#E9A716]/10 dark:bg-[#E9A716]/10 border border-[#E9A716]/40 dark:border-[#E9A716]/20 rounded-xl">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="font-semibold text-[#7A5200] dark:text-white">Error</span>
                     </div>
-                    <p className="text-yellow-800 dark:text-yellow-200">
-                      {result.message}
-                    </p>
+                    <p className="text-sm text-[#7A5200] dark:text-white/85">{result.message}</p>
                   </div>
                 )}
 
                 {completed && (
-                  <div className="p-4 rounded-lg border bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800">
-                    <div className="font-semibold text-emerald-900 dark:text-emerald-100 mb-3">
-                      ✅ Lesson Completed
+                  <div className="p-4 rounded-xl border border-[#568A99]/40 dark:border-[#568A99]/30 bg-[#568A99]/10 dark:bg-[#568A99]/15">
+                    <div className="font-semibold text-[#3D6878] dark:text-[#8BBCC9] mb-2">
+                      ✓ Lesson Completed
                     </div>
                     {canGoNext && onNext && (
                       <button
                         onClick={onNext}
-                        className="mt-3 px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 text-white font-medium transition-colors"
+                        className="mt-1 px-4 py-2 rounded-lg bg-[#568A99] hover:bg-[#3D6878] text-white font-medium transition-colors text-sm"
                         type="button"
                       >
                         Next Lesson →
@@ -185,8 +160,8 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
                 )}
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 text-sm">
-                <p>Results will appear here after running tests</p>
+              <div className="h-full flex items-center justify-center text-[#6B6456] dark:text-[#A89F8C] text-sm">
+                <p>Results will appear here after running</p>
               </div>
             )}
           </div>
@@ -195,4 +170,3 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
     </div>
   );
 }
-
