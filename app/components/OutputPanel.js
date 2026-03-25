@@ -12,9 +12,9 @@ export default function OutputPanel({ output, tests, result, activeTab = 'output
   const tabs = ['output', 'tests', 'results'];
 
   return (
-    <div className="h-full flex flex-col bg-[#FAF3E0] dark:bg-[#1B2D3C]">
+    <div className="h-full flex flex-col bg-[#FAF3E0] dark:bg-[#1A1A1A]">
       {/* Tab bar */}
-      <div className="px-4 py-2 border-b border-[#DDD0B5] dark:border-white/10 bg-[#F2E4C4] dark:bg-[#213444]">
+      <div className="px-4 py-2 border-b border-[#DDD0B5] dark:border-white/10 bg-[#F2E4C4] dark:bg-[#242424]">
         <div className="flex gap-1">
           {tabs.map((tab) => (
             <button

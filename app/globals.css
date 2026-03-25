@@ -83,7 +83,7 @@
   --brand-ember-dark: #A33614;
   --brand-cream:      #FAF3E0;   /* warm parchment */
   --brand-cream-deep: #F2E4C4;   /* deeper warm tone */
-  --brand-navy:       #1B2D3C;
+  --brand-navy:       #1A1A1A;
 
   /* Semantic tokens */
   --background:             #FAF3E0;
@@ -117,32 +117,32 @@
 
 /* ─── Dark mode ─────────────────────────────────────────────────────────── */
 .dark {
-  --background:             #1B2D3C;
+  --background:             #1A1A1A;
   --foreground:             #FFFFFF;
-  --card:                   #213444;
+  --card:                   #242424;
   --card-foreground:        #FFFFFF;
-  --popover:                #213444;
+  --popover:                #242424;
   --popover-foreground:     #FFFFFF;
   --primary:                #8BBCC9;
-  --primary-foreground:     #1B2D3C;
-  --secondary:              #2A3F50;
+  --primary-foreground:     #1A1A1A;
+  --secondary:              #2E2E2E;
   --secondary-foreground:   #FFFFFF;
-  --muted:                  #2A3F50;
-  --muted-foreground:       #A89F8C;
+  --muted:                  #2E2E2E;
+  --muted-foreground:       #8A8A8A;
   --accent:                 #E9A716;
-  --accent-foreground:      #1B2D3C;
+  --accent-foreground:      #1A1A1A;
   --destructive:            #E06040;
-  --border:                 rgba(242, 228, 196, 0.12);
-  --input:                  rgba(242, 228, 196, 0.08);
+  --border:                 rgba(255, 255, 255, 0.10);
+  --input:                  rgba(255, 255, 255, 0.07);
   --ring:                   #568A99;
 
-  --sidebar:                   #213444;
-  --sidebar-foreground:        #F2E4C4;
+  --sidebar:                   #242424;
+  --sidebar-foreground:        #FFFFFF;
   --sidebar-primary:           #8BBCC9;
-  --sidebar-primary-foreground: #1B2D3C;
-  --sidebar-accent:            #2A3F50;
-  --sidebar-accent-foreground: #F2E4C4;
-  --sidebar-border:            rgba(242, 228, 196, 0.12);
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent:            #2E2E2E;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border:            rgba(255, 255, 255, 0.10);
   --sidebar-ring:              #568A99;
 }
 

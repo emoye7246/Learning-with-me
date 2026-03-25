@@ -23,10 +23,10 @@ export default function LearnPythonTocPage() {
   const { completed, percent } = useProgress(lessons);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF3E0] dark:bg-[#1B2D3C] text-[#1F1F1F] dark:text-white">
+    <div className="min-h-screen flex flex-col bg-[#FAF3E0] dark:bg-[#1A1A1A] text-[#1F1F1F] dark:text-white">
 
       {/* Breadcrumb nav */}
-      <div className="border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1B2D3C] px-4 py-3">
+      <div className="border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1A1A1A] px-4 py-3">
         <div className="max-w-3xl mx-auto flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 group" title="Home">
             <StripeBar className="h-4" />
@@ -88,7 +88,7 @@ export default function LearnPythonTocPage() {
                 {module.title}
               </h2>
 
-              <ul className="rounded-2xl border border-[#DDD0B5] dark:border-white/10 bg-[#FFFDF5] dark:bg-[#213444] overflow-hidden divide-y divide-[#DDD0B5]/60 dark:divide-white/5">
+              <ul className="rounded-2xl border border-[#DDD0B5] dark:border-white/10 bg-[#FFFDF5] dark:bg-[#242424] overflow-hidden divide-y divide-[#DDD0B5]/60 dark:divide-white/5">
                 {module.lessonIds.map((lessonId, idx) => {
                   const lesson = lessonById[lessonId];
                   const done = completed(lessonId);

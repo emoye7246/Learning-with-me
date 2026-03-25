@@ -29,7 +29,7 @@ export default function TopBar({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1B2D3C] px-4 py-3 flex items-center justify-between">
+    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-4 flex-1 min-w-0">
         {/* Brand mark → home */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" title="Back to home">

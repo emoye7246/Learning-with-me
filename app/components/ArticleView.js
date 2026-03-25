@@ -147,7 +147,7 @@ function SupportSection({ support }) {
                       {revealSolutionWarning}
                     </p>
                   )}
-                  <pre className="p-3 rounded-lg bg-[#1B2D3C] dark:bg-[#0F1E2A] text-[#F2E4C4] text-xs overflow-auto">
+                  <pre className="p-3 rounded-lg bg-[#1A1A1A] dark:bg-[#141414] text-[#F2E4C4] text-xs overflow-auto">
                     {exampleSolution}
                   </pre>
                 </div>
@@ -182,7 +182,7 @@ export default function ArticleView({
 
   return (
     <div className="flex-1 overflow-hidden">
-      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-[#FAF3E0] dark:bg-[#1B2D3C] scrollable">
+      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-[#FAF3E0] dark:bg-[#1A1A1A] scrollable">
         <div className="max-w-3xl mx-auto">
 
           {/* Lesson header */}
@@ -222,7 +222,7 @@ export default function ArticleView({
                   </h3>
                 ),
                 pre: ({ children }) => (
-                  <pre className="mb-4 p-4 rounded-xl bg-[#1B2D3C] dark:bg-[#0F1E2A] overflow-auto border border-white/10">
+                  <pre className="mb-4 p-4 rounded-xl bg-[#1A1A1A] dark:bg-[#141414] overflow-auto border border-white/10">
                     {children}
                   </pre>
                 ),
@@ -272,7 +272,7 @@ export default function ArticleView({
                   </div>
                 ),
                 thead: ({ children }) => (
-                  <thead className="bg-[#F2E4C4] dark:bg-[#213444] text-[#1F1F1F] dark:text-white">
+                  <thead className="bg-[#F2E4C4] dark:bg-[#242424] text-[#1F1F1F] dark:text-white">
                     {children}
                   </thead>
                 ),

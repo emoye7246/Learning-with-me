@@ -19,7 +19,7 @@ function CourseCard({ href, tag, tagBg, tagColor, title, description, cta = 'Sta
   return (
     <Link
       href={href}
-      className="group relative flex flex-col rounded-2xl border border-[#DDD0B5] bg-[#FFFDF5] p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#568A99]/60 hover:shadow-md dark:border-white/10 dark:bg-[#213444] dark:hover:border-[#8BBCC9]/50"
+      className="group relative flex flex-col rounded-2xl border border-[#DDD0B5] bg-[#FFFDF5] p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#568A99]/60 hover:shadow-md dark:border-white/10 dark:bg-[#242424] dark:hover:border-[#8BBCC9]/50"
     >
       {/* accent bar top */}
       <div className="absolute inset-x-0 top-0 h-[3px] rounded-t-2xl bg-gradient-to-r from-[#568A99] via-[#E9A716] to-[#C7481D] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
@@ -53,7 +53,7 @@ function CourseCard({ href, tag, tagBg, tagColor, title, description, cta = 'Sta
 /* ─── Coming soon card ─────────────────────────────────────────────────── */
 function ComingSoonCard() {
   return (
-    <div className="flex flex-col rounded-2xl border border-dashed border-[#DDD0B5] bg-[#FAF3E0]/60 p-6 dark:border-white/10 dark:bg-[#213444]/40">
+    <div className="flex flex-col rounded-2xl border border-dashed border-[#DDD0B5] bg-[#FAF3E0]/60 p-6 dark:border-white/10 dark:bg-[#242424]/40">
       <div className="flex items-start gap-4 mb-4">
         <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#EDE3CC] font-mono text-sm text-[#A89F8C] dark:bg-white/10 dark:text-[#6B6456]">
           ?
@@ -85,10 +85,10 @@ function Feature({ color, title, body }) {
 /* ─── Page ─────────────────────────────────────────────────────────────── */
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#FAF3E0] text-[#1F1F1F] dark:bg-[#1B2D3C] dark:text-white">
+    <div className="min-h-screen bg-[#FAF3E0] text-[#1F1F1F] dark:bg-[#1A1A1A] dark:text-white">
 
       {/* ── Nav ─────────────────────────────────────────────────────────── */}
-      <header className="sticky top-0 z-10 border-b border-[#DDD0B5]/80 bg-[#FAF3E0]/90 backdrop-blur-md dark:border-white/10 dark:bg-[#1B2D3C]/90">
+      <header className="sticky top-0 z-10 border-b border-[#DDD0B5]/80 bg-[#FAF3E0]/90 backdrop-blur-md dark:border-white/10 dark:bg-[#1A1A1A]/90">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-2.5 group">
             <StripeBar className="h-6" />
@@ -172,7 +172,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Why section ─────────────────────────────────────────────────── */}
-      <section className="bg-[#F2E4C4]/50 py-16 dark:bg-[#213444]/40 md:py-20">
+      <section className="bg-[#F2E4C4]/50 py-16 dark:bg-[#242424]/40 md:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <div>
@@ -237,7 +237,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── CTA banner ──────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#1B2D3C] py-16 text-[#F2E4C4]">
+      <section className="relative overflow-hidden bg-[#1A1A1A] py-16 text-[#F2E4C4]">
         {/* subtle stripe texture on the right */}
         <div className="pointer-events-none absolute right-0 top-0 h-full w-20 opacity-10" aria-hidden>
           <div className="flex h-full gap-[4px]">
@@ -253,7 +253,7 @@ export default function LandingPage() {
           </p>
           <Link
             href="/courses/learn-python"
-            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#E9A716] px-7 py-3.5 text-base font-semibold text-[#1B2D3C] shadow-md transition-all hover:bg-[#C48A0A] hover:shadow-lg"
+            className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#E9A716] px-7 py-3.5 text-base font-semibold text-[#1A1A1A] shadow-md transition-all hover:bg-[#C48A0A] hover:shadow-lg"
           >
             Open Python course
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -264,7 +264,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="border-t border-[#DDD0B5] bg-[#FAF3E0] py-8 dark:border-white/10 dark:bg-[#1B2D3C]">
+      <footer className="border-t border-[#DDD0B5] bg-[#FAF3E0] py-8 dark:border-white/10 dark:bg-[#1A1A1A]">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
             <div className="flex items-center gap-2">

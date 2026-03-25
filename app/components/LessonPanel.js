@@ -13,7 +13,7 @@ export default function LessonPanel({ lesson }) {
   }
 
   return (
-    <div className="h-full min-h-0 p-6 bg-[#FAF3E0] dark:bg-[#1B2D3C] scrollable">
+    <div className="h-full min-h-0 p-6 bg-[#FAF3E0] dark:bg-[#1A1A1A] scrollable">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-[#1F1F1F] dark:text-white">
           {lesson.title}
@@ -70,7 +70,7 @@ export default function LessonPanel({ lesson }) {
                     );
                   }
                   return (
-                    <pre className="mb-4 p-4 rounded-xl bg-[#1B2D3C] dark:bg-[#0F1E2A] overflow-auto border border-white/10">
+                    <pre className="mb-4 p-4 rounded-xl bg-[#1A1A1A] dark:bg-[#141414] overflow-auto border border-white/10">
                       <code className={`font-mono text-sm text-[#8BBCC9] ${className || ''}`}>
                         {children}
                       </code>
@@ -90,7 +90,7 @@ export default function LessonPanel({ lesson }) {
               Examples
             </h3>
             {lesson.examples.map((example, idx) => (
-              <div key={idx} className="mb-3 rounded-xl bg-[#1B2D3C] dark:bg-[#0F1E2A] border border-white/10 p-4">
+              <div key={idx} className="mb-3 rounded-xl bg-[#1A1A1A] dark:bg-[#141414] border border-white/10 p-4">
                 <pre className="text-sm font-mono text-[#8BBCC9] whitespace-pre-wrap">
                   {example}
                 </pre>

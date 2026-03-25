@@ -48,9 +48,9 @@ export default function CodeEditor({
   };
 
   return (
-    <div className="h-full flex flex-col bg-[#1B2D3C]">
+    <div className="h-full flex flex-col bg-[#1A1A1A]">
       {/* Header */}
-      <div className="px-4 py-2 border-b border-white/10 bg-[#213444]">
+      <div className="px-4 py-2 border-b border-white/10 bg-[#242424]">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold text-[#8BBCC9] uppercase tracking-wider">
