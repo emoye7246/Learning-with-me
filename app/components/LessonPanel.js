@@ -13,7 +13,7 @@ export default function LessonPanel({ lesson }) {
   }
 
   return (
-    <div className="h-full min-h-0 p-6 bg-[#FAF3E0] dark:bg-[#1A1A1A] scrollable">
+    <div className="h-full min-h-0 p-6 bg-[#FEFCF5] dark:bg-[#1A1A1A] scrollable">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-bold mb-4 text-[#1F1F1F] dark:text-white">
           {lesson.title}
@@ -70,8 +70,8 @@ export default function LessonPanel({ lesson }) {
                     );
                   }
                   return (
-                    <pre className="mb-4 p-4 rounded-xl bg-[#1A1A1A] dark:bg-[#141414] overflow-auto border border-white/10">
-                      <code className={`font-mono text-sm text-[#8BBCC9] ${className || ''}`}>
+                    <pre className="mb-4 p-4 rounded-xl bg-[#EEE8D8] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
+                      <code className={`font-mono text-sm text-[#2A3A30] dark:text-white/90 ${className || ''}`}>
                         {children}
                       </code>
                     </pre>

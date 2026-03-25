@@ -98,7 +98,7 @@ export default function LearnPythonTocPage() {
                     <li key={lessonId}>
                       <Link
                         href={`/courses/learn-python/lesson?lesson=${encodeURIComponent(lessonId)}`}
-                        className="flex items-center gap-3 py-3 px-4 text-[#3A3530] dark:text-white/85 hover:bg-[#EDE3CC]/50 dark:hover:bg-white/5 hover:text-[#1F1F1F] dark:hover:text-[#F2E4C4] transition-colors group"
+                        className="flex items-center gap-3 py-3 px-4 text-[#3A3530] dark:text-white/85 hover:bg-[#EDE3CC]/50 dark:hover:bg-white/5 hover:text-[#1F1F1F] dark:hover:text-white transition-colors group"
                       >
                         {/* Status indicator */}
                         <span className="flex h-6 w-6 shrink-0 items-center justify-center" aria-hidden>

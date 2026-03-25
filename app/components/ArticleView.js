@@ -147,7 +147,7 @@ function SupportSection({ support }) {
                       {revealSolutionWarning}
                     </p>
                   )}
-                  <pre className="p-3 rounded-lg bg-[#1A1A1A] dark:bg-[#141414] text-[#F2E4C4] text-xs overflow-auto">
+                  <pre className="p-3 rounded-lg bg-[#1A1A1A] dark:bg-[#2D2D2D] text-white text-xs overflow-auto">
                     {exampleSolution}
                   </pre>
                 </div>
@@ -182,7 +182,7 @@ export default function ArticleView({
 
   return (
     <div className="flex-1 overflow-hidden">
-      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-[#FAF3E0] dark:bg-[#1A1A1A] scrollable">
+      <div ref={scrollRef} className="h-full overflow-auto p-6 bg-[#FEFCF5] dark:bg-[#1A1A1A] scrollable">
         <div className="max-w-3xl mx-auto">
 
           {/* Lesson header */}
@@ -190,7 +190,7 @@ export default function ArticleView({
             <h1 className="text-2xl font-bold text-[#1F1F1F] dark:text-white sm:text-3xl">
               {lesson.title}
             </h1>
-            <p className="mt-2 text-sm text-[#6B6456] dark:text-[#A89F8C]">
+            <p className="mt-2 text-sm text-[#6B6456] dark:text-gray-200/90">
               Read through the lesson, then mark it complete when you&apos;re ready.
             </p>
             {/* thin brand stripe under title */}
@@ -222,7 +222,7 @@ export default function ArticleView({
                   </h3>
                 ),
                 pre: ({ children }) => (
-                  <pre className="mb-4 p-4 rounded-xl bg-[#1A1A1A] dark:bg-[#141414] overflow-auto border border-white/10">
+                  <pre className="mb-4 p-4 rounded-xl bg-[#EEE8D8] dark:bg-[#2D2D2D] overflow-auto border border-black/5 dark:border-white/8">
                     {children}
                   </pre>
                 ),
@@ -252,7 +252,7 @@ export default function ArticleView({
                     (typeof children === "string" && children.includes("\n"));
                   if (isBlock) {
                     return (
-                      <code className="font-mono text-sm text-[#8BBCC9] [font-variant-ligatures:none]">
+                      <code className="font-mono text-sm text-[#2A3A30] dark:text-white/90 [font-variant-ligatures:none]">
                         {children}
                       </code>
                     );

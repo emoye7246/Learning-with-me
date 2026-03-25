@@ -29,7 +29,7 @@ export default function TopBar({
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FAF3E0] dark:bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
+    <div className="w-full border-b border-[#DDD0B5] dark:border-white/10 bg-[#FEFCF5] dark:bg-[#1A1A1A] px-4 py-3 flex items-center justify-between">
       <div className="flex items-center gap-4 flex-1 min-w-0">
         {/* Brand mark → home */}
         <Link href="/" className="flex items-center gap-2 shrink-0 group" title="Back to home">
@@ -109,7 +109,7 @@ export default function TopBar({
                 disabled={!canGoNext}
                 className={`px-3 py-1.5 text-sm rounded-lg font-medium transition-colors whitespace-nowrap disabled:opacity-40 disabled:cursor-not-allowed ${
                   hasChallenge
-                    ? "text-xs text-[#6B6456] dark:text-[#A89F8C] hover:text-[#1F1F1F] dark:hover:text-[#F2E4C4]"
+                    ? "text-xs text-[#6B6456] dark:text-[#A89F8C] hover:text-[#1F1F1F] dark:hover:text-white"
                     : "bg-[#568A99] hover:bg-[#3D6878] text-white"
                 }`}
                 type="button"
