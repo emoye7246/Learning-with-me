@@ -1,0 +1,179 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── Design System: Vintage × Modern ──────────────────────────────────────
+   Brand palette pulled directly from the LWM logo:
+     Teal   #568A99  — calm, trustworthy, slightly retro
+     Amber  #E9A716  — warm energy, golden confidence
+     Ember  #C7481D  — bold, forward-motion, red-orange
+
+   Base is a warm cream — not white. That single choice is what makes this
+   feel vintage without screaming it.
+──────────────────────────────────────────────────────────────────────────── */
+
+@theme inline {
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Semantic color aliases → CSS vars below */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-teal: var(--brand-teal);
+  --color-teal-light: var(--brand-teal-light);
+  --color-teal-dark: var(--brand-teal-dark);
+  --color-amber: var(--brand-amber);
+  --color-amber-dark: var(--brand-amber-dark);
+  --color-ember: var(--brand-ember);
+  --color-ember-dark: var(--brand-ember-dark);
+  --color-cream: var(--brand-cream);
+  --color-cream-deep: var(--brand-cream-deep);
+  --color-navy: var(--brand-navy);
+
+  /* Radii */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ─── Light mode (default) ──────────────────────────────────────────────── */
+:root {
+  --radius: 0.625rem;
+
+  /* Brand palette */
+  --brand-teal:       #568A99;
+  --brand-teal-light: #8BBCC9;
+  --brand-teal-dark:  #3D6878;
+  --brand-amber:      #E9A716;
+  --brand-amber-dark: #C48A0A;
+  --brand-ember:      #C7481D;
+  --brand-ember-dark: #A33614;
+  --brand-cream:      #FAF3E0;   /* warm parchment */
+  --brand-cream-deep: #F2E4C4;   /* deeper warm tone */
+  --brand-navy:       #1A1A1A;
+
+  /* Semantic tokens */
+  --background:             #FFFFFF;
+  --foreground:             #1A1A1A;
+  --card:                   #FFFFFF;
+  --card-foreground:        #1A1A1A;
+  --popover:                #FFFFFF;
+  --popover-foreground:     #1A1A1A;
+  --primary:                #568A99;
+  --primary-foreground:     #FFFFFF;
+  --secondary:              #F3F4F6;
+  --secondary-foreground:   #1A1A1A;
+  --muted:                  #F3F4F6;
+  --muted-foreground:       #6B7280;
+  --accent:                 #E9A716;
+  --accent-foreground:      #1A1A1A;
+  --destructive:            #C7481D;
+  --border:                 #E5E7EB;
+  --input:                  #E5E7EB;
+  --ring:                   #568A99;
+
+  --sidebar:                   #F9FAFB;
+  --sidebar-foreground:        #1A1A1A;
+  --sidebar-primary:           #568A99;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent:            #F3F4F6;
+  --sidebar-accent-foreground: #1A1A1A;
+  --sidebar-border:            #E5E7EB;
+  --sidebar-ring:              #568A99;
+}
+
+/* ─── Dark mode ─────────────────────────────────────────────────────────── */
+.dark {
+  --background:             #1A1A1A;
+  --foreground:             #FFFFFF;
+  --card:                   #242424;
+  --card-foreground:        #FFFFFF;
+  --popover:                #242424;
+  --popover-foreground:     #FFFFFF;
+  --primary:                #8BBCC9;
+  --primary-foreground:     #1A1A1A;
+  --secondary:              #2E2E2E;
+  --secondary-foreground:   #FFFFFF;
+  --muted:                  #2E2E2E;
+  --muted-foreground:       #8A8A8A;
+  --accent:                 #E9A716;
+  --accent-foreground:      #1A1A1A;
+  --destructive:            #E06040;
+  --border:                 rgba(255, 255, 255, 0.10);
+  --input:                  rgba(255, 255, 255, 0.07);
+  --ring:                   #568A99;
+
+  --sidebar:                   #242424;
+  --sidebar-foreground:        #FFFFFF;
+  --sidebar-primary:           #8BBCC9;
+  --sidebar-primary-foreground: #1A1A1A;
+  --sidebar-accent:            #2E2E2E;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border:            rgba(255, 255, 255, 0.10);
+  --sidebar-ring:              #568A99;
+}
+
+/* ─── Base layer ────────────────────────────────────────────────────────── */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────── */
+.scrollable {
+  overflow: auto;
+}
+.scrollable::-webkit-scrollbar { width: 10px; height: 10px; }
+.scrollable::-webkit-scrollbar-track { background: transparent; }
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(86, 138, 153, 0.3);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(86, 138, 153, 0.5);
+}
+.dark .scrollable::-webkit-scrollbar-thumb {
+  background-color: rgba(139, 188, 201, 0.25);
+}
+.dark .scrollable::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(139, 188, 201, 0.4);
+}

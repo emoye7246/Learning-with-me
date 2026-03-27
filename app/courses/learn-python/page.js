@@ -53,7 +53,7 @@ export default function LearnPythonTocPage() {
               Learn Python
             </h1>
           </div>
-          <p className="mt-2 text-[#6B7280] dark:text-[#A89F8C] pl-[52px]">
+          <p className="mt-2 text-[#6B7280] dark:text-white pl-[52px]">
             Work through the course in order, or jump to any lesson below.
           </p>
 
@@ -66,7 +66,7 @@ export default function LearnPythonTocPage() {
                   style={{ width: `${percent}%` }}
                 />
               </div>
-              <span className="text-sm text-[#6B7280] dark:text-[#A89F8C] tabular-nums">
+              <span className="text-sm text-[#6B7280] dark:text-white tabular-nums">
                 {Math.round(percent)}% complete
               </span>
             </div>
@@ -84,7 +84,7 @@ export default function LearnPythonTocPage() {
         <div className="space-y-8">
           {curriculum.map((module) => (
             <section key={module.id}>
-              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-[#A89F8C] mb-3">
+              <h2 className="text-xs font-semibold uppercase tracking-widest text-[#6B7280] dark:text-white mb-3">
                 {module.title}
               </h2>
 

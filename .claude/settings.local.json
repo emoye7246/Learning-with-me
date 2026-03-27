@@ -17,7 +17,13 @@
       "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/git-workflow\")",
       "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/standard-library-essentials\")",
       "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/real-world\")",
-      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/capstone\")"
+      "Bash(mkdir -p \"/Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/capstone\")",
+      "Bash(grep -l \"hasChallenge.*true\" /Volumes/My Code 1/Learning/learning-code/app/courses/learn-java/lessons/java-fundamentals/*.js)",
+      "Bash(for dir:*)",
+      "Bash(do)",
+      "Bash(echo \"=== $dir ===\")",
+      "Read(//Volumes/My Code 1/Learning/learning-code/app/courses/learn-csharp/lessons/**)",
+      "Bash(__NEW_LINE_3763cb2e250882af__ done:*)"
     ]
   }
 }

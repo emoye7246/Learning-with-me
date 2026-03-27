@@ -104,6 +104,18 @@ export default function LandingPage() {
               Python
             </Link>
             <Link
+              href="/courses/learn-java"
+              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-[#A89F8C] dark:hover:text-[#8BBCC9]"
+            >
+              Java
+            </Link>
+            <Link
+              href="/courses/learn-csharp"
+              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-[#A89F8C] dark:hover:text-[#8BBCC9]"
+            >
+              C#
+            </Link>
+            <Link
               href="/courses/learn-python"
               className="rounded-lg bg-[#568A99] px-4 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#3D6878]"
             >
@@ -227,7 +239,22 @@ export default function LandingPage() {
               title="Learn Python"
               description="Variables, functions, data structures, and control flow. Write real code and pass real tests — from your first line to full programs."
             />
-            <ComingSoonCard />
+            <CourseCard
+              href="/courses/learn-java"
+              tag="java"
+              tagBg="rgba(201,99,44,0.12)"
+              tagColor="#A0400F"
+              title="Learn Java"
+              description="Types, OOP, collections, concurrency, and build tools. A thorough path from Java basics to real-world backend and enterprise development."
+            />
+            <CourseCard
+              href="/courses/learn-csharp"
+              tag="C#"
+              tagBg="rgba(233,167,22,0.14)"
+              tagColor="#8C6400"
+              title="Learn C#"
+              description="Learn .NET fundamentals, console apps, OOP, async, APIs, and professional workflow in a structured C# developer path."
+            />
             <div className="hidden lg:block">
               <ComingSoonCard />
             </div>
