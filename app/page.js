@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 /* ─── Brand stripe decoration ──────────────────────────────────────────── */
@@ -14,37 +15,48 @@ function StripeBar({ className = '' }) {
 }
 
 /* ─── Course card ──────────────────────────────────────────────────────── */
-function CourseCard({ href, tag, tagBg, tagColor, title, description, cta = 'Start learning' }) {
+function CourseCard({ href, tag, tagBg, tagColor, imageSrc, imageAlt, title, description, cta = 'Start learning' }) {
   return (
     <Link
       href={href}
-      className="group relative flex flex-col rounded-2xl border border-[#DDD0B5] bg-[#FFFDF5] p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#568A99]/60 hover:shadow-md dark:border-white/10 dark:bg-[#242424] dark:hover:border-[#8BBCC9]/50"
+      className="group relative block rounded-2xl bg-[#DDD0B5] p-px shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md dark:bg-white/10"
     >
-      {/* accent bar top */}
-      <div className="absolute inset-x-0 top-0 h-[3px] rounded-t-2xl bg-gradient-to-r from-[#568A99] via-[#E9A716] to-[#C7481D] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#568A99] via-[#E9A716] to-[#C7481D] opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
 
-      <div className="flex items-start gap-4 mb-4">
-        <span
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-mono text-sm font-bold"
-          style={{ background: tagBg, color: tagColor }}
-        >
-          {tag}
+      <div className="relative flex h-full flex-col rounded-[15px] bg-[#FFFDF5] p-6 dark:bg-[#242424]">
+        <div className="mb-4 flex items-start gap-4">
+          <span
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden"
+            style={{ background: tagBg, color: tagColor }}
+          >
+            {imageSrc ? (
+              <Image
+                src={imageSrc}
+                alt={imageAlt ?? title}
+                width={28}
+                height={28}
+                className="h-7 w-7 object-contain"
+              />
+            ) : (
+              <span className="font-mono text-sm font-bold">{tag}</span>
+            )}
+          </span>
+          <h3 className="mt-1.5 text-lg font-semibold text-[#1F1F1F] transition-colors group-hover:text-[#568A99] dark:text-white dark:group-hover:text-[#8BBCC9]">
+            {title}
+          </h3>
+        </div>
+
+        <p className="text-sm leading-relaxed text-[#6B6456] dark:text-[#A89F8C]">
+          {description}
+        </p>
+
+        <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#568A99] group-hover:underline dark:text-[#8BBCC9]">
+          {cta}
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-0.5">
+            <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </span>
-        <h3 className="mt-1.5 text-lg font-semibold text-[#1F1F1F] transition-colors group-hover:text-[#568A99] dark:text-white dark:group-hover:text-[#8BBCC9]">
-          {title}
-        </h3>
       </div>
-
-      <p className="text-sm leading-relaxed text-[#6B6456] dark:text-[#A89F8C]">
-        {description}
-      </p>
-
-      <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-[#568A99] group-hover:underline dark:text-[#8BBCC9]">
-        {cta}
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="transition-transform duration-200 group-hover:translate-x-0.5">
-          <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </span>
     </Link>
   );
 }
@@ -234,24 +246,30 @@ export default function LandingPage() {
             <CourseCard
               href="/courses/learn-python"
               tag="py"
-              tagBg="rgba(86,138,153,0.15)"
+              // tagBg="rgba(86,138,153,0.15)"
               tagColor="#3D6878"
+              imageSrc="/python.svg"
+              imageAlt="Python logo"
               title="Learn Python"
               description="Variables, functions, data structures, and control flow. Write real code and pass real tests — from your first line to full programs."
             />
             <CourseCard
               href="/courses/learn-java"
               tag="java"
-              tagBg="rgba(201,99,44,0.12)"
+              // tagBg="rgba(201,99,44,0.12)"
               tagColor="#A0400F"
+              imageSrc="/java.svg"
+              imageAlt="Java logo"
               title="Learn Java"
               description="Types, OOP, collections, concurrency, and build tools. A thorough path from Java basics to real-world backend and enterprise development."
             />
             <CourseCard
               href="/courses/learn-csharp"
               tag="C#"
-              tagBg="rgba(233,167,22,0.14)"
+              // tagBg="rgba(233,167,22,0.14)"
               tagColor="#8C6400"
+              imageSrc="/Logo_C_sharp.svg"
+              imageAlt="C sharp logo"
               title="Learn C#"
               description="Learn .NET fundamentals, console apps, OOP, async, APIs, and professional workflow in a structured C# developer path."
             />
