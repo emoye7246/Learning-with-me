@@ -46,7 +46,7 @@ function CourseCard({ href, tag, tagBg, tagColor, imageSrc, imageAlt, title, des
           </h3>
         </div>
 
-        <p className="text-sm leading-relaxed text-[#6B6456] dark:text-[#A89F8C]">
+        <p className="text-sm leading-relaxed text-[#6B6456] dark:text-white">
           {description}
         </p>
 
@@ -87,7 +87,7 @@ function Feature({ color, title, body }) {
       <div className="mt-1 h-5 w-1.5 shrink-0 rounded-full" style={{ background: color }} />
       <div>
         <p className="font-semibold text-[#1F1F1F] dark:text-white">{title}</p>
-        <p className="mt-1 text-sm leading-relaxed text-[#6B6456] dark:text-[#A89F8C]">{body}</p>
+        <p className="mt-1 text-sm leading-relaxed text-[#6B6456] dark:text-white">{body}</p>
       </div>
     </div>
   );
@@ -111,19 +111,19 @@ export default function LandingPage() {
           <nav className="flex items-center gap-6">
             <Link
               href="/courses/learn-python"
-              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-[#A89F8C] dark:hover:text-[#8BBCC9]"
+              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-white dark:hover:text-[#8BBCC9]"
             >
               Python
             </Link>
             <Link
               href="/courses/learn-java"
-              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-[#A89F8C] dark:hover:text-[#8BBCC9]"
+              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-white dark:hover:text-[#8BBCC9]"
             >
               Java
             </Link>
             <Link
               href="/courses/learn-csharp"
-              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-[#A89F8C] dark:hover:text-[#8BBCC9]"
+              className="text-sm text-[#6B6456] transition-colors hover:text-[#568A99] dark:text-white dark:hover:text-[#8BBCC9]"
             >
               C#
             </Link>
@@ -152,7 +152,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28 lg:px-8 lg:py-36">
           <div className="max-w-2xl">
             {/* Eyebrow */}
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DDD0B5] bg-[#FFFDF5] px-3 py-1 text-xs font-medium text-[#6B6456] dark:border-white/10 dark:bg-white/5 dark:text-[#A89F8C]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#DDD0B5] bg-[#FFFDF5] px-3 py-1 text-xs font-medium text-[#6B6456] dark:border-white/10 dark:bg-white/5 dark:text-white">
               <span className="h-1.5 w-1.5 rounded-full bg-[#568A99]" />
               Built for the AI era
             </div>
@@ -167,7 +167,7 @@ export default function LandingPage() {
               {' '}than ever.
             </h1>
 
-            <p className="mt-6 text-lg leading-relaxed text-[#6B6456] dark:text-[#A89F8C] sm:text-xl">
+            <p className="mt-6 text-lg leading-relaxed text-[#6B6456] dark:text-white sm:text-xl">
               Everyone says AI is replacing code. They&apos;re wrong. Knowing how
               to think in code — precisely, logically — is exactly what makes
               you 10× more effective with AI. This is where you learn that.
@@ -202,7 +202,7 @@ export default function LandingPage() {
               <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
                 The language of precision
               </h2>
-              <p className="mt-4 text-[#6B6456] dark:text-[#A89F8C]">
+              <p className="mt-4 text-[#6B6456] dark:text-white">
                 AI agents do exactly what you tell them. The more precisely you
                 can think and communicate — the more extraordinary your results.
                 That clarity starts with understanding code.
@@ -235,7 +235,7 @@ export default function LandingPage() {
           <div className="mb-10 flex items-end gap-4">
             <div>
               <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Courses</h2>
-              <p className="mt-1 text-sm text-[#6B6456] dark:text-[#A89F8C]">
+              <p className="mt-1 text-sm text-[#6B6456] dark:text-white">
                 Start with the fundamentals, build from there.
               </p>
             </div>
@@ -313,9 +313,9 @@ export default function LandingPage() {
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-between">
             <div className="flex items-center gap-2">
               <StripeBar className="h-5" />
-              <span className="text-sm font-medium text-[#6B6456] dark:text-[#A89F8C]">LWM</span>
+              <span className="text-sm font-medium text-[#6B6456] dark:text-white">Learn With Me</span>
             </div>
-            <p className="text-xs text-[#A89F8C] dark:text-[#6B6456]">
+            <p className="text-xs text-[#A89F8C] dark:text-white">
               Learn With Me — interactive coding for the AI era
             </p>
           </div>

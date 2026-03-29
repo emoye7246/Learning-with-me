@@ -44,6 +44,7 @@ export const curriculum = [
       "functions",
       "input-output",
       "modules-imports",
+      "pseudocode",
       "mini-project-number-guessing-game",
       "mini-project-text-formatter",
       "mini-project-simple-menu",

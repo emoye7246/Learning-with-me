@@ -23,6 +23,7 @@ import { lessonTryExcept } from "./lesson-try-except";
 import { miniProjectNumberGuessingGame } from "./lesson-number-guessing";
 import { miniProjectTextFormatter } from "./lesson-text-formatter";
 import { miniProjectSimpleMenu } from "./lesson-simple-menu";
+import { lessonPseudocode } from "./lesson-pseudocode";
 import { lessonMiniProjectIntro } from "./lesson-mini-project-intro";
 
 export const pythonFundamentalsLessons = [
@@ -48,6 +49,7 @@ export const pythonFundamentalsLessons = [
     lessonTryExcept,
     lessonStringsAndFormat,
     lessonInputOutput,
+    lessonPseudocode,
     lessonMiniProjectIntro,
     miniProjectNumberGuessingGame,
     miniProjectTextFormatter,

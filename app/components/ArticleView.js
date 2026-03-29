@@ -252,7 +252,7 @@ export default function ArticleView({
                     (typeof children === "string" && children.includes("\n"));
                   if (isBlock) {
                     return (
-                      <code className="font-mono text-sm text-white/90 dark:text-white/90 [font-variant-ligatures:none]">
+                      <code className="font-normal text-sm text-white/90 dark:text-white/90 [font-variant-ligatures:none]">
                         {children}
                       </code>
                     );

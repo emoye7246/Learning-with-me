@@ -80,7 +80,7 @@ function CircularProgressBadge({
         </span>
       </div>
 
-      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full border border-[#E5E7EB] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6B7280] shadow-sm dark:border-white/10 dark:bg-[#242424] dark:text-[#A89F8C]">
+      <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 rounded-full border border-[#E5E7EB] bg-white px-2.5 py-1 text-[11px] font-semibold text-[#6B7280] shadow-sm dark:border-white/10 dark:bg-[#242424] dark:text-white">
         {Math.round(normalizedPercent)}%
       </div>
     </div>
@@ -111,12 +111,12 @@ export default function CourseTocPage({
         <div className="max-w-3xl mx-auto flex items-center gap-3">
           <Link href="/" className="flex items-center gap-2 group" title="Home">
             <StripeBar className="h-4" />
-            <span className="text-sm font-medium text-[#6B7280] dark:text-[#A89F8C] group-hover:text-[#568A99] dark:group-hover:text-[#8BBCC9] transition-colors">
-              LWM
+            <span className="text-sm font-medium text-[#6B7280] dark:text-white group-hover:text-[#568A99] dark:group-hover:text-[#8BBCC9] transition-colors">
+              Learn With Me
             </span>
           </Link>
           <span className="text-[#D1D5DB] dark:text-white/20">/</span>
-          <span className="text-sm font-medium text-[#1F1F1F] dark:text-white">
+          <span className="text-sm font-medium text-[#6B7280] dark:text-white">
             {title}
           </span>
         </div>
@@ -214,7 +214,7 @@ export default function CourseTocPage({
           </Link>
           <Link
             href="/"
-            className="text-sm text-[#6B7280] dark:text-[#A89F8C] hover:text-[#568A99] dark:hover:text-[#8BBCC9] transition-colors"
+            className="text-sm text-[#6B7280] dark:text-white hover:text-[#568A99] dark:hover:text-[#8BBCC9] transition-colors"
           >
             ← Back to all courses
           </Link>
